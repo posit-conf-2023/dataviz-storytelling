@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+Designing Data Visualizations to Successfully Tell a Story
 ================
 
 ### posit::conf 2023
