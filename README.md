@@ -7,20 +7,6 @@ by Cédric Scherer
 
 -----
 
-INSTRUCTIONS FOR INSTRUCTORS: Please insert information about your
-workshop below. Then, add workshop content in the materials folder and
-link to each session’s materials from the schedule below. You are
-welcomed to add more rows to the schedule. We just ask that you take
-breaks at the specified times. Once you are done adding information, you
-can remove these instructions from the README.
-
-Alternatively, you can completely redo the organization of this repo 
-as a Quarto website or some other format you prefer to host your workshop
-materials. The only requirement is that your workshop materials are hosted 
-here.
-
------
-
 :spiral_calendar: &ensp;September 17, 2023  
 :alarm_clock:     &ensp;09:00 - 17:00  
 :hotel:           &ensp;ROOM TBD  
@@ -44,38 +30,40 @@ This course is for you if you:
 * aim to improve your data visualization design to create effective and informative graphics, and
 * are willing to spend a bit more time choosing the right chart, proper color palettes, and suitable fonts along with additional elements to guide the viewer.
 
+
+## Schedule (TBA)
+
+| Time          | Activity         |
+| :------------ | :--------------- |
+| 09:00 - 10:30 | Session 1        |
+| 10:30 - 11:00 | *Coffee break*   |
+| 11:00 - 12:30 | Session 2        |
+| 12:30 - 13:30 | *Lunch break*    |
+| 13:30 - 15:00 | Session 3        |
+| 15:00 - 15:30 | *Coffee break*   |
+| 15:30 - 17:00 | Session 4        |
+
+
 ## Prework
 
-ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO
-COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON
-RSTUDIO COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN
-RSTUDIO.CLOUD ACCOUNT, ETC.
+The course will cover principles and tips on how to create compelling graphics that communicate the data in a clear and effective way with a focus on your main findings by engaging and guiding your viewers. No prior preparation is necessary for workshop participants, as the course content is designed to be of a general nature and does not require any prior knowledge or background learning. 
 
-## Schedule
+Please take a moment before the course to think about chart types that you are using on a regular basis and the most common struggles when designing data visualizations. Note them down and bring a few examples if possible (either the original graphics, no matter if polished or not, or simple drafts in case you are not allowed or don’t want to share them). Feel free to share the information in the Discord channel (see below) as well.
 
-### Day 1
+As this workshop is set up as a non-coding course, you do <u>not</u> have to bring your laptop but a few blank sheets of paper and a few pens of different colors for the group exercises. If you prefer to code rough data visualizations rather then drafting them by hand, feel free to set up your laptop accordingly, depending on the programming language and graphics library of your choice. 
 
-| Time          | Activity         |
-| :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
-| 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Session 2        |
-| 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
-| 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+### Course Communication
 
-### Day 2
+We will be using Discord as our main communication method during the workshop. To make the process go smoothly:
+* Please sign up for an account at [discord.com](https://discord.com) if you don’t already have one.
+* Make sure your [display name](https://support.discord.com/hc/en-us/articles/12620128861463-New-Usernames-Display-Names#h_01GXPQABMYGEHGPRJJXJMPHF5C) is the one you used to register for the conference.
+In your “About Me”, put the name of your workshop(s).
 
-| Time          | Activity         |
-| :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
-| 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Session 2        |
-| 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
-| 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+Closer to the start of the conference, you will be invited to join the posit::conf Discord server. Once you’ve accepted the invite, we will add you to the channel(s) for the workshop. 
+
+
+For those who want to code visualizations, we will also set up a Posit Connect environment in case you want to share your notebooks this way. 
+
 
 ## Instructor
 
