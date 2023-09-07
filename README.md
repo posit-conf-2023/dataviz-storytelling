@@ -9,8 +9,7 @@ by Cédric Scherer
 
 :spiral_calendar: &ensp;September 17, 2023  
 :alarm_clock:     &ensp;09:00 - 17:00  
-:hotel:           &ensp;ROOM TBD  
-:writing_hand:    &ensp;[pos.it/conf](http://pos.it/conf)
+:hotel:           &ensp;Grand Hall K
 
 -----
 
