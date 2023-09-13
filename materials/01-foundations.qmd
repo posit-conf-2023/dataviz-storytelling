@@ -1,0 +1,752 @@
+---
+title: "Designing Data Visualizations<br> to Successfully Tell a Story"
+subtitle: "<span style='font-size:2em;'>Foundations of Data Visualization</span>"
+author: "<a href='https://www.cedricscherer.com' style='color:#28a87d;font-weight:600;'>Cédric Scherer</a>&ensp;//&ensp;posit::conf&ensp;//&ensp;September 2023"
+format:
+  revealjs:
+    theme: slides.scss
+    logo: img/logo.png
+    footer: '[Cédric Scherer](https://cedricscherer.com) // posit::conf(2023)'
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    scrollable: false
+    hide-inactive-cursor: true
+    highlight-style: printing
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: true
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 10.1
+  fig-height: 6.3
+  fig-align: center
+---
+
+
+# Data Visualization<br><br><span style='color:#e2e2e2; font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>is any graphical representation<br>of information and data.</span>{background-color="#000000"}
+
+
+
+# Data Visualization<br><br><span style='color:#e2e2e2; font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>helps to amplify cognition, gain insights, discover, explain, and make decisions.</span>{background-color="#000000"}
+
+
+
+# Data Visualization<br><br><span style='color:#e2e2e2; font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>converts information into visual forms<br>as quantifiable features.</span>{background-color="#000000"}
+
+
+
+# Data Visualization<br><br><span style='color:#e2e2e2; font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>is part art and part science.<br><span style='color:#000000;'>.</span></span>{background-color="#000000"}
+
+
+
+## {#dataviz-office data-menu-title="DataViz Office"}
+
+<br><br>
+
+![Source: eazybi](img/dataviz-office-eazybi.png)
+
+
+
+## {#dataviz-science data-menu-title="DataViz Science"}
+
+<br>
+
+![Source: [Ranganathan et al. 2014](https://www.researchgate.net/figure/Country-based-correlation-scatter-plot-for-log-GDP-per-capita-and-Democracy-for-the-year_fig1_259920542)](img/scatterplot-ranganathan-2014.png)
+
+
+
+## {#dataviz-dashboard data-menu-title="DataViz Dashboard"}
+
+![Source: [datameer.com](https://www.datameer.com/blog/data-visualization/ )](img/dashboard-datameer.png)
+
+
+
+## {#dataviz-beach data-menu-title="DataViz Beach"}
+
+<br>
+
+![Source: [“Perpetual Plastic”](https://perpetual-plastic.net/) by Liina Klauss, Skye Morét & Moritz Stefaner](img/perpetual-plastic.png)
+
+
+
+## {#dataviz-artistic data-menu-title="DataViz Artistic"}
+
+![Source: [“Patchwork Kingdoms”](https://www.visualcinnamon.com/collection/patchwork-kingdoms/) by Nadieh Bremer](img/patchwork-kingdom.png)
+
+
+
+## {#dataviz-history-minard data-menu-title="DataViz History"}
+
+<br>
+
+![“Carte figurative des pertes successives en hommes de l'Armée Française dans la campagne de Russie 1812–1813” by Charles Joseph Minard (1869)](img/minard-napoleon.png)
+
+
+
+## {#dataviz-history-minard-2 data-menu-title="DataViz History"}
+
+![“Carte figurative des pertes successives en hommes de l'Armée Française dans la campagne de Russie 1812–1813” and “Carte figurative des pertes successives en hommes de l'Armée qu'Annibal conduisit d'Espagne en Italie en traversant les Gaules (selon Polybe)” by Charles Joseph Minard (1869)](img/minard-full.png)
+
+. . .
+
+<ul>
+<li style='font-size:.6em;'>shows the force levels of the armies of Hannibal (218 BC) and Napoleon (1812-1813), respectively</li>
+<li style='font-size:.6em;'>some data visualization practioners call it (one of) <b>the best statistical drawings ever created</b></li>
+</ul>
+
+## {#dataviz-history-minard-3 data-menu-title="DataViz History"}
+
+<br>
+
+![“Carte figurative et approximative des quantités de coton brut importées en Europe en 1858, en 1864 et en 1865” by Charles Joseph Minard (1866)](img/minard-cotton.jpg)
+
+
+
+## {#dataviz-history-minard-4 data-menu-title="DataViz History"}
+
+![“Carte figurative et approximative des poids des bestiaux venus á Paris sur les chemins de fer en 1862” by Charles Joseph Minard (1864)](img/minard-paris.jpg)
+
+
+
+## {#dataviz-history-minard-5 data-menu-title="DataViz History"}
+
+![“Tableau figuratif du mouvement commercial du Canal du Centre en 1844” by Charles Joseph Minard (1845)](img/minard-canal.jpg)
+
+
+
+# Survey Time! {background-color="#e6d9f2"}
+
+
+
+## {#mental-calendar-exercise data-menu-title="Exercise: Mental Calender"}
+
+<br>
+
+<blockquote style="font-size:1.3em;font-weight:600;font-family:literata;font-style:italic;">If the year is a circle—where’s March and December in your mind?</blockquote>
+
+. . .
+
+<br>
+
+::: incremental
+::: question
+-  Imagine you had to create a polar representation of the months.
+-  Draw a circle and indicate the position of March and December.
+-  Use an arrow to illustrate the direciton of time.
+-  Compare the results with your neighbors.
+:::
+:::
+
+
+
+## {#mental-calendar-results-1 data-menu-title="Mental Calender: Results"}
+
+<br>
+
+![Wheel diagram of 76,922 placements of the months of December and March on the circumference of an empty circle.<br>Graphics by Henrik Lied at NRKbeta. [Laeng & Hofseth, *Front Psychol.* 2019](https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02634/full)](img/mental-calendars-results-position.png)
+
+
+
+## {#mental-calendar-results-2 data-menu-title="Mental Calender: Results"}
+
+<br>
+
+![Proportion of respondents choosing opposite direction of time on the year’s wheel.<br> Graphics by Vidar Kvien, NRK. [Laeng & Hofseth, *Front Psychol.* 2019](https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02634/full)](img/mental-calendars-results-direction.png)
+
+
+
+## {#dataviz-history-nightingale-1 data-menu-title="DataViz History"}
+
+<br>
+
+![“Diagram of the causes and mortality in the army in the East” by Florence Nightingale (1858)](img/nightingale-mortality.jpg)
+
+
+
+## {#dataviz-history-nightingale-2 data-menu-title="DataViz History"}
+
+<br>
+
+![“Relative mortality of the army at home and of the English male population at corresponding ages” by Florence Nightingale (1858)](img/nightingale-bars.png)
+
+
+
+# Visualize Your Data
+
+
+
+# <span style='font-size:.5em;color:#BBBBBB;line-height:.9;font-weight:500;'>... make both <b style='color:#EDCBA0;font-weight:700;'>calculations and graphs</b>.<br>Both sorts of output should be studied; each will <b style='color:#EDCBA0;font-weight:700;'>contribute to understanding</b>.</span><br><br><span style='font-size:.3em;color:#e2e2e2;line-height:.9;font-weight:300;font-style:normal;'>F. J. Anscombe (1973)</span>{#quote-anscombe data-menu-title="Quote F. J. Anscombe" background-color="#000000" }
+
+
+
+## {#datasaurus-dots data-menu-title="Datasaurus Dozen"}
+
+<br>
+
+```{r}
+#| label: datasaurus-dozen-prep
+#| include: false
+#| cache: false
+library(ggplot2)
+library(patchwork)
+
+theme_set(theme_light(base_family = "Asap SemiCondensed"))
+theme_update(
+  strip.text = element_blank(),
+  panel.grid = element_blank(),
+  panel.spacing = unit(.8, "lines"),
+  plot.title = ggtext::element_markdown(
+    family = "Asap", size = 36, hjust = .5, face = "bold", 
+    margin = margin(t = 10)
+  ),
+  plot.subtitle = ggtext::element_markdown(
+    size = 20, hjust = .5, face = "italic", lineheight = 1.2, 
+    margin = margin(t = 15, b = 25)
+  ),
+  plot.caption = element_text(color = "grey35", size = 12, hjust = 0),
+  panel.border = element_rect(linewidth = rel(1.5))
+)
+
+saurus <- readr::read_csv(here::here("materials", "data", "datasaurus.csv"))
+
+facet <- 
+  saurus |> 
+  dplyr::filter(dataset != "dino") |> 
+  dplyr::mutate(dataset = factor(
+    dataset, levels = c("h_lines", "v_lines", "high_lines", 
+                        "wide_lines", "slant_up", "slant_down", 
+                        "dots", "away", "circle", 
+                        "bullseye", "x_shape", "star")
+  )) |> 
+  ggplot(aes(x, y)) +
+    facet_wrap(~ dataset, nrow = 2) +
+    scale_x_continuous(guide = "none", name = NULL) + 
+    scale_y_continuous(guide = "none", name = NULL)
+
+dino <-
+  ggplot(dplyr::filter(saurus, dataset == "dino"), aes(x, y)) +
+    facet_wrap(~ dataset) + 
+    scale_x_continuous(guide = "none", name = NULL) + 
+    scale_y_continuous(guide = "none", name = NULL)
+
+title <- "The Datasaurus (*Anscombosaurus spec.*) Dozen</b>"
+subtitle <- "is a set of 13 different datasets with nigh-identical summary statistics, which could lead one to believe the<br>datasets are quite similar. After visualizing the data, it becomes clear that the datasets are markedly different."
+caption <- "Source: “Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing” by Justin Matejka & George Fitzmaurice (2017)"
+```
+
+```{r}
+#| label: datasaurus-dozen-dots
+#| fig-width: 16
+#| fig-height: 7.2
+#| echo: false
+dino + 
+    geom_point(size = 3) +
+  facet +
+    geom_point(size = 1.8) +
+  plot_layout(widths = c(1, 3)) +
+  plot_annotation(title = title, subtitle = subtitle, caption = caption)
+```
+
+
+
+## {#datasaurus-trends data-menu-title="Datasaurus Dozen"}
+
+<br>
+
+```{r}
+#| label: datasaurus-dozen-trends
+#| fig-width: 16
+#| fig-height: 7.2
+#| echo: false
+dino +
+    geom_point(color = "grey75", size = 3) + 
+    geom_smooth(method = "lm", linewidth = 3, color = "#28A87D", se = FALSE) +
+  facet +
+    geom_point(color = "grey75", size = 1.8) +
+    geom_smooth(method = "lm", linewidth = 2.2, color = "#28A87D", se = FALSE) +
+  plot_layout(widths = c(1, 3)) +
+  plot_annotation(title = title, subtitle = subtitle, caption = caption) 
+```
+
+
+
+## Anscombe's Quartet {.center}
+
+<br>
+
+![Source: [Matejka & Fitzmaurice (2017)](https://www.research.autodesk.com/publications/same-stats-different-graphs/)](img/anscombes-quartet.png)
+
+
+
+## Visualize Your Data! {background-color="#000000"}
+
+:::: {.columns}
+
+::: {.column width="65%"}
+![Source: The Economist](img/kobak-shpilkin.png)
+:::
+
+::: {.column width="35%"}
+<br><br>
+“When Dmitry Kobak and Sergey Shpilkin [...] analysed the results, they found that <em style='color:#EDCBA0;'>an unusually high number of turnout and vote-share results were multiples of five</em> (eg, 50%, 55%, 60%), a tell-tale <b style='color:#EB4B41;'>sign of manipulation</b>.”
+:::
+
+::::
+
+
+
+## Visualize Your Data! {background-color="#000000"}
+
+:::: {.columns}
+
+::: {.column width="65%"}
+![Source: The Economist](img/kobak-shpilkin-zoom.png)
+:::
+
+::: {.column width="35%"}
+<br><br>
+“When Dmitry Kobak and Sergey Shpilkin [...] analysed the results, they found that <em style='color:#EDCBA0;'>an unusually high number of turnout and vote-share results were multiples of five</em> (eg, 50%, 55%, 60%), a tell-tale <b style='color:#EB4B41;'>sign of manipulation</b>.”
+:::
+
+::::
+
+
+
+## <em style='font-size:.9em;line-height:.7;font-weight:500;font-family:literata;'>A good data visualization can mean the difference between <b style='color:#28A87D;font-weight:800;'>success</b> and <b style='color:#B48200;font-weight:800;'>failure</b>.</em>{#success-failure data-menu-title="Success or Failure" background-color="#d8d8d8"}
+
+<br>
+
+::: incremental
+-  Communicating complex findings and phenomena
+-  Raising money for an organization, event or department
+-  Presenting at a board or conference
+-  Helping businesses and institutions to make informed decisions
+-  Providing guidance for improvement
+-  ...
+-  <b>Getting your point across!</b>
+:::
+
+
+
+#  {background-image="img/good-evil-avengers.jpg" background-position="center"}
+
+::: footer
+© AVENGERS Trademark of Marvel Characters, Inc.
+:::
+
+
+
+# <span style='color:#EDCBA0;text-shadow: #000 5px 0px 10px;'><br><br><br><br>Good vs Bad</span> {background-image="img/good-evil-avengers.jpg" background-position="center"}
+
+::: footer
+© AVENGERS Trademark of Marvel Characters, Inc.
+:::
+
+
+
+## What Makes a Good Data Visualization?
+
+<br>
+
+. . .
+
+<span style='font-size:1.8em;font-family:Literata;'><b>&emsp;&emsp;&rarr; <em>Integrity</b> (information)</em></span>
+
+. . .
+
+<span style='font-size:1.8em;font-family:Literata;'><b>&emsp;&emsp;&rarr; <em>Story</b> (interestingness)</em></span>
+
+. . .
+
+<span style='font-size:1.8em;font-family:Literata;'><b>&emsp;&emsp;&rarr; <em>Goal</b> (usefulness)</em></span>
+
+. . .
+
+<span style='font-size:1.8em;font-family:Literata;'><b>&emsp;&emsp;&rarr; <em>Visual Form</b> (beauty)</em></span>
+
+
+## {#what-makes-a-good-dataviz data-menu-title="What Makes a Good Data Visualization?"}
+
+![](img/what-makes-a-good-dataviz.png)
+
+
+
+# Data Pitfalls {background-color="#FFD166"}
+
+
+
+## {#data-pitfalls-book data-menu-title="Avoiding Data Pitfalls"}
+
+![](img/data-pitfalls-ben-jones.png){fig-align="center"}
+
+
+
+## Data Pitfalls
+
+::: incremental
+-  **epistemic errors**&ensp;—&ensp;how we *think* about data
+-  **technical traps**&ensp;—&ensp;how we *process* data
+-  **mathematical miscues**&ensp;—&ensp;how we *calculate* data
+-  **statistical slipups**&ensp;—&ensp;how we *compare* data
+-  **analytical aberrations**&ensp;—&ensp;how we *analyze* data
+-  **graphical gaffes**&ensp;—&ensp;how we *visualize* data
+-  **design dangers**&ensp;—&ensp;how we *dress up* data
+:::
+
+
+
+## Data Pitfalls
+
+-  **epistemic errors**&ensp;—&ensp;how we *think* about data
+-  **technical traps**&ensp;—&ensp;how we *process* data
+-  **mathematical miscues**&ensp;—&ensp;how we *calculate* data
+-  **statistical slipups**&ensp;—&ensp;how we *compare* data
+-  **analytical aberrations**&ensp;—&ensp;how we *analyze* data
+-  <span style='color:#999999;'><b>graphical gaffes</b>&ensp;—&ensp;how we <em>visualize</em> data</span>
+-  <span style='color:#999999;'><b>design dangers</b>&ensp;—&ensp;how we <em>dress up</em> data</span>
+
+
+
+## Integrity of Information
+
+<br>
+<span style='font-size:1.2em;line-height:1.5;'>
+<b>&ensp;—&ensp;data quality:</b><br>
+&emsp;&emsp;→&ensp;guesstimation, precision, and failures<br>
+&emsp;&emsp;→&ensp;miscalculations and errors<br>
+&emsp;&emsp;→&ensp;incomplete data and missing values<br>
+&emsp;&emsp;→&ensp;summaries and aggregations
+</span>
+
+. . .
+
+<br>
+<span style='font-size:1.2em;line-height:1.5;'>
+<b>&ensp;—&ensp;only a subset:</b><br>
+&emsp;&emsp;→&ensp;not crime but <u>reported</u> crime<br>
+&emsp;&emsp;→&ensp;historical or present state<br>
+</span>
+
+
+
+# <span style='font-family:asap semicondensed;font-size:.85em;line-height:1;font-weight:500;font-style:normal;'>Our data is <u style='font-weight:800;'>never</u> a perfect<br>reflection of the real world.</span>{background-color="#FFD166"}
+
+
+
+## {#disasters-1 data-menu-title="Information: Collection"}
+
+![](img/disasters-left.png){fig-align="center"}
+
+
+
+## {#disasters-2 data-menu-title="Information: Collection"}
+
+![](img/disasters-full.png){fig-align="center"}
+
+
+
+## {#meteorites data-menu-title="Information: Completeness" background-color="#000000"}
+
+<br><br>
+
+![](img/meteorites-full.png){fig-width="150%"}
+
+
+
+## {#guesstimation-and-precision-histogram data-menu-title="Guesstimation & Precision"}
+
+```{r}
+#| label: example-guesstimation-precision-raw
+#| echo: false
+#| cache: false
+library(ggplot2)
+library(palmerpenguins)
+
+g <- 
+  ggplot(penguins, aes(x = flipper_length_mm)) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_x_continuous(breaks = seq(170, 230, by = 5)) +
+  scale_y_continuous(guide = "none") +
+  labs(x = "Flipper length (mm)", y = NULL) +
+  theme_minimal(base_size = 24, base_family = "Asap SemiCondensed") +
+  theme(panel.grid = element_blank(),
+        axis.ticks.x = element_line(color = "grey30"))
+
+g + 
+  geom_histogram(fill = "grey65", color = "grey65", binwidth = 1) +
+  geom_hline(yintercept = 0, linewidth = 1.2, color = "grey30")
+```
+
+
+
+## {#guesstimation-and-precision-histogram-highlight data-menu-title="Guesstimation & Precision"}
+
+```{r}
+#| label: example-guesstimation-precision-highlight
+#| echo: false
+g +
+  geom_histogram(aes(fill = flipper_length_mm %% 5 == 0,
+                     #color = after_scale(fill)), binwidth = 1) +
+                     color = flipper_length_mm %% 5 == 0), binwidth = 1) +
+  geom_hline(yintercept = 0, linewidth = 1.2, color = "grey30") +
+  scale_fill_manual(values = c("grey85", "#EFAC00"), guide = "none")  +
+  scale_color_manual(values = c("grey85", "grey30"), guide = "none") 
+```
+
+
+
+
+# <span style='font-family:asap semicondensed;font-size:.85em;line-height:1;font-weight:500;font-style:normal;'>The best use of data is to<br>teach us what <u style='font-weight:800;'>isn’t</u> true.</span>{background-color="#FFD166"}
+
+
+
+## {background-image="img/black-swan.png"}
+
+<br><br><br>
+<span style='font-size:1.2em;'>
+Don’t formulate a <b>single statement:</b><br>
+</span> 
+
+<blockquote style='font-size:1.4em;color:#B48200;font-weight:700;font-family:literata;font-style:italic;'>“The swan is white.”</blockquote><br>
+
+. . .
+
+<br>
+<span style='font-size:1.2em;'>
+Confront yourself with a <b>falsifiable universal statement:</b>
+</span>  
+
+<blockquote style='font-size:1.4em;color:#1D785A;font-weight:700;font-family:literata;font-style:italic;'>“All swans are white.”</blockquote>
+
+
+
+# Context
+
+
+
+## Typology of Information Graphics
+
+<br>
+
+<b style='font-size:1.3em;'>Is the information <b class="simple-highlight-grn">conceptual</b> or <b class="simple-highlight-grn">measurable</b>?</b>
+
+<span style='color:#666666;font-size:.85em;'><b>&ensp;&rarr; Type of information:</b> depict information schematically <> convert information into visual forms</span>
+
+. . .
+
+<br>
+
+<b style='font-size:1.3em;'>Is the aim to <b class="simple-highlight-grn">explore</b> or to <b class="simple-highlight-grn">explain</b> the information?</b>
+
+<span style='color:#666666;font-size:.85em;'><b>&ensp;&rarr; Purpose of the graphic:</b> facilitate discovery <> communicate information</span>
+
+
+
+##  {#typology-of-information-graphics-scheme data-menu-title="Typology of Information Graphics: Scheme"}
+
+![Source: Koponen & Hildén, “Data Visualization Handbook” (2020), page 25](img/typology-koponen-hilden.png)
+
+
+
+# <span style='font-size:.45em;color:#BBBBBB;line-height:.6;font-weight:500;'>Visualizations can be designed and experienced in various ways, by people of various backgrounds, and in various circumstances.<br><br><b style='color:#EDCBA0;font-weight:700;'>That's why reflecting on the purpose of a visualization is paramount before we design it—or before we critique it.</b></span><br><br><span style='font-size:.3em;color:#e2e2e2;line-height:.9;font-weight:300;font-style:normal;'>Alberto Cairo</span>{#quote-cairo data-menu-title="Quote A. Cairo" background-color="#000000" }
+
+
+
+## {#viz-vertices-1 data-menu-title="Vertices of Data Visualization" .center}
+
+<br>
+
+![“Vertices of Visualization” by Alberto Cairo, personal communication (modified version)](img/viz-vertices-1.png)
+
+
+
+## {#viz-vertices-2 data-menu-title="Vertices of Data Visualization" .center}
+
+<br>
+
+![“Vertices of Visualization” by Alberto Cairo, personal communication (modified version)](img/viz-vertices-2.png)
+
+
+
+## {#viz-vertices-3 data-menu-title="Vertices of Data Visualization" .center}
+
+<br>
+
+![“Vertices of Visualization” by Alberto Cairo, personal communication (modified version)](img/viz-vertices-3.png)
+
+
+
+## {#who-what-how data-menu-title="The Importance of Context"}
+
+<b class="simple-highlight-grn" style='font-size:1.3em;'>Audience (who)</b>
+
+-  To whom are you communicating?
+-  What do they already know?
+-  What is your position and relationship?
+
+
+
+## {#audience-1 data-menu-title="Who's My Audience?" background-image="img/audience-1.png" background-position="center"}
+
+
+
+## {#audience-2 data-menu-title="Who's My Audience?" background-image="img/audience-2.png" background-position="center"}
+
+
+
+## {#audience-3 data-menu-title="Who's My Audience?" background-image="img/audience-3.png" background-position="center"}
+
+
+
+## {#audience-4 data-menu-title="Who's My Audience?" background-image="img/audience-4.png" background-position="center"}
+
+
+
+## {#audience-5 data-menu-title="Who's My Audience?" background-image="img/audience-5.png" background-position="center"}
+
+
+
+## {#who-what-how-2 data-menu-title="The Importance of Context"}
+
+<b class="simple-highlight-grn" style='font-size:1.3em;'>Audience (who)</b>
+
+-  To whom are you communicating?
+-  What do they already know?
+-  What is your position and relationship?
+
+<b class="simple-highlight-grn" style='font-size:1.3em;'>Content (what)</b>
+
+-  What do you want them to know or do?
+-  How will you communicate with them?
+-  What tone do you want your communication to set?
+
+
+
+## {#perception-0 data-menu-title="Perceive, Interpret, Comprehend"}
+
+<br>
+
+![<br><br>Scheme by Andy Kirk (modified)](img/perceive-interpret-comprehend-0.png)
+
+
+
+## {#perception-1 data-menu-title="Perceive, Interpret, Comprehend"}
+
+<br>
+
+![<br><br>Scheme by Andy Kirk (modified)](img/perceive-interpret-comprehend-1.png)
+
+
+## {#perception-2 data-menu-title="Perceive, Interpret, Comprehend"}
+
+<br>
+
+![<br><br>Scheme by Andy Kirk (modified)](img/perceive-interpret-comprehend-2.png)
+
+
+
+## {#perception-3 data-menu-title="Perceive, Interpret, Comprehend"}
+
+<br>
+
+![<br><br>Scheme by Andy Kirk (modified)](img/perceive-interpret-comprehend-3.png)
+
+
+
+## {#who-what-how-3 data-menu-title="The Importance of Context"}
+
+<b class="simple-highlight-grn" style='font-size:1.3em;'>Audience (who)</b>
+
+-  To whom are you communicating?
+-  What do they already know?
+-  What is your position and relationship?
+
+<b class="simple-highlight-grn" style='font-size:1.3em;'>Content (what)</b>
+
+-  What do you want them to know or do?
+-  How will you communicate with them?
+-  What tone do you want your communication to set?
+
+<b class="simple-highlight-grn" style='font-size:1.3em;'>Evidence (how)</b>
+
+-  What data is available to make my point?
+
+
+
+## Context: Prepare Yourself
+
+<br>
+
+::: incremental
+-  What is the one key massage they should take home?
+-  What background information is essential? What's irrelevant?
+-  What are potential biases of (some of) the audience?
+-  What factors could weaken your case? Can we address them proactively?
+:::
+
+
+# Exercises 
+
+
+
+## Exercise 1
+
+::: question
+<b style='font-size:1.3em;'>Take a closer look at the following three visualizations.</b>
+
+::: incremental
+-  Address the following questions:
+   -  What is the main message you learn from the graphic?
+   -  What is the purpose of the visualization?
+   -  Who is the audience?
+-  Rate the graphics according to the four levels:<br><em>information</em>, <em>story</em>, <em>goal</em>, and <em>visual form</em>.
+-  Collect three things you notice, no matter if positive or negative.
+   -  How could you fix the details you dislike?
+-  Team up with your neighbor(s) and discuss your findings.
+:::
+:::
+
+
+## {#dataviz-good-bad-1 data-menu-title="Good vs Bad"}
+
+![](img/3d-powerpoint-chart.png){fig-align="center"}
+
+
+
+## {#dataviz-good-bad-2 data-menu-title="Good vs Bad"}
+
+![Source: [“Yearly Fluctuations in Area of Arctic Covered by Ice”](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0) by Derek Watkins (New York Times)](img/annotation-climate-change.png){fig-align="center"}
+
+
+
+## {#dataviz-good-bad-3 data-menu-title="Good vs Bad"}
+
+![Source: Dr. Robert Rohde [(Tweet)](https://twitter.com/RARohde/status/1105805477806567424)](img/greenhouse-orignal.png){fig-align="center"}
+
+
+
+## UPDATE Exercise 2
+
+::: question
+<b style='font-size:1.3em;'>Imagine you are working for a candy company and want to introduce a new type of candy.</b>
+
+::: incremental
+-  
+:::
+:::
+
+
+
+## {"img/exercise-what-now.png" background-position="center" background-size="75%"}

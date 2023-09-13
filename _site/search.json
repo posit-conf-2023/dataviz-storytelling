@@ -1,0 +1,1248 @@
+[
+  {
+    "objectID": "materials/00-welcome.html#cedric-ggplot-tutorial-overview",
+    "href": "materials/00-welcome.html#cedric-ggplot-tutorial-overview",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r"
+  },
+  {
+    "objectID": "materials/00-welcome.html#conversation-starters",
+    "href": "materials/00-welcome.html#conversation-starters",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Conversation Starters",
+    "text": "Conversation Starters\n\nWhat’s your name?\nWhere do you feel home?\nWhen did you program for the first time? In which language?\nWhat’s your favorite animal / plant / color / typeface?\nWhere did you spend your summer?\nWhom would you like to meet during the posit::conf?\nWhich chart types are you looking forward to try?\nWhat are things you want to learn about data visualization?"
+  },
+  {
+    "objectID": "materials/00-welcome.html#announcements",
+    "href": "materials/00-welcome.html#announcements",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Announcements",
+    "text": "Announcements\n\nWiFi\n\nUsername: Posit Conf 2023\nPassword: conf2023\n\nCourse Materials\n\nWebpage: posit-conf-2023.github.io/dataviz-storytelling"
+  },
+  {
+    "objectID": "materials/00-welcome.html#course-webpage",
+    "href": "materials/00-welcome.html#course-webpage",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "posit-conf-2023.github.io/dataviz-ggplot2"
+  },
+  {
+    "objectID": "materials/00-welcome.html#announcements-1",
+    "href": "materials/00-welcome.html#announcements-1",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Announcements",
+    "text": "Announcements\n\n\nGender-neutral bathrooms are located among the Grand Suite Bathrooms.\nThe two meditation/prayer rooms (Grand Suite 2A and Grand Suite 2B) are open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm\nThe lactation room is located in Grand Suite 1 and open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm.\nParticipants who do not wish to be photographed have red lanyards; please note everyone’s lanyard colors before taking a photo and respect their choices.\nThe Code of Conduct and COVID policies can be found at posit.co/code-of-conduct. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information."
+  },
+  {
+    "objectID": "materials/00-welcome.html#communication-strategy",
+    "href": "materials/00-welcome.html#communication-strategy",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Communication Strategy",
+    "text": "Communication Strategy\n\n\n\nGreen sticky note — I am done with the exercise\nPink sticky note — I need help or support\nYou can ask questions / comment at any time during the course.\nPlease avoid questions during the breaks to give us a chance to recover.\nWe will be using Discord as our main digital communication method.\nTeam up with your neighbors for exercises — and lunch!\nWe will collect feedback twice during the day (more later)."
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-encodings",
+    "href": "materials/03-display.html#same-data-different-encodings",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Encodings",
+    "text": "Same Data, Different Encodings"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-encodings-1",
+    "href": "materials/03-display.html#same-data-different-encodings-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Encodings",
+    "text": "Same Data, Different Encodings"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-emphasis",
+    "href": "materials/03-display.html#same-data-different-emphasis",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Emphasis",
+    "text": "Same Data, Different Emphasis"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-emphasis-1",
+    "href": "materials/03-display.html#same-data-different-emphasis-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Emphasis",
+    "text": "Same Data, Different Emphasis"
+  },
+  {
+    "objectID": "materials/03-display.html#wordcloud-issues",
+    "href": "materials/03-display.html#wordcloud-issues",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Data to Viz\n\n\n\n\n\n\n\nSource: Data to Viz"
+  },
+  {
+    "objectID": "materials/03-display.html#encodings-judgements-yau",
+    "href": "materials/03-display.html#encodings-judgements-yau",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: “Data Points” by Nathan Yau (p. 104)"
+  },
+  {
+    "objectID": "materials/03-display.html#encodings-judgements-cairo",
+    "href": "materials/03-display.html#encodings-judgements-cairo",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Cleveland’s and McGill’s Scale of Perpetual Elementary TasksSource: “The Functional Art” by Alberto Cairo (p. 120)"
+  },
+  {
+    "objectID": "materials/03-display.html#encodings-judgements-accurate",
+    "href": "materials/03-display.html#encodings-judgements-accurate",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Cleveland’s and McGill’s Scale of Perpetual Elementary TasksSource: “The Functional Art” by Alberto Cairo (p. 120)"
+  },
+  {
+    "objectID": "materials/03-display.html#encodings-judgements-generic",
+    "href": "materials/03-display.html#encodings-judgements-generic",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Cleveland’s and McGill’s Scale of Perpetual Elementary TasksSource: “The Functional Art” by Alberto Cairo (p. 120)"
+  },
+  {
+    "objectID": "materials/03-display.html#always-start-at-zero",
+    "href": "materials/03-display.html#always-start-at-zero",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Always Start at Zero?",
+    "text": "Always Start at Zero?\n\n\nSource: “Hands-On Data Visualization” by Jack Dougherty & Ilya Ilyankou\nMore on the topic: Correl, Bertini & Francoeri 2020 and Witt (2019)"
+  },
+  {
+    "objectID": "materials/03-display.html#always-start-at-zero-1",
+    "href": "materials/03-display.html#always-start-at-zero-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Always Start at Zero?",
+    "text": "Always Start at Zero?"
+  },
+  {
+    "objectID": "materials/03-display.html#always-start-at-zero-2",
+    "href": "materials/03-display.html#always-start-at-zero-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Always Start at Zero?",
+    "text": "Always Start at Zero?"
+  },
+  {
+    "objectID": "materials/03-display.html#always-start-at-zero-3",
+    "href": "materials/03-display.html#always-start-at-zero-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Always Start at Zero?",
+    "text": "Always Start at Zero?\n\n\nSource: “Hands-On Data Visualization” by Jack Dougherty & Ilya Ilyankou"
+  },
+  {
+    "objectID": "materials/03-display.html#encodings-position-baseline-golden-ratio",
+    "href": "materials/03-display.html#encodings-position-baseline-golden-ratio",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Francis Gagnon"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-scaling",
+    "href": "materials/03-display.html#same-data-different-scaling",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Scaling",
+    "text": "Same Data, Different Scaling"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-scaling-1",
+    "href": "materials/03-display.html#same-data-different-scaling-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Scaling",
+    "text": "Same Data, Different Scaling"
+  },
+  {
+    "objectID": "materials/03-display.html#scmp-area-fail-1",
+    "href": "materials/03-display.html#scmp-area-fail-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Russia attacks Ukraine” by SCMP Graphic (South China Morning Post)"
+  },
+  {
+    "objectID": "materials/03-display.html#scmp-area-fail-2",
+    "href": "materials/03-display.html#scmp-area-fail-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Russia attacks Ukraine” by SCMP Graphic (South China Morning Post)"
+  },
+  {
+    "objectID": "materials/03-display.html#scmp-area-fail-3",
+    "href": "materials/03-display.html#scmp-area-fail-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Russia attacks Ukraine” by SCMP Graphic (South China Morning Post)"
+  },
+  {
+    "objectID": "materials/03-display.html#scmp-area-fail-4",
+    "href": "materials/03-display.html#scmp-area-fail-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Russia attacks Ukraine” by SCMP Graphic (South China Morning Post)"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-palettes",
+    "href": "materials/03-display.html#same-data-different-palettes",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Palettes",
+    "text": "Same Data, Different Palettes"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-palettes-1",
+    "href": "materials/03-display.html#same-data-different-palettes-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Palettes",
+    "text": "Same Data, Different Palettes"
+  },
+  {
+    "objectID": "materials/03-display.html#same-data-different-palettes-2",
+    "href": "materials/03-display.html#same-data-different-palettes-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Same Data, Different Palettes",
+    "text": "Same Data, Different Palettes"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types",
+    "href": "materials/03-display.html#color-palette-types",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types",
+    "text": "Color Palette Types"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-dark-equals-more",
+    "href": "materials/03-display.html#color-palette-types-dark-equals-more",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types: Dark Equals More (?)",
+    "text": "Color Palette Types: Dark Equals More (?)"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-dark-equals-more-1",
+    "href": "materials/03-display.html#color-palette-types-dark-equals-more-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types: Dark Equals More (?)",
+    "text": "Color Palette Types: Dark Equals More (?)"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-1",
+    "href": "materials/03-display.html#color-palette-types-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types",
+    "text": "Color Palette Types"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-sequential-or-diverging",
+    "href": "materials/03-display.html#color-palette-types-sequential-or-diverging",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types: Sequential or Diverging?",
+    "text": "Color Palette Types: Sequential or Diverging?"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-2",
+    "href": "materials/03-display.html#color-palette-types-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types",
+    "text": "Color Palette Types"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-sequential",
+    "href": "materials/03-display.html#color-palette-types-sequential",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types: Sequential",
+    "text": "Color Palette Types: Sequential\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-display.html#color-palette-types-sequential-qualitative",
+    "href": "materials/03-display.html#color-palette-types-sequential-qualitative",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types: Sequential Qualitative!",
+    "text": "Color Palette Types: Sequential Qualitative!\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-display.html#chart-selection-helpers-3",
+    "href": "materials/03-display.html#chart-selection-helpers-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Data to Viz"
+  },
+  {
+    "objectID": "materials/03-display.html#chart-selection-helpers-4",
+    "href": "materials/03-display.html#chart-selection-helpers-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Data to Viz"
+  },
+  {
+    "objectID": "materials/03-display.html#update-exercise-1",
+    "href": "materials/03-display.html#update-exercise-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "UPDATE Exercise 1",
+    "text": "UPDATE Exercise 1"
+  },
+  {
+    "objectID": "materials/03-display.html#section",
+    "href": "materials/03-display.html#section",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Cédric Scherer // posit::conf(2023)"
+  },
+  {
+    "objectID": "materials/03-display.html#chart-types-for-distributions",
+    "href": "materials/03-display.html#chart-types-for-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Chart Types for Distributions",
+    "text": "Chart Types for Distributions"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-office",
+    "href": "materials/01-foundations.html#dataviz-office",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: eazybi"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-science",
+    "href": "materials/01-foundations.html#dataviz-science",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Ranganathan et al. 2014"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-dashboard",
+    "href": "materials/01-foundations.html#dataviz-dashboard",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: datameer.com"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-beach",
+    "href": "materials/01-foundations.html#dataviz-beach",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: “Perpetual Plastic” by Liina Klauss, Skye Morét & Moritz Stefaner"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-artistic",
+    "href": "materials/01-foundations.html#dataviz-artistic",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: “Patchwork Kingdoms” by Nadieh Bremer"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-minard",
+    "href": "materials/01-foundations.html#dataviz-history-minard",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Carte figurative des pertes successives en hommes de l’Armée Française dans la campagne de Russie 1812–1813” by Charles Joseph Minard (1869)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-2",
+    "href": "materials/01-foundations.html#dataviz-history-minard-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Carte figurative des pertes successives en hommes de l’Armée Française dans la campagne de Russie 1812–1813” and “Carte figurative des pertes successives en hommes de l’Armée qu’Annibal conduisit d’Espagne en Italie en traversant les Gaules (selon Polybe)” by Charles Joseph Minard (1869)\n\n\nshows the force levels of the armies of Hannibal (218 BC) and Napoleon (1812-1813), respectively\n\n\nsome data visualization practioners call it (one of) the best statistical drawings ever created"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-3",
+    "href": "materials/01-foundations.html#dataviz-history-minard-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Carte figurative et approximative des quantités de coton brut importées en Europe en 1858, en 1864 et en 1865” by Charles Joseph Minard (1866)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-4",
+    "href": "materials/01-foundations.html#dataviz-history-minard-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Carte figurative et approximative des poids des bestiaux venus á Paris sur les chemins de fer en 1862” by Charles Joseph Minard (1864)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-5",
+    "href": "materials/01-foundations.html#dataviz-history-minard-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Tableau figuratif du mouvement commercial du Canal du Centre en 1844” by Charles Joseph Minard (1845)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#mental-calendar-exercise",
+    "href": "materials/01-foundations.html#mental-calendar-exercise",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "If the year is a circle—where’s March and December in your mind?\n\n\n\n\n\n\nImagine you had to create a polar representation of the months.\nDraw a circle and indicate the position of March and December.\nUse an arrow to illustrate the direciton of time.\nCompare the results with your neighbors."
+  },
+  {
+    "objectID": "materials/01-foundations.html#mental-calendar-results-1",
+    "href": "materials/01-foundations.html#mental-calendar-results-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Wheel diagram of 76,922 placements of the months of December and March on the circumference of an empty circle.Graphics by Henrik Lied at NRKbeta. Laeng & Hofseth, Front Psychol. 2019"
+  },
+  {
+    "objectID": "materials/01-foundations.html#mental-calendar-results-2",
+    "href": "materials/01-foundations.html#mental-calendar-results-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Proportion of respondents choosing opposite direction of time on the year’s wheel. Graphics by Vidar Kvien, NRK. Laeng & Hofseth, Front Psychol. 2019"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-nightingale-1",
+    "href": "materials/01-foundations.html#dataviz-history-nightingale-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Diagram of the causes and mortality in the army in the East” by Florence Nightingale (1858)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-nightingale-2",
+    "href": "materials/01-foundations.html#dataviz-history-nightingale-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Relative mortality of the army at home and of the English male population at corresponding ages” by Florence Nightingale (1858)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#anscombes-quartet",
+    "href": "materials/01-foundations.html#anscombes-quartet",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Anscombe’s Quartet",
+    "text": "Anscombe’s Quartet\n\n\nSource: Matejka & Fitzmaurice (2017)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#visualize-your-data-1",
+    "href": "materials/01-foundations.html#visualize-your-data-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Your Data!",
+    "text": "Visualize Your Data!\n\n\n\n\n\nSource: The Economist\n\n\n\n “When Dmitry Kobak and Sergey Shpilkin […] analysed the results, they found that an unusually high number of turnout and vote-share results were multiples of five (eg, 50%, 55%, 60%), a tell-tale sign of manipulation.”"
+  },
+  {
+    "objectID": "materials/01-foundations.html#visualize-your-data-2",
+    "href": "materials/01-foundations.html#visualize-your-data-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Your Data!",
+    "text": "Visualize Your Data!\n\n\n\n\n\nSource: The Economist\n\n\n\n “When Dmitry Kobak and Sergey Shpilkin […] analysed the results, they found that an unusually high number of turnout and vote-share results were multiples of five (eg, 50%, 55%, 60%), a tell-tale sign of manipulation.”"
+  },
+  {
+    "objectID": "materials/01-foundations.html#success-failure",
+    "href": "materials/01-foundations.html#success-failure",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "A good data visualization can mean the difference between success and failure.",
+    "text": "A good data visualization can mean the difference between success and failure.\n\n\n\nCommunicating complex findings and phenomena\nRaising money for an organization, event or department\nPresenting at a board or conference\nHelping businesses and institutions to make informed decisions\nProviding guidance for improvement\n…\nGetting your point across!"
+  },
+  {
+    "objectID": "materials/01-foundations.html#what-makes-a-good-data-visualization",
+    "href": "materials/01-foundations.html#what-makes-a-good-data-visualization",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "What Makes a Good Data Visualization?",
+    "text": "What Makes a Good Data Visualization?\n\n\n  → Integrity (information)\n\n\n  → Story (interestingness)\n\n\n  → Goal (usefulness)\n\n\n  → Visual Form (beauty)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#data-pitfalls-1",
+    "href": "materials/01-foundations.html#data-pitfalls-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Data Pitfalls",
+    "text": "Data Pitfalls\n\n\nepistemic errors — how we think about data\ntechnical traps — how we process data\nmathematical miscues — how we calculate data\nstatistical slipups — how we compare data\nanalytical aberrations — how we analyze data\ngraphical gaffes — how we visualize data\ndesign dangers — how we dress up data"
+  },
+  {
+    "objectID": "materials/01-foundations.html#data-pitfalls-2",
+    "href": "materials/01-foundations.html#data-pitfalls-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Data Pitfalls",
+    "text": "Data Pitfalls\n\nepistemic errors — how we think about data\ntechnical traps — how we process data\nmathematical miscues — how we calculate data\nstatistical slipups — how we compare data\nanalytical aberrations — how we analyze data\ngraphical gaffes — how we visualize data\ndesign dangers — how we dress up data"
+  },
+  {
+    "objectID": "materials/01-foundations.html#integrity-of-information",
+    "href": "materials/01-foundations.html#integrity-of-information",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Integrity of Information",
+    "text": "Integrity of Information\n   — data quality:   → guesstimation, precision, and failures   → miscalculations and errors   → incomplete data and missing values   → summaries and aggregations \n\n   — only a subset:   → not crime but reported crime   → historical or present state"
+  },
+  {
+    "objectID": "materials/01-foundations.html#section-1",
+    "href": "materials/01-foundations.html#section-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Don’t formulate a single statement: \n\n“The swan is white.”\n\n\n\n  Confront yourself with a falsifiable universal statement: \n\n“All swans are white.”"
+  },
+  {
+    "objectID": "materials/01-foundations.html#typology-of-information-graphics",
+    "href": "materials/01-foundations.html#typology-of-information-graphics",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Typology of Information Graphics",
+    "text": "Typology of Information Graphics\n\nIs the information conceptual or measurable?\n → Type of information: depict information schematically <> convert information into visual forms\n\n\nIs the aim to explore or to explain the information?\n → Purpose of the graphic: facilitate discovery <> communicate information"
+  },
+  {
+    "objectID": "materials/01-foundations.html#typology-of-information-graphics-scheme",
+    "href": "materials/01-foundations.html#typology-of-information-graphics-scheme",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Koponen & Hildén, “Data Visualization Handbook” (2020), page 25"
+  },
+  {
+    "objectID": "materials/01-foundations.html#viz-vertices-1",
+    "href": "materials/01-foundations.html#viz-vertices-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Vertices of Visualization” by Alberto Cairo, personal communication (modified version)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#viz-vertices-2",
+    "href": "materials/01-foundations.html#viz-vertices-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Vertices of Visualization” by Alberto Cairo, personal communication (modified version)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#viz-vertices-3",
+    "href": "materials/01-foundations.html#viz-vertices-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Vertices of Visualization” by Alberto Cairo, personal communication (modified version)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#who-what-how",
+    "href": "materials/01-foundations.html#who-what-how",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Audience (who)\n\nTo whom are you communicating?\nWhat do they already know?\nWhat is your position and relationship?"
+  },
+  {
+    "objectID": "materials/01-foundations.html#who-what-how-2",
+    "href": "materials/01-foundations.html#who-what-how-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Audience (who)\n\nTo whom are you communicating?\nWhat do they already know?\nWhat is your position and relationship?\n\nContent (what)\n\nWhat do you want them to know or do?\nHow will you communicate with them?\nWhat tone do you want your communication to set?"
+  },
+  {
+    "objectID": "materials/01-foundations.html#perception-0",
+    "href": "materials/01-foundations.html#perception-0",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Scheme by Andy Kirk (modified)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#perception-1",
+    "href": "materials/01-foundations.html#perception-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Scheme by Andy Kirk (modified)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#perception-2",
+    "href": "materials/01-foundations.html#perception-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Scheme by Andy Kirk (modified)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#perception-3",
+    "href": "materials/01-foundations.html#perception-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Scheme by Andy Kirk (modified)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#who-what-how-3",
+    "href": "materials/01-foundations.html#who-what-how-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Audience (who)\n\nTo whom are you communicating?\nWhat do they already know?\nWhat is your position and relationship?\n\nContent (what)\n\nWhat do you want them to know or do?\nHow will you communicate with them?\nWhat tone do you want your communication to set?\n\nEvidence (how)\n\nWhat data is available to make my point?"
+  },
+  {
+    "objectID": "materials/01-foundations.html#context-prepare-yourself",
+    "href": "materials/01-foundations.html#context-prepare-yourself",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Context: Prepare Yourself",
+    "text": "Context: Prepare Yourself\n\n\n\nWhat is the one key massage they should take home?\nWhat background information is essential? What’s irrelevant?\nWhat are potential biases of (some of) the audience?\nWhat factors could weaken your case? Can we address them proactively?"
+  },
+  {
+    "objectID": "materials/01-foundations.html#exercise-1",
+    "href": "materials/01-foundations.html#exercise-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nTake a closer look at the following three visualizations.\n\n\nAddress the following questions:\n\nWhat is the main message you learn from the graphic?\nWhat is the purpose of the visualization?\nWho is the audience?\n\nRate the graphics according to the four levels:information, story, goal, and visual form.\nCollect three things you notice, no matter if positive or negative.\n\nHow could you fix the details you dislike?\n\nTeam up with your neighbor(s) and discuss your findings."
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-good-bad-2",
+    "href": "materials/01-foundations.html#dataviz-good-bad-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: “Yearly Fluctuations in Area of Arctic Covered by Ice” by Derek Watkins (New York Times)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-good-bad-3",
+    "href": "materials/01-foundations.html#dataviz-good-bad-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Dr. Robert Rohde (Tweet)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#update-exercise-2",
+    "href": "materials/01-foundations.html#update-exercise-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "UPDATE Exercise 2",
+    "text": "UPDATE Exercise 2\n\nImagine you are working for a candy company and want to introduce a new type of candy."
+  },
+  {
+    "objectID": "materials/01-foundations.html#imgexercise-what-now.png-background-positioncenter-background-size75",
+    "href": "materials/01-foundations.html#imgexercise-what-now.png-background-positioncenter-background-size75",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "{“img/exercise-what-now.png” background-position=“center” background-size=“75%”}",
+    "text": "{“img/exercise-what-now.png” background-position=“center” background-size=“75%”}\n\n\n\nCédric Scherer // posit::conf(2023)"
+  },
+  {
+    "objectID": "materials/03-display.html#chart-types-to-visualize-univariate-distributions",
+    "href": "materials/03-display.html#chart-types-to-visualize-univariate-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Chart Types to Visualize Univariate Distributions",
+    "text": "Chart Types to Visualize Univariate Distributions\n:::: {.columns}\n\n\n\n\n\n\n\n::: {.column width=“50%”} ::: fragment"
+  },
+  {
+    "objectID": "materials/03-display.html#chart-types-to-visualize-amounts",
+    "href": "materials/03-display.html#chart-types-to-visualize-amounts",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Chart Types to Visualize Amounts",
+    "text": "Chart Types to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#chart-types-to-visualize-amounts-1",
+    "href": "materials/03-display.html#chart-types-to-visualize-amounts-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Chart Types to Visualize Amounts",
+    "text": "Chart Types to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-univariate-distributions",
+    "href": "materials/03-display.html#charts-to-visualize-univariate-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Univariate Distributions",
+    "text": "Charts to Visualize Univariate Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts",
+    "href": "materials/03-display.html#charts-to-visualize-amounts",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts-1",
+    "href": "materials/03-display.html#charts-to-visualize-amounts-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts-2",
+    "href": "materials/03-display.html#charts-to-visualize-amounts-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts-3",
+    "href": "materials/03-display.html#charts-to-visualize-amounts-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts-4",
+    "href": "materials/03-display.html#charts-to-visualize-amounts-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts-5",
+    "href": "materials/03-display.html#charts-to-visualize-amounts-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-amounts-6",
+    "href": "materials/03-display.html#charts-to-visualize-amounts-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Amounts",
+    "text": "Charts to Visualize Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-univariate-distributions-1",
+    "href": "materials/03-display.html#charts-to-visualize-univariate-distributions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Univariate Distributions",
+    "text": "Charts to Visualize Univariate Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts",
+    "href": "materials/03-display.html#charts-to-compare-amounts",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-1",
+    "href": "materials/03-display.html#charts-to-compare-amounts-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-2",
+    "href": "materials/03-display.html#charts-to-compare-amounts-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-3",
+    "href": "materials/03-display.html#charts-to-compare-amounts-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-4",
+    "href": "materials/03-display.html#charts-to-compare-amounts-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-5",
+    "href": "materials/03-display.html#charts-to-compare-amounts-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-distributions",
+    "href": "materials/03-display.html#charts-to-visualize-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Distributions",
+    "text": "Charts to Visualize Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-distributions-1",
+    "href": "materials/03-display.html#charts-to-visualize-distributions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Distributions",
+    "text": "Charts to Visualize Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-distributions",
+    "href": "materials/03-display.html#charts-to-compare-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Distributions",
+    "text": "Charts to Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-distributions-1",
+    "href": "materials/03-display.html#charts-to-compare-distributions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Distributions",
+    "text": "Charts to Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-distributions-2",
+    "href": "materials/03-display.html#charts-to-compare-distributions-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Distributions",
+    "text": "Charts to Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-distributions-3",
+    "href": "materials/03-display.html#charts-to-compare-distributions-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Distributions",
+    "text": "Charts to Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-distributions-4",
+    "href": "materials/03-display.html#charts-to-compare-distributions-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Distributions",
+    "text": "Charts to Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-proportions",
+    "href": "materials/03-display.html#charts-to-compare-proportions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Proportions",
+    "text": "Charts to Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-proportions-1",
+    "href": "materials/03-display.html#charts-to-compare-proportions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Proportions",
+    "text": "Charts to Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-proportions-2",
+    "href": "materials/03-display.html#charts-to-compare-proportions-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Proportions",
+    "text": "Charts to Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-proportions-3",
+    "href": "materials/03-display.html#charts-to-compare-proportions-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Proportions",
+    "text": "Charts to Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-proportions-4",
+    "href": "materials/03-display.html#charts-to-compare-proportions-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Proportions",
+    "text": "Charts to Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-6",
+    "href": "materials/03-display.html#charts-to-compare-amounts-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-x-y-relationships",
+    "href": "materials/03-display.html#charts-to-visualize-x-y-relationships",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize x-y Relationships",
+    "text": "Charts to Visualize x-y Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-x-y-relationships-1",
+    "href": "materials/03-display.html#charts-to-visualize-x-y-relationships-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize x-y Relationships",
+    "text": "Charts to Visualize x-y Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-x-y-relationships-2",
+    "href": "materials/03-display.html#charts-to-visualize-x-y-relationships-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize x-y Relationships",
+    "text": "Charts to Visualize x-y Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships",
+    "href": "materials/03-display.html#charts-to-visualize-relationships",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-1",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-2",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-3",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-4",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-5",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-6",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-relationships-7",
+    "href": "materials/03-display.html#charts-to-visualize-relationships-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Relationships",
+    "text": "Charts to Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-amounts-7",
+    "href": "materials/03-display.html#charts-to-compare-amounts-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Amounts",
+    "text": "Charts to Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-uncertainty",
+    "href": "materials/03-display.html#charts-to-visualize-uncertainty",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Uncertainty",
+    "text": "Charts to Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-uncertainty-1",
+    "href": "materials/03-display.html#charts-to-visualize-uncertainty-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Uncertainty",
+    "text": "Charts to Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-uncertainty-2",
+    "href": "materials/03-display.html#charts-to-visualize-uncertainty-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Uncertainty",
+    "text": "Charts to Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-uncertainty-3",
+    "href": "materials/03-display.html#charts-to-visualize-uncertainty-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Uncertainty",
+    "text": "Charts to Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-compare-distributions-5",
+    "href": "materials/03-display.html#charts-to-compare-distributions-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Compare Distributions",
+    "text": "Charts to Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-uncertainty-4",
+    "href": "materials/03-display.html#charts-to-visualize-uncertainty-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Uncertainty",
+    "text": "Charts to Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#charts-to-visualize-uncertainty-5",
+    "href": "materials/03-display.html#charts-to-visualize-uncertainty-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Charts to Visualize Uncertainty",
+    "text": "Charts to Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts",
+    "href": "materials/03-display.html#compare-amounts",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-1",
+    "href": "materials/03-display.html#compare-amounts-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-2",
+    "href": "materials/03-display.html#compare-amounts-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-3",
+    "href": "materials/03-display.html#compare-amounts-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-4",
+    "href": "materials/03-display.html#compare-amounts-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-5",
+    "href": "materials/03-display.html#compare-amounts-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-6",
+    "href": "materials/03-display.html#compare-amounts-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-distributions",
+    "href": "materials/03-display.html#visualize-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Distributions",
+    "text": "Visualize Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-distributions-1",
+    "href": "materials/03-display.html#visualize-distributions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Distributions",
+    "text": "Visualize Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-distributions",
+    "href": "materials/03-display.html#compare-distributions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Distributions",
+    "text": "Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-distributions-1",
+    "href": "materials/03-display.html#compare-distributions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Distributions",
+    "text": "Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-distributions-2",
+    "href": "materials/03-display.html#compare-distributions-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Distributions",
+    "text": "Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-distributions-3",
+    "href": "materials/03-display.html#compare-distributions-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Distributions",
+    "text": "Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-distributions-4",
+    "href": "materials/03-display.html#compare-distributions-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Distributions",
+    "text": "Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-proportions",
+    "href": "materials/03-display.html#compare-proportions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Proportions",
+    "text": "Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-proportions-1",
+    "href": "materials/03-display.html#compare-proportions-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Proportions",
+    "text": "Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-proportions-2",
+    "href": "materials/03-display.html#compare-proportions-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Proportions",
+    "text": "Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-proportions-3",
+    "href": "materials/03-display.html#compare-proportions-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Proportions",
+    "text": "Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-proportions-4",
+    "href": "materials/03-display.html#compare-proportions-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Proportions",
+    "text": "Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships",
+    "href": "materials/03-display.html#visualize-relationships",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-1",
+    "href": "materials/03-display.html#visualize-relationships-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-2",
+    "href": "materials/03-display.html#visualize-relationships-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-3",
+    "href": "materials/03-display.html#visualize-relationships-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-4",
+    "href": "materials/03-display.html#visualize-relationships-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-5",
+    "href": "materials/03-display.html#visualize-relationships-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-6",
+    "href": "materials/03-display.html#visualize-relationships-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-7",
+    "href": "materials/03-display.html#visualize-relationships-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty",
+    "href": "materials/03-display.html#visualize-uncertainty",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty-1",
+    "href": "materials/03-display.html#visualize-uncertainty-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty-2",
+    "href": "materials/03-display.html#visualize-uncertainty-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty-3",
+    "href": "materials/03-display.html#visualize-uncertainty-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty-4",
+    "href": "materials/03-display.html#visualize-uncertainty-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty-5",
+    "href": "materials/03-display.html#visualize-uncertainty-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-8",
+    "href": "materials/03-display.html#visualize-relationships-8",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-relationships-9",
+    "href": "materials/03-display.html#visualize-relationships-9",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Relationships",
+    "text": "Visualize Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-relationships",
+    "href": "materials/03-display.html#compare-relationships",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Relationships",
+    "text": "Compare Relationships\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompare Relationships\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::::"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-relationships-1",
+    "href": "materials/03-display.html#compare-relationships-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Relationships",
+    "text": "Compare Relationships\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompare Relationships\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n::::"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-relationships-2",
+    "href": "materials/03-display.html#compare-relationships-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Relationships",
+    "text": "Compare Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-distributions-2",
+    "href": "materials/03-display.html#visualize-distributions-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Distributions",
+    "text": "Visualize Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-distributions-5",
+    "href": "materials/03-display.html#compare-distributions-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Distributions",
+    "text": "Compare Distributions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-amounts-7",
+    "href": "materials/03-display.html#compare-amounts-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Amounts",
+    "text": "Compare Amounts"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-proportions-5",
+    "href": "materials/03-display.html#compare-proportions-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Proportions",
+    "text": "Compare Proportions"
+  },
+  {
+    "objectID": "materials/03-display.html#compare-relationships-3",
+    "href": "materials/03-display.html#compare-relationships-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Compare Relationships",
+    "text": "Compare Relationships"
+  },
+  {
+    "objectID": "materials/03-display.html#visualize-uncertainty-6",
+    "href": "materials/03-display.html#visualize-uncertainty-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Visualize Uncertainty",
+    "text": "Visualize Uncertainty"
+  }
+]

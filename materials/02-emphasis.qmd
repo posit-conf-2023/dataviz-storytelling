@@ -1,0 +1,1085 @@
+---
+title: "Designing Data Visualizations<br> to Successfully Tell a Story"
+subtitle: "<span style='font-size:2em;'>Think Like a Designer</span>"
+author: "<a href='https://www.cedricscherer.com' style='color:#28a87d;font-weight:600;'>Cédric Scherer</a>&ensp;//&ensp;posit::conf&ensp;//&ensp;September 2023"
+format:
+  revealjs:
+    theme: slides.scss
+    logo: img/logo.png
+    footer: '[Cédric Scherer](https://cedricscherer.com) // posit::conf(2023)'
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    scrollable: false
+    hide-inactive-cursor: true
+    highlight-style: printing
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: true
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 12
+  fig-height: 7.8
+  fig-align: center
+---
+
+
+# <span style='line-height:.97;'>Gestalt Principles</span> {background-color="#e6d9f2"}
+
+
+
+# <span style='font-family:asap semicondensed;font-size:.6em;line-height:.75;font-weight:600;font-style:normal;color:#663399;'>A (varying) set of principles that describe how humans perceive and make sense<br>of visual information and stimuli.</span> {#gestalt-principles-defintion data-menu-title="Gestalt Principles: Definition" background-color="#e6d9f2"}
+
+
+
+## Principle of Figure and Ground
+
+<br>
+
+![](img/heads-vase-illusion.png){fig-align="center"}
+
+
+
+## Principle of Proximity
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/proximity-1.png)
+:::
+
+::: {.column width="50%"}
+::: fragment
+![](img/proximity-2.png)
+:::
+:::
+
+::::
+
+
+
+## Principle of Similarity
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/similarity-1.png)
+:::
+
+::: {.column width="50%"}
+::: fragment
+![](img/similarity-2.png)
+:::
+:::
+
+::::
+
+
+
+## Principle of Common Region
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/enclosure-1.png)
+:::
+
+::: {.column width="50%"}
+::: fragment
+![](img/enclosure-2.png)
+
+:::
+:::
+
+::::
+
+
+
+## Principles of Continuity and Closure
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/continuity.png)
+:::
+
+::: {.column width="50%"}
+::: fragment
+![](img/closure.png)
+:::
+:::
+
+::::
+
+
+
+## Principle of Figure and Ground
+
+```{r}
+#| label: gestalt-dataviz-prep
+#| echo: false
+#| cache: false
+library(ggplot2)
+library(palmerpenguins)
+
+theme_set(theme_minimal(base_size = 24, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid.minor = element_blank(),
+  plot.margin = margin(rep(20, 4))
+)
+```
+
+```{r}
+#| label: gestalt-dataviz-figure-ground-panel
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(size = 5, color = "grey40", alpha = .7) +
+  coord_cartesian(clip = "off") +
+  labs(x = "Flipper length", y = "Bill length") +
+  theme(panel.background = element_rect(fill = "grey92", color = "grey70"),
+        panel.border = element_rect(fill = NA, color = "grey70"),
+        axis.ticks = element_line(color = "grey70"))
+```
+
+
+
+## Principle of Figure and Ground
+
+```{r}
+#| label: gestalt-dataviz-figure-ground-data
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(shape = species), color = "grey40",
+             size = 5, alpha = .7, stroke = .8) +
+  coord_cartesian(clip = "off") +
+  scale_shape_manual(values = c(1, 1, 19), guide = "none") +
+  labs(x = "Flipper length", y = "Bill length") +
+  theme(panel.background = element_rect(fill = "white", color = "grey85"),
+        panel.border = element_rect(fill = NA, color = "grey85"),
+        axis.ticks = element_line(color = "grey85"))
+```
+
+
+
+## Principle of Closure
+
+```{r}
+#| label: gestalt-dataviz-closure-grid
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(size = 5, color = "grey40", alpha = .7) +
+  coord_cartesian(clip = "off") +
+  labs(x = "Flipper length", y = "Bill length") +
+  theme(panel.grid.minor = element_blank())
+```
+
+
+
+## Principle of Closure
+
+```{r}
+#| label: gestalt-dataviz-closure-axislines
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(size = 5, color = "grey40", alpha = .7) +
+  coord_cartesian(clip = "off") +
+  labs(x = "Flipper length", y = "Bill length") +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        panel.grid = element_blank())
+```
+
+
+
+## Principle of Closure
+
+```{r}
+#| label: gestalt-dataviz-closure-bars
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = n, y = forcats::fct_reorder(species, n))) +
+  geom_col(fill = "grey70", width = .7) +
+  geom_text(aes(label = n), hjust = 1.8, family = "Asap SemiCondensed", size = 9) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = c(0, 0)) +
+  labs(x = NULL, y = NULL) +
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = rel(1.3)))
+```
+
+
+
+## Principle of Similarity
+
+```{r}
+#| label: gestalt-dataviz-similarity-shape
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(shape = species), size = 5, alpha = .7, fill = "grey70", stroke = .8) +
+  scale_shape_manual(values = 21:23) +
+  coord_cartesian(clip = "off") +
+  labs(x = "Flipper length", y = "Bill length", shape = "Species:") +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        panel.grid = element_blank())
+```
+
+
+
+## Principle of Similarity
+
+```{r}
+#| label: gestalt-dataviz-similarity-color
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species), size = 5, alpha = .7) +
+  scale_color_manual(values = c("#28A87D", "#EFAC00", "#9C55E3")) +
+  coord_cartesian(clip = "off") +
+  labs(x = "Flipper length", y = "Bill length", color = "Species:") +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        panel.grid = element_blank())
+```
+
+
+
+## Principle of Proximity
+
+```{r}
+#| label: gestalt-dataviz-proximity
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = island)) +
+  geom_bar(aes(fill = species), width = .7, 
+           position = position_dodge2(preserve = "single")) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 120)) +
+  scale_fill_manual(values = c("#28A87D", "#EFAC00", "#9C55E3")) +
+  labs(x = "Island", y = "Number of individuals", fill = "Species:") +
+  theme(panel.grid.major.x = element_blank())
+```
+
+
+
+## Principle of Proximity
+
+```{r}
+#| label: gestalt-dataviz-proximity-legend
+#| echo: false
+penguins |> 
+  dplyr::filter(!is.na(sex)) |> 
+  ggplot(aes(x = island)) +
+  geom_bar(aes(fill = species), width = .7, 
+           position = position_dodge2(preserve = "single")) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 120)) +
+  scale_fill_manual(values = c("#28A87D", "#EFAC00", "#9C55E3"), name = "Species:",
+                    guide = guide_legend(title.position = "top")) +
+  labs(x = "Island", y = "Number of individuals") +
+  theme(panel.grid.major.x = element_blank(),
+        legend.position = "top",
+        legend.justification = "left")
+```
+
+
+
+
+## Principle of Connectivity
+
+```{r}
+#| label: gestalt-dataviz-connectivity-prep
+#| echo: false
+#| cache: false
+library(babynames)
+library(dplyr)
+
+babynames_unique <- 
+  babynames |> 
+  group_by(name) |> 
+  slice(1) |> 
+  ungroup() |> 
+  count(decade = year %/% 10 * 10, sex) |> 
+  mutate(sex = ifelse(sex == "F", "female", "male"))
+```
+
+```{r}
+#| label: gestalt-dataviz-connectivity-basic
+#| echo: false
+ggplot(babynames_unique, aes(x = decade, y = n, color = sex)) +
+  geom_point(size = 5) +
+  scale_y_continuous(label = scales::label_comma()) +
+  scale_color_manual(values = c("#28A87D", "#9C55E3")) +
+  labs(x = "Decade", y = "Unique babynames", color = NULL) +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        panel.grid = element_blank(),
+        legend.position = c(.2, .75))
+```
+
+
+
+## Principle of Connectivity
+
+```{r}
+#| label: gestalt-dataviz-connectivity
+#| echo: false
+ggplot(babynames_unique, aes(x = decade, y = n, color = sex)) +
+  geom_line(linewidth = 1.5) +
+  geom_point(size = 5) +
+  scale_y_continuous(label = scales::label_comma()) +
+  scale_color_manual(values = c("#28A87D", "#9C55E3")) +
+  labs(x = "Decade", y = "Unique babynames", color = NULL) +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        panel.grid = element_blank(),
+        legend.position = c(.2, .75),
+        legend.key.width = unit(3, "lines"))
+```
+
+
+
+# <span style='line-height:.97;'>Eliminating Distractions&nbsp;</span> {background-color="#e6d9f2"}
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-before
+#| echo: false
+#| cache: false
+library(ggplot2)
+library(palmerpenguins)
+
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(aes(fill = species), width = .7, color = "black", linewidth = 1.2) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:13*20) +
+  scale_fill_manual(values = c("#28A87D", "#EFAC00", "#9C55E3")) +
+  labs(x = "Species", y = "Number of individuals", fill = "Species:") +
+  theme_grey(base_size = 32, base_family = "Lato") +
+  theme(panel.background = element_rect(fill = "grey83", color = "grey30"),
+        panel.border = element_rect(fill = NA, color = "grey30"),
+        legend.background = element_rect(fill = "grey83", color = "grey30"),
+        plot.background = element_rect(fill = "grey93", color = "black"),
+        axis.text.x = element_text(face = "italic"),
+        axis.text.y = element_text(face = rep(c("bold", "plain"), 10), angle = 30),
+        axis.title = element_text(face = "bold", family = "Times"),
+        legend.title = element_text(face = "bold", family = "Times"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-backgrounds-text
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:13*20) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_grey(base_size = 32, base_family = "Asap Condensed") +
+  theme(panel.background = element_rect(fill = "white", color = "grey30"),
+        panel.border = element_rect(fill = NA, color = "grey30"),
+        axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-axis-lines
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:13*20) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_classic(base_size = 32, base_family = "Asap Condensed") +
+  theme(axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-axis-lines-light
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:13*20) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_classic(base_size = 32, base_family = "Asap Condensed") +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-breaks
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:3*50) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_classic(base_size = 32, base_family = "Asap Condensed") +
+  theme(axis.line = element_line(color = "grey70"),
+        axis.ticks = element_line(color = "grey70"),
+        axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-gridlines-default
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.15, .15)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:3*50) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_minimal(base_size = 32, base_family = "Asap Condensed") +
+  theme(axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-gridlines-focussed
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.15, .15)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 163), breaks = 0:3*50) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_minimal(base_size = 32, base_family = "Asap Condensed") +
+  theme(panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = "grey92"),
+        axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-direct-labels
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  geom_text(aes(label = n), vjust = 1.8, color = "white", 
+            family = "Asap SemiCondensed", size = 9) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.15, .15)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 155), breaks = NULL) +
+  labs(x = "Species", y = "Number of individuals") +
+  theme_minimal(base_size = 32, base_family = "Asap Condensed") +
+  theme(panel.grid = element_blank(),
+        axis.title = element_text(color = "grey45"),
+        axis.text = element_text(color = "grey45"))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-title
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(fill = "grey40", width = .7, linewidth = 1.2) +
+  geom_text(aes(label = n), vjust = 1.8, color = "white", 
+            family = "Asap SemiCondensed", size = 12) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.15, .15)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 152), breaks = NULL) +
+  labs(title = "Number of individuals of brush-tailed penguin species", x = NULL, y = NULL) +
+  theme_minimal(base_size = 32, base_family = "Asap Condensed") +
+  theme(panel.grid = element_blank(),
+        plot.title.position = "plot",
+        axis.text = element_text(color = "grey30", size = rel(1)))
+```
+
+
+
+## Declutter!
+
+```{r}
+#| label: declutter-color
+#| echo: false
+penguins |>
+  dplyr::filter(!is.na(sex)) |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) +
+  geom_col(aes(fill = species), width = .7, linewidth = 1.2) +
+  geom_text(aes(label = n), vjust = 1.8, color = "white", 
+            family = "Asap SemiCondensed", size = 12) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.15, .15)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 152), breaks = NULL) +
+  scale_fill_manual(values = c("#1D785A", "#B48200", "#663399"), guide = "none") +
+  labs(title = "Number of individuals of brush-tailed penguin species", x = NULL, y = NULL) +
+  theme_minimal(base_size = 32, base_family = "Asap Condensed") +
+  theme(panel.grid = element_blank(),
+        plot.title.position = "plot",
+        axis.text = element_text(color = "grey30", size = rel(1)))
+```
+
+
+
+## Declutter!
+
+<br>
+
+![](img/declutter-before-after.png)
+
+
+# Exercise
+
+
+## Exercise 1
+
+::::: question
+<b style='font-size:1.3em;'>Eliminate the clutter from the line chart on the next slide.</b>
+
+:::: fragment
+<span style='font-size:1.3em;'>Afterwards, answer the following:</span>
+
+::: incremental
+-  What is the main message?
+-  Is all the data relevant?
+-  What would you change?
+-  How can you emphasize the main message?
+:::
+::::
+:::::
+
+
+
+## {#exercise-1 data-menu-title="Exercise 1"}
+
+![](img/declutter-exercise.png){fig-align="center"}
+
+
+
+
+##  {background-image="img/exercise-what-now.png" background-position="center" background-size="75%"}
+
+
+
+# <span style='line-height:.97;'>Emphasizing Insights&nbsp;</span> {background-color="#e6d9f2"}
+
+
+
+## {#wheres-waldo data-menu-title="Where's Waldo?"}
+
+![Source: “Where's Waldo?” by Martin Handford © Kilburn & Strode LLP](img/waldo.png){.center}
+
+
+
+## {#wheres-waldo-solutions data-menu-title="Where's Waldo?"}
+
+![Source: “Where's Waldo?” by Martin Handford © Kilburn & Strode LLP](img/waldo-solution.png){.center}
+
+
+
+# <span style='line-height:.97;'>Preattentive Attributes</span> {background-color="#e6d9f2"}
+
+
+
+# <span style='font-family:asap semicondensed;font-size:.6em;line-height:.75;font-weight:600;font-style:normal;color:#663399;'>Visual properties that the human brain can instantly and subconsciously perceive.</span><br> {#preattentive-attributes-defintion data-menu-title="Preattentive Attributes: Definition" background-color="#e6d9f2"}
+
+
+
+## {#preattentive-attributes-overview data-menu-title="Preattentive Attributes: Overview"}
+
+<br>
+
+![<br>Adapted from Stephen Few and others](img/preattentive-attributes.png)
+
+
+
+## {#preattentive-attributes-text data-menu-title="Preattentive Attributes: Text Styling"}
+
+<br>
+
+![](img/preattentive-attributes-text.png)
+
+
+
+## {#preattentive-attributes-text-notes data-menu-title="Preattentive Attributes: Text Styling"}
+
+<br>
+
+![](img/preattentive-attributes-text-notes.png)
+
+
+
+## {#emphasis-color-gapminder-1 data-menu-title="Emphasis with Color"}
+
+```{r}
+#| label: gapminder-example-emphasis-1
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-asp: .65
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+
+theme_set(theme_minimal(base_size = 22, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid.minor = element_blank(),
+  plot.margin = margin(rep(20, 4)),
+  strip.text = element_text(size = rel(1)),
+  axis.title.y = element_text(margin = margin(r = 12), vjust = 1), 
+  panel.spacing.x = unit(3.5, "lines"),
+  panel.spacing.y = unit(1.5, "lines")
+)
+
+countries_g7 <- c("Japan", "United States", "Canada", "France", 
+                  "Germany", "Italy", "United Kingdom")
+
+gm_g7 <- 
+  gapminder |> 
+  filter(country %in% countries_g7) |> 
+  group_by(country) |> 
+  mutate(lifeExp_last = lifeExp[which(year == 2007)]) |> 
+  ungroup() |> 
+  mutate(country_lab = if_else(country == "Japan", paste0("<span style='color:black;'>Japan</span>"), country))
+
+colors <- RColorBrewer::brewer.pal(name = "Dark2", n = 7)
+names(colors) <- countries_g7
+
+g <- 
+  ggplot(data = gm_g7, aes(x = year, y = lifeExp)) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_x_continuous(breaks = seq(1952, 2007, by = 5)) +
+  scale_y_continuous(limits = c(59, 85)) +
+  labs(x = NULL, y = "Life expectancy", color = NULL) +
+  theme(#legend.justification = "top",
+        text = element_text(color = "grey30"),
+        legend.text = element_text(margin = margin(5, 0, 5, 0)),
+        axis.title.y = element_text(margin = margin(r = 12)))
+
+g + 
+  geom_line(aes(color = forcats::fct_reorder(country, -lifeExp_last)), linewidth = 1.2) +
+  scale_color_manual(values = colors)
+```
+
+
+
+## {#emphasis-color-gapminder-2 data-menu-title="Emphasis with Color"}
+
+```{r}
+#| label: gapminder-example-emphasis-2
+#| echo: false
+#| fig-width: 14
+#| fig-asp: .65
+g + 
+  geom_line(aes(color = forcats::fct_reorder(country, -lifeExp_last)), linewidth = 1.2) +
+  scale_color_manual(values = rep("grey75", 7)) +
+  theme(text = element_text(color = "grey30"))
+```
+
+
+
+## {#emphasis-color-gapminder-3 data-menu-title="Emphasis with Color"}
+
+```{r}
+#| label: gapminder-example-emphasis-3
+#| echo: false
+#| fig-width: 14
+#| fig-asp: .65
+g + 
+  geom_line(aes(color = forcats::fct_reorder(country_lab, -lifeExp_last)), linewidth = 1) +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 1.8) +
+  scale_color_manual(values = c("red", rep("grey75", 6))) +
+  theme(text = element_text(color = "grey30"),
+        legend.text = ggtext::element_markdown())
+```
+
+
+
+## {#emphasis-color-gapminder-4 data-menu-title="Emphasis with Color"}
+
+```{r}
+#| label: gapminder-example-emphasis-4
+#| echo: false
+#| fig-width: 14
+#| fig-asp: .65
+g + 
+  geom_line(aes(color = forcats::fct_reorder(country_lab, -lifeExp_last)), linewidth = 1) +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 1.8) +
+  scale_color_manual(values = c("red", rep("grey75", 6))) +
+  theme(text = element_text(color = "grey30"),
+        legend.text = ggtext::element_markdown(),
+        legend.justification = "top")
+```
+
+
+
+## {#emphasis-color-gapminder-5 data-menu-title="Emphasis with Color"}
+
+```{r}
+#| label: gapminder-example-emphasis-5
+#| echo: false
+#| fig-width: 14
+#| fig-asp: .65
+g + 
+  geom_line(
+    data = mutate(gm_g7, country_lab = ifelse(country == "Japan", country_lab,  "Other G7 coutries")),
+    aes(color = country_lab, group = country), linewidth = 1) +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 1.8) +
+  scale_color_manual(values = c("red", "grey75")) +
+  theme(text = element_text(color = "grey30"),
+        legend.text = ggtext::element_markdown(),
+        legend.justification = "top")
+```
+
+
+
+## {#emphasis-color-gapminder-6 data-menu-title="Emphasis with Color"}
+
+```{r}
+#| label: gapminder-example-emphasis-6
+#| echo: false
+g + 
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 1.8) +
+  annotate(geom = "text", x = 1993, y = c(82, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("red", "grey65"), family = "Asap SemiCondensed", 
+           fontface = "bold", size = c(10, 7), lineheight = .8) +
+  theme(text = element_text(color = "grey30"))
+```
+
+
+
+# <span style='line-height:.97;'>Creating Compositions&nbsp;</span> {background-color="#e6d9f2"}
+
+
+
+## Main Principles of Graphic Design
+
+<br>
+
+<span style='font-size:1.8em;font-family:Literata;'>
+<b>&emsp;&emsp;&emsp;&emsp;&rarr; <em>Unity</b></em><br>
+<b>&emsp;&emsp;&emsp;&emsp;&rarr; <em>Variety</b></em><br>
+<b>&emsp;&emsp;&emsp;&emsp;&rarr; <em>Hierarchy</b></em>
+</span>
+
+. . .
+
+<br>
+The balance between **unity** and **variety** can lead to **hierarchy**.
+
+
+
+## {#graphic-design-principles-layout data-menu-title="Unity, Variety & Hierarchy in Layouts"}
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Created by Lindsay Betzendahl](img/layout-variety.png)
+:::
+
+::: {.column width="50%"}
+::: fragment
+![Created by Lindsay Betzendahl](img/layout-similarity.png)
+:::
+:::
+
+::::
+
+
+
+## {#graphic-design-principles-charts-1 data-menu-title="Unity, Variety & Hierarchy in Charts"}
+
+<br>
+
+![Source: Ernest & Young](img/3_time_eandy_orig.png)
+
+
+
+## {#graphic-design-principles-charts-2 data-menu-title="Unity, Variety & Hierarchy in Charts"} 
+
+<br>
+
+![Reworked version of the charts by Ernest & Young](img/3_time_eandy_labs_left_1.png)
+
+
+
+## {#graphic-design-principles-charts-3 data-menu-title="Unity, Variety & Hierarchy in Charts"}
+
+<br>
+
+![Reworked version of the charts by Ernest & Young](img/3_time_eandy_highlight_1.png)
+
+
+
+## {#graphic-design-principles-table-1 data-menu-title="Unity, Variety & Hierarchy in Tables"}
+
+<br>
+
+![Source: Credit Suisse](img/5_table_creditsuisse_orig.png)
+
+
+
+## {#graphic-design-principles-table-2 data-menu-title="Unity, Variety & Hierarchy in Tables"}
+
+<br>
+
+![Reworked version of the table by Credit Suisse](img/5_table_creditsuisse_disc_b_1.png)
+
+
+
+## {#graphic-design-principles-table-3 data-menu-title="Unity, Variety & Hierarchy in Tables"}
+
+<br>
+
+![Reworked version of the table by Credit Suisse](img/5_table_creditsuisse_cont_nob_1.png)
+
+
+
+## Modular Design
+
+<br>
+
+![Source: londonphotography.org.uk](img/layout-grids.jpg)
+
+
+
+## {#modular-design-charts-1 data-menu-title="Modular Design: Charts"}
+
+![](img/layout-grid-charts.png){fig-align="center"}
+
+
+
+## {#modular-design-charts-2 data-menu-title="Modular Design: Charts"}
+
+![](img/layout-grid-charts-2.png){fig-align="center"}
+
+
+
+## {#modular-design-example data-menu-title="Modular Design: Example"}
+
+![](img/energy-grid-example.png){fig-align="center"}
+
+
+
+## {#modular-design-example-2 data-menu-title="Modular Design: Example"}
+
+![](img/energy-grid-1.png){fig-align="center"}
+
+
+
+## {#modular-design-example-3 data-menu-title="Modular Design: Example"}
+
+![](img/energy-grid-2.png){fig-align="center"}
+
+
+
+## Alignment
+
+
+
+
+
+# {#typography data-menu-title="Choice of Typefaces" background-image="img/typography-banner.png" background-position="center"}
+
+
+
+## {#typography-waiting-lovely data-menu-title="Choice of Typefaces" background-image="img/typeface-waiting-lovely.png" background-position="center"}
+
+
+
+## {#typography-waiting-scary data-menu-title="Choice of Typefaces" background-image="img/typeface-waiting-scary.png" background-position="center"}
+
+
+
+## {#typography-waiting-variants data-menu-title="Choice of Typefaces"}
+
+![](img/typeface-waiting-variants.png){fig-align="center"}
+
+
+
+## {#typography-waiting-variants-names data-menu-title="Choice of Typefaces"}
+
+![](img/typeface-waiting-variants-names.png){fig-align="center"}
+
+
+
+## {#typography-keep-it-simple-typefaces data-menu-title="Keep it Simple: Typefaces"}
+
+<br><br>
+
+![](img/typeface-keep-it-simple.png){fig-align="center"}
+
+
+
+## {#typography-keep-it-simple-fontsizes data-menu-title="Keep it Simple: Font Sizes"}
+
+<br>
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/text-in-data-visualizations/)](img/datawrapper-text-font-sizes.png){fig-align="center"}
+
+
+## {#typography-proportional-tabular data-menu-title="Proportional vs Tabular"}
+
+![](img/typeface-proportional-tabular.png){fig-align="center"}
+
+
+
+## {#typography-proportional-tabular-2 data-menu-title="Proportional vs Tabular"}
+
+![](img/typeface-proportional-tabular-2.png){fig-align="center"}
+
+
+
+## {#font-readability data-menu-title="Design for Readability"}
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/text-in-data-visualizations/)](img/datawrapper-text-fonts-readability.png){fig-align="center"}
+
+
+
+## The 1Il Test
+
+<br>
+
+![](img/typeface-1il-test-fail.png)
+
+
+
+## The 1Il Test
+
+<br>
+
+![](img/typeface-1il-test-full.png)
+
+
+
+# Exercise
+
+
+
+## Exercise 2
+
+::: question
+<b style='font-size:1.3em;'>Revisit the line chart from exercise 1 of the first session.</b>
+
+-  What are preattentive attributes used in this graphic?
+:::
+
+<br>
+
+:::: fragment
+
+::: question
+<b style='font-size:1.3em;'>Revisit the pie chart from exercise 1 of the first session.</b>
+
+-  How could you use preattentive attributes to tell a story?
+:::
+::::
+
+
+
+## {#line-chart-arctic-ice data-menu-title='Line Chart "Arctic Ice"'}
+
+![Source: [“Yearly Fluctuations in Area of Arctic Covered by Ice”](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0) by Derek Watkins (New York Times)](img/annotation-climate-change.png){fig-align="center"}
+
+
+
+## {#pie-charts-emissions data-menu-title='Pie Charts "Greenhouse Gas Emissions"'}
+
+![Source: Dr. Robert Rohde [(Tweet)](https://twitter.com/RARohde/status/1105805477806567424)](img/greenhouse-orignal.png){fig-align="center"}
+
+
+
+## 
+
+![](img/declutter-exercise.png){fig-align="center"}

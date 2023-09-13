@@ -1,0 +1,20 @@
+---
+title: "Prework"
+---
+
+The course will cover principles and tips on how to create compelling graphics that communicate the data in a clear and effective way with a focus on your main findings by engaging and guiding your viewers. No prior preparation is necessary for workshop participants, as the course content is designed to be of a general nature and does not require any prior knowledge or background learning.
+
+Please take a moment before the course to think about chart types that you are using on a regular basis and the most common struggles when designing data visualizations. Note them down and bring a few examples if possible (either the original graphics, no matter if polished or not, or simple drafts in case you are not allowed or don’t want to share them). Feel free to share the information in the Discord channel (see below) as well.
+
+As this workshop is set up as a non-coding course, you do not have to bring your laptop but a few blank sheets of paper and a few pens of different colors for the group exercises. If you prefer to code rough data visualizations rather then drafting them by hand, feel free to set up your laptop accordingly, depending on the programming language and graphics library of your choice.
+
+
+## Course Communication
+
+We will be using Discord as our main communication method during the workshop. To make the process go smoothly:
+
+* Please sign up for an account at <a href='https://discord.com' target="_blank">discord.com</a> if you don’t already have one.
+* Make sure your <a href='https://support.discord.com/hc/en-us/articles/12620128861463-New-Usernames-Display-Names#h_01GXPQABMYGEHGPRJJXJMPHF5C' target="_blank">display name</a> is the one you used to register for the conference.
+* In your “About Me”, put the name of your workshop(s).
+
+Closer to the start of the conference, you will be invited to join the posit::conf Discord server. Once you’ve accepted the invite, we will add you to the channel for the workshop. 

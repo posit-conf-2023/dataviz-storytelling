@@ -1,0 +1,173 @@
+---
+title: "Designing Data Visualizations<br>to Successfully Tell a Story"
+subtitle: "<span style='font-size:2em;'>Welcome!</span>"
+author: "<a href='https://www.cedricscherer.com' style='color:#28a87d;font-weight:600;'>Cédric Scherer</a>&ensp;//&ensp;posit::conf&ensp;//&ensp;September 2023"
+format:
+  revealjs:
+    theme: slides.scss
+    logo: img/logo.png
+    footer: '**[Cédric Scherer](https://cedricscherer.com)** // posit::conf(2023)'
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    scrollable: false
+    hide-inactive-cursor: true
+    highlight-style: printing
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: true
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 5
+  fig-height: 6
+---
+
+
+# Welcome<br><br><br><br><br><br> {background-image="img/logo-welcome.png" background-position="center" background-size="40%"}
+
+
+# Welcome<br><br><br><br><br><br> {#course-logo-before data-menu-title="Course Logo Before" background-image="img/logo-welcome-before.png" background-position="center" background-size="40%"}
+
+
+##  {#hello-blank data-menu-title="Hello" background-image="img/intro/hello-blank.png" background-position="center" background-size="62%"}
+
+
+##  {#hello-team data-menu-title="Hello Team" background-image="img/intro/hello-team.png" background-position="center" background-size="62%"}
+
+
+##  {#teaching-team data-menu-title="Teaching Team" background-image="img/intro/team-hex-grid.png" background-position="center" background-size="105%"}
+
+
+##  {#hello-cedric data-menu-title="Hello Cédric" background-image="img/intro/hello-cedric.png" background-position="center" background-size="62%"}
+
+
+##  {#cedric-avatars data-menu-title="Cédric Avatars" background-image="img/intro/avatars-logo.png" background-position="center" background-size="80%"}
+
+
+##  {#cedric-dataviz-science data-menu-title="Cédric Projects Science" background-image="img/intro/projects-science.png" background-position="center" background-size="82%" background-color="#ABABAB"}
+
+::: footer
+:::
+
+
+##  {#cedric-dataviz-clients data-menu-title="Cédric Projects Clients" background-image="img/intro/projects-clients.png" background-position="center" background-size="77%" background-color="#ABABAB"}
+
+::: footer
+:::
+
+
+##  {#cedric-dataviz-personal data-menu-title="Cédric Projects Personal"background-image="img/intro/projects-personal.png" background-position="center" background-size="85%" background-color="#ABABAB"}
+
+::: footer
+:::
+
+
+##  {#cedric-blog data-menu-title="Cédric Blog"background-image="img/intro/blog.png" background-position="center" background-size="56%"}
+
+::: footer
+:::
+
+
+##  {#cedric-ggplot-tutorial data-menu-title="Cédric Blog Tutorial" background-image="img/intro/blog-tutorial.png" background-position="center" background-size="56%"}
+
+::: footer
+:::
+
+
+## {#cedric-ggplot-tutorial-overview data-menu-title="Cédric Blog Tutorial Overview"}
+
+![[cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)](img/intro/ggplot-tutorial-overview.png){fig-align="center" fig-alt="Overview of some exemplary plots included in my ggplot2 tutorial."}
+
+
+##  {#cedric-rstudio-conf data-menu-title="Cédric Blog rstudio::conf" background-image="img/intro/blog-rstudioconf.png" background-position="center" background-size="56%"}
+
+::: footer
+:::
+
+
+##  {#hello-jasmin data-menu-title="Hello Jasmin" background-image="img/intro/hello-jasmin.png" background-position="center" background-size="62%"}
+
+
+##  {#hello-ciera data-menu-title="Hello Ciera" background-image="img/intro/hello-ciera.png" background-position="center" background-size="62%"}
+
+
+##  {#hello-jonathan data-menu-title="Hello Jonathan" background-image="img/intro/hello-jonathan.png" background-position="center" background-size="62%"}
+
+
+##  {#hello-course data-menu-title="Hello Course" background-image="img/intro/hello-course.png" background-position="center" background-size="62%"}
+
+
+--------------------------------------------------------------------------------
+
+## Conversation Starters
+
+-   What's your name?
+-   Where do you feel home?
+-   When did you program for the first time? In which language?
+-   What's your favorite animal / plant / color / typeface?
+-   Where did you spend your summer?
+-   Whom would you like to meet during the posit::conf?
+-   Which chart types are you looking forward to try?
+-   What are things you want to learn about data visualization?
+
+
+## Announcements
+
+<br>
+
+#### WiFi
+-   Username: Posit Conf 2023
+-   Password: conf2023<br><br>
+
+#### Course Materials
+-   Webpage: [posit-conf-2023.github.io/dataviz-storytelling](https://posit-conf-2023.github.io/dataviz-storytelling/)
+
+
+
+
+## {#course-webpage data-menu-title="Course Webpage" .center}
+
+<div style='text-align:center;'>
+<a href="https://posit-conf-2023.github.io/dataviz-ggplot2/" style='font-family:spline sans mono;font-size:50pt;font-weight:700;'>posit-conf-2023.github.io/<br>dataviz-ggplot2</a>
+</div>
+
+
+## Announcements
+
+::: incremental
+-  **Gender-neutral bathrooms** are located among the Grand Suite Bathrooms.
+-  The two **meditation/prayer rooms** (Grand Suite 2A and Grand Suite 2B) are open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm
+-  The **lactation room** is located in Grand Suite 1 and open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm.
+-  Participants who do not wish to be photographed have **red lanyards**; please note everyone's lanyard colors before taking a photo and respect their choices.
+-   The **Code of Conduct** and **COVID** policies can be found at [posit.co/code-of-conduct](https://posit.co/code-of-conduct). Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
+:::
+
+
+## Communication Strategy
+
+<br>
+
+::: incremental
+-   <b style='color:#28a87d;'>Green sticky note </b>--- I am done with the exercise<br><br>
+-   <b style='color:#b82ca1;'>Pink sticky note </b>--- I need help or support<br><br>
+-   You can ask questions / comment at any time during the course.
+-   Please avoid questions during the breaks to give us a chance to recover.
+-   We will be using Discord as our main digital communication method.
+-   Team up with your neighbors for exercises --- and lunch!
+-   We will collect feedback twice during the day (more later).
+:::
+
+
+
+# Let's get started!
