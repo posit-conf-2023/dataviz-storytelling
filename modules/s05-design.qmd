@@ -1,0 +1,31 @@
+---
+title: "Think Like a Designer"
+subtitle: "<span class='code'>13:30-15:00</span>"
+date: "2023-09-18"
+image: "images/03-design.png"
+tbl-colwidths: [5,20,75]
+---
+
+```{=html}
+<iframe class="slide-deck" src="../materials/03-design.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+<a href='../materials/03-design.html' target="_blank">View slides in full screen</a>
+
+
+# Outline
+
+-   Gestalt Principles
+-   Eliminating Disctractions
+-   Exercise
+-   Emphasizing Insights
+-   Preattentive Attributes
+-   Creating Compositions
+-   Alignment & Layout
+-   Choice of Colors
+-   Test Your Colors: CVD
+-   Test Your Colors: Contrast
+-   Choice of Typefaces
+-   Exercise
+
+

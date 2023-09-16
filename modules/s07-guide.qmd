@@ -1,0 +1,22 @@
+---
+title: "Guide the View(er)"
+subtitle: "<span class='code'>15:30-17:00</span>"
+date: "2023-09-18"
+image: "images/04-guide.png"
+tbl-colwidths: [5,20,75]
+---
+
+```{=html}
+<iframe class="slide-deck" src="../materials/04-guide.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+<a href='../materials/04-guide.html' target="_blank">View slides in full screen</a>
+
+# Outline
+
+-   The Power of Annotations
+-   (Don't) Confuse with Colors
+-   Assist the Viewer
+-   Illustrate with Images
+-   Wrap-Up
+-   Exercises

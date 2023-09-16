@@ -1,0 +1,766 @@
+---
+title: "Designing Data Visualizations<br> to Successfully Tell a Story"
+subtitle: "<span style='font-size:2em;'>Guide the View(er)</span>"
+author: "<a href='https://www.cedricscherer.com' style='color:#28a87d;font-weight:600;'>Cédric Scherer</a>&ensp;//&ensp;posit::conf&ensp;//&ensp;September 2023"
+format:
+  revealjs:
+    theme: slides.scss
+    logo: img/logo.png
+    footer: '[Cédric Scherer](https://cedricscherer.com) // posit::conf(2023)'
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    scrollable: false
+    hide-inactive-cursor: true
+    highlight-style: printing
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: true
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 10.1
+  fig-height: 6.3
+  fig-align: center
+---
+
+
+# {#guide-the-viewer data-menu-title="Guide the View(er)" background-image="img/section-guide-viewer.png" background-position="center"} 
+
+::: foooter
+:::
+
+
+## {#power-of-annotation-iib-blank data-menu-title="The Power of Annotations"}
+
+<br>
+
+![David McCandless & Lee Byron, [Information is Beautiful](https://informationisbeautiful.net/2010/peak-break-up-times-on-facebook/) (modified)](img/breakup-times-facebook-blank.png)
+
+
+
+## {#power-of-annotation-iib data-menu-title="The Power of Annotations"}
+
+<br>
+
+![David McCandless & Lee Byron, [Information is Beautiful](https://informationisbeautiful.net/2010/peak-break-up-times-on-facebook/)](img/breakup-times-facebook.png)
+
+
+
+## {#power-of-annotation-popularity-neil data-menu-title="The Power of Annotations"}
+
+<br><br>
+
+![[“Is white space always your friend?”](https://questionsindataviz.com/2018/01/06/is-white-space-always-your-friend/) by Neil Richards](img/neil-popularity.png)
+
+
+
+## {#power-of-annotation-ft-john-burn-murdoch data-menu-title="The Power of Annotations" background-color="black"}
+
+<br>
+
+![](img/text-ft-john-burn-murdoch.png)
+
+
+
+## {#annotations-playfair data-menu-title="The Power of Annotations"}
+
+![Time series with annotations by William Playfair from “The Commercial and Political Atlas and Statistical Breviary” (1786)](img/playfair-line-annotations.png)
+
+
+
+## {#power-of-annotation-nyt-arctiv-ice data-menu-title="The Power of Annotations"}
+
+![[“Yearly Fluctuations in Area of Arctic Covered by Ice”](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0) by Derek Watkins (New York Times)](img/annotation-climate-change.png){fig-align="center"}
+
+
+
+## {#annotations-gapminder-example-0 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-emphasis-again
+#| echo: false
+#| cache: false
+#| fig-width: 12
+#| fig-asp: .65
+library(ggplot2)
+library(dplyr)
+library(gapminder)
+
+theme_set(theme_minimal(base_size = 22, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid.minor = element_blank(),
+  plot.margin = margin(rep(20, 4)),
+  strip.text = element_text(size = rel(1)),
+  axis.title.y = element_text(margin = margin(r = 12), vjust = 1), 
+  panel.spacing.x = unit(3.5, "lines"),
+  panel.spacing.y = unit(1.5, "lines")
+)
+
+countries_g7 <- c("Japan", "United States", "Canada", "France", 
+                  "Germany", "Italy", "United Kingdom")
+
+gm_g7 <- 
+  gapminder |> 
+  filter(country %in% countries_g7) |> 
+  group_by(country) |> 
+  mutate(lifeExp_last = lifeExp[which(year == 2007)]) |> 
+  ungroup() |> 
+  mutate(
+    country_lab = if_else(country == "Japan", paste0("<span style='color:black;'>Japan</span>"), country)
+  )
+
+gm_japan_dup <-
+  gm_g7 |>
+  filter(country == "Japan") |> 
+  mutate(dup = if_else(year %in% c(1962, 1972), 2, 1)) |> 
+  tidyr::uncount(dup) |> 
+  group_by(year) |> 
+  mutate(id = row_number()) |> 
+  mutate(period = case_when(
+      year >= 1972 & id == 1 ~ "first", 
+      year <= 1962 & id == 1 ~ "last", 
+      TRUE ~ "catchup"
+    )
+  )
+
+g <- 
+  ggplot(data = gm_g7, aes(x = year, y = lifeExp)) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_x_continuous(breaks = seq(1952, 2007, by = 5)) +
+  scale_y_continuous(limits = c(59, 85)) +
+  labs(x = NULL, y = "Life expectancy", color = NULL) +
+  theme(legend.justification = "top",
+        legend.text = element_text(margin = margin(5, 0, 5, 0)))
+g + 
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 2) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("red", "grey65"), family = "Asap SemiCondensed", 
+           fontface = "bold", size = c(10, 7), lineheight = .8)
+```
+
+
+
+## {#annotations-gapminder-example-1 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-guide-1
+#| echo: false
+#| fig-width: 12
+#| fig-asp: .65
+g + 
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 2) +
+  # ggforce::geom_mark_circle(
+  #   data = filter(gm_g7, country == "Japan", year %in% c(1952, 1967, 2007)),
+  #   aes(label = c("ranked last", "catching up", "ranked first"), group = year),
+  #   family = "Asap SemiCondensed", lineheight = .85, label.fontsize = 15,
+  #   expand = unit(0, "pt")
+  # ) +
+  geom_point(data = filter(gm_g7, country == "Japan", year %in% c(1952, 1967, 2007)),
+             color = "red", fill = "white", shape = 21, stroke = 2, size = 6) +
+  geom_text(data = filter(gm_g7, country == "Japan", year %in% c(1952, 1967, 2007)),
+            aes(label = c("ranked last", "catching up", "ranked first")),
+            vjust = c(2, 2, -1), hjust = c(.1, .1, .9),
+            family = "Asap SemiCondensed", lineheight = .85, size = 6.5) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("red", "grey65"), family = "Asap SemiCondensed", 
+           fontface = c("bold", "plain"), size = c(10, 7), lineheight = .8) +
+  theme(axis.text.x = element_text(color = c("black", "grey65", "grey65", "black", rep("grey65", 7), "black")))
+```
+
+
+
+## {#annotations-gapminder-example-2 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-guide-2
+#| echo: false
+#| fig-width: 12
+#| fig-asp: .65
+g + 
+  annotate(geom = "rect", xmin = 1962, xmax = 1972, ymin = 60, ymax = Inf, 
+           fill = "grey80", alpha = .3) +
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 2) +
+  annotate(geom = "text", x = c(1962, 1967, 1972), y = 82.6, 
+           label = c("← ranked last", "catching up", "ranked first →"), 
+           color = "grey45", family = "Asap SemiCondensed", 
+           fontface = "bold", size = 7, hjust = c(1.05, .5, -.05)) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("red", "grey65"), family = "Asap SemiCondensed", 
+           fontface = c("bold", "plain"), size = c(10, 7), lineheight = .8)
+```
+
+
+
+## {#annotations-gapminder-example-3 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-guide-3
+#| echo: false
+#| fig-width: 12
+#| fig-asp: .65
+g + 
+  annotate(geom = "rect", xmin = 1962, xmax = 1972, ymin = 60, ymax = Inf, 
+           fill = "grey80", alpha = .3) +
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = gm_japan_dup, aes(color = period), linewidth = 2) +
+  annotate(geom = "text", x = c(1962, 1967, 1972), y = 82.6, 
+           label = c("← ranked last", "catching up", "ranked first →"), 
+           color = c("#9B4665", "#EFAC00", "#28A87D"), family = "Asap SemiCondensed", 
+           fontface = "bold", size = 7, hjust = c(1.05, .5, -.05)) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("black", "grey65"), family = "Asap SemiCondensed", 
+           fontface = c("bold", "plain"), size = c(10, 7), lineheight = .8) +
+  scale_color_manual(values = c("#EFAC00", "#28A87D", "#9B4665"), guide = "none")
+```
+
+
+
+## {#annotations-gapminder-example-4 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-guide-4
+#| echo: false
+#| fig-width: 12
+#| fig-asp: .65
+gm_japan_2007 <- filter(gm_g7, year %in% c(2007), country == "Japan")
+
+g + 
+  annotate(geom = "rect", xmin = 1962, xmax = 1972, ymin = 60, ymax = Inf, 
+           fill = "grey80", alpha = .3) +
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = gm_japan_dup, aes(color = period), linewidth = 2) +
+  annotate(geom = "text", x = c(1962, 1967, 1972), y = 82.6, 
+           label = c("← ranked last", "catching up", "ranked first →"), 
+           color = c("#9B4665", "#EFAC00", "#28A87D"), family = "Asap SemiCondensed", 
+           fontface = "bold", size = 7, hjust = c(1.05, .5, -.05)) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("black", "grey65"), family = "Asap SemiCondensed", 
+           fontface = c("bold", "plain"), size = c(10, 7), lineheight = .8) +
+  scale_color_manual(values = c("#EFAC00", "#28A87D", "#9B4665"), guide = "none") +
+  geom_point(data = gm_japan_2007, size = 5, color = "#28A87D") +
+  geom_text(data = gm_japan_2007, aes(label = paste(round(lifeExp, 1), "years")), 
+            hjust = -.15, family = "Asap SemiCondensed", size = 6, color = "grey40") +
+  theme(plot.margin = margin(20, 100, 20, 20))
+```
+
+
+
+## {#annotations-gapminder-example-5 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-guide-5
+#| echo: false
+#| fig-width: 12
+#| fig-asp: .65
+gm_japan_2007 <- filter(gm_g7, year %in% c(2007), country == "Japan")
+
+g + 
+  annotate(geom = "rect", xmin = 1962, xmax = 1972, ymin = 60, ymax = Inf, 
+           fill = "grey80", alpha = .3) +
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 2) +
+  annotate(geom = "text", x = c(1962, 1967, 1972), y = 82.6, 
+           label = c("← ranked last", "catching up", "ranked first →"), 
+           color = "grey40", family = "Asap SemiCondensed", 
+           size = 7, fontface = "bold", hjust = c(1.05, .5, -.05)) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("red", "grey65"), family = "Asap SemiCondensed", 
+           fontface = c("bold", "plain"), size = c(10, 7), lineheight = .8) +
+  geom_point(data = gm_japan_2007, size = 5, color = "red") +
+  geom_text(data = gm_japan_2007, aes(label = paste(round(lifeExp, 1), "years")), 
+            hjust = -.15, family = "Asap SemiCondensed", size = 6, color = "grey40") +
+  theme(plot.margin = margin(20, 100, 20, 20))
+```
+
+
+
+## {#annotations-gapminder-example-6 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: gapminder-example-guide-6
+#| echo: false
+#| fig-width: 12
+#| fig-asp: .65
+gm_g7_2007 <- filter(gm_g7, year %in% c(2007))
+gm_japan_2007 <- filter(gm_g7_2007, country == "Japan")
+gm_other_2007 <- filter(gm_g7_2007, country != "Japan")
+
+g + 
+  annotate(geom = "rect", xmin = 1962, xmax = 1972, ymin = 60, ymax = Inf, 
+           fill = "grey80", alpha = .3) +
+  geom_line(aes(group = country), linewidth = 1, color = "grey75") +
+  geom_line(data = filter(gm_g7, country == "Japan"), color = "red", linewidth = 2) +
+  annotate(geom = "text", x = c(1962, 1967, 1972), y = 82.6, 
+           label = c("← ranked last", "catching up", "ranked first →"), 
+           color = "grey45", family = "Asap SemiCondensed", 
+           size = 7, fontface = "bold", hjust = c(1.05, .5, -.05)) +
+  annotate(geom = "text", x = 1994, y = c(82.6, 75), 
+           label = c("Japan", "Other G7\ncountries"), hjust = 0,
+           color = c("red", "grey65"), family = "Asap SemiCondensed", 
+           fontface = c("bold", "plain"), size = c(10, 7), lineheight = .8) +
+  geom_point(data = gm_japan_2007, size = 5, color = "red") +
+  geom_text(data = gm_japan_2007, aes(label = paste(round(lifeExp, 1), "years")), 
+            hjust = -.15, family = "Asap SemiCondensed", size = 6, color = "grey40") +
+  annotate(geom = "text", x = 2007, y = range(gm_other_2007$lifeExp), 
+           label = paste(round(range(gm_other_2007$lifeExp), 1), "years"), hjust = -.15,
+           color ="grey65", family = "Asap SemiCondensed", size = 6) +
+  annotate(geom = "linerange", x = 2007.4, 
+           ymin = min(gm_other_2007$lifeExp), ymax = max(gm_other_2007$lifeExp), 
+           color = "grey65", linewidth = 1.4) +
+  theme(plot.margin = margin(20, 100, 20, 20))
+```
+
+
+
+## {#annotations-cars-example-1 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: stacked-bars-cars-prep
+#| echo: false
+#| cache: false
+theme_set(theme_minimal(base_size = 24, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid = element_blank(),
+  plot.title.position = "plot",
+  plot.caption.position = "plot",
+  plot.title = ggtext::element_textbox_simple(
+    size = rel(1.7), face = "bold", margin = margin(b = 35), color = "grey40"
+  ),
+  plot.caption = element_text(hjust = 0, color = "grey40", size = rel(.75), margin = margin(t = 40)),
+  legend.position = "none",
+  axis.title.y = element_text(margin = margin(r = 15)),
+  axis.text.x = element_text(size = rel(1.15)),
+  axis.ticks.y = element_line(color = "grey70", linewidth = .4),
+  axis.ticks.length.y = unit(.7, "lines"),
+  strip.text.x = element_text(size = rel(1.8), family = "Asap SemiCondensed", 
+                                color = "grey40", margin = margin(b = 20)),
+  panel.spacing.x = unit(3, "lines")
+)
+
+auto_zulassung_kraftstoff <- 
+  rio::import(here::here("materials", "data", "5_abb_entwicklung-pkw-neuzulass-kraftstoffart_2023-04-28.xlsx"), skip = 8) |> 
+  tibble::as_tibble() |> 
+  janitor::clean_names() |> 
+  dplyr::filter(!is.na(x1)) |> 
+  dplyr::select(jahr = x1, benzin:pkw_gesamt)
+
+zulassung_det_long <- 
+  auto_zulassung_kraftstoff |> 
+  dplyr::mutate(
+    `Benzin &\nDiesel` = benzin + diesel,
+    andere = flussiggas + erdgas + sonstige
+  ) |> 
+  dplyr::select(jahr, pkw_gesamt, `Benzin &\nDiesel`, 
+                Hybrid = hybrid, Elektro = elektro, andere) |> 
+  tidyr::pivot_longer(cols = -c(jahr, pkw_gesamt), names_to = "type", values_to = "number") |> 
+  dplyr::filter(jahr >= 2018, type != "andere") |> 
+  dplyr::mutate(
+    type = factor(type, levels = c("Benzin &\nDiesel", "Hybrid", "Elektro")),
+    type = factor(type, labels = c("Gasoline & Diesel", "Hybrid", "Electric")))
+
+gb <- 
+  ggplot(zulassung_det_long, 
+         aes(x = jahr, y = number, fill = forcats::fct_rev(type))) +
+  geom_col(width = .7) +
+  geom_hline(
+    yintercept = c(0, 1), lineend = "round", 
+    linewidth = .4, color = "grey70"
+  ) +
+  labs(
+    x = NULL, y = NULL, title = "New vehicle registrations in Germany", 
+    caption = "Federal ministry for digital and transport / Kraftfahrt-Bundesamt • Graphic: Cédric Scherer"
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(breaks = 2017:2022, expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::label_number(scale = 1/1000000, suffix = "M"), expand = c(.01, .01)) +  
+  scale_fill_manual(values = c("#28A87D", "#5ACDA6", "#EFAC00"), name = NULL) +
+  scale_color_manual(values = c("#015B41", "#076F54", "#805A00")) +
+  theme(legend.position = "right",
+        legend.text = element_text(size = rel(1), margin = margin(5, 0, 5, 0)),
+        plot.margin = margin(15, 15, 10, 15))
+
+gf <- gb +
+  geom_col(data = dplyr::select(zulassung_det_long, -type), fill = "grey89", width = .7) +
+  geom_col(width = .7, aes(fill = forcats::fct_rev(type))) +
+  geom_hline(
+    yintercept = c(0, 1), lineend = "round", 
+    linewidth = .4, color = "grey70"
+  ) +
+  facet_wrap(~type) +
+  theme(legend.position = "none") 
+```
+
+```{r}
+#| label: stacked-bars-cars-annotated
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gbt <- gb +
+  geom_text(
+    data = dplyr::filter(zulassung_det_long, jahr == 2022), 
+    aes(label = paste0(stringr::str_wrap(type, 11), "\n", round(number / pkw_gesamt * 100, 0), "%"), color = forcats::fct_rev(type)), 
+    position = position_stack(vjust = .5),
+    family = "Asap SemiCondensed", fontface = "bold", lineheight = .9, size = 8
+  ) +
+  labs(title = "In 2022, <span style='color:#EFAC00;'>gasoline and diesel vehicles</span> account for only half of all new registrations in Germany --  <span style='color:#5ACDA6;'>hybrid</span> and <span style='color:#28A87D;'>electric</span> continue to increase.") +
+  theme(legend.position = "none", 
+        plot.title = ggtext::element_textbox_simple(size = rel(1.45), lineheight = 1, margin = margin(b = 22)))
+
+gbt
+```
+
+
+
+## {#annotations-cars-example-2 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: stacked-bars-cars-annotated-colors
+#| echo: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gbt +
+    geom_col(data = dplyr::filter(zulassung_det_long, jahr < 2022), width = .7, 
+             aes(fill = forcats::fct_rev(type), 
+                 fill = after_scale(prismatic::clr_lighten(prismatic::clr_desaturate(fill, .4), .55)))) +
+    geom_hline(
+        yintercept = c(0, 1), lineend = "round", 
+        linewidth = .4, color = "grey70"
+    ) 
+```
+
+
+
+## {#annotations-cars-example-3 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: stacked-bars-cars-facet-annotated
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gft <- gf +
+  geom_text(
+    aes(label = paste0(sprintf("%1.2f", number / 1000000, 2), "M"), color = forcats::fct_rev(type)), 
+    family = "Asap", fontface = "bold", lineheight = .9, size = 5.8, vjust = -.4
+  ) +
+  scale_y_continuous(breaks = NULL, expand = c(.01, .01)) +
+  labs(title = "Registrations of <span style='color:#EFAC00;'>gasoline and diesel vehicles</span> drop in Germany while those of new <span style='color:#5ACDA6;'>hybrid</span> and <span style='color:#28A87D;'>electric</span> cars are steadily increasing.") +
+  theme(plot.title = ggtext::element_textbox_simple(size = rel(1.5), lineheight = 1, margin = margin(b = 22))) 
+
+gft
+```
+
+
+
+## {#annotations-cars-example-4 data-menu-title="The Power of Annotations"}
+
+```{r}
+#| label: stacked-bars-cars-facet-annotated-color
+#| echo: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gft + 
+  geom_col(data = dplyr::filter(zulassung_det_long, jahr < 2022), width = .7, 
+           aes(fill = forcats::fct_rev(type), 
+               fill = after_scale(prismatic::clr_lighten(prismatic::clr_desaturate(fill, .5), .55)))) +
+  geom_hline(
+    yintercept = c(0, 1), lineend = "round", 
+    linewidth = .4, color = "grey70"
+  )
+```
+
+
+
+## {#annotations-cars-example-5 data-menu-title="The Power of Annotations"}
+
+![](img/stacked-bars-cars-facet-annotated-color-labels.png){fig-align="center"}
+
+
+
+
+## Confuse with Colors {.center}
+
+![OurWorldInData 2020 [(new version)](https://ourworldindata.org/travel-carbon-footprint)](img/owid-carbon-footprint-travel.png){.center}
+
+
+
+## Confuse with Colors {.center}
+
+![OurWorldInData 2020, suggested fix](img/owid-carbon-footprint-travel-div.png){.center}
+
+
+
+## Don't Confuse with Color{.center}
+
+```{r}
+#| label: bar-example-colors-1
+#| echo: false
+#| cache: false
+#| fig-align: center
+library(ggplot2)
+library(dplyr)
+
+theme_set(theme_minimal(base_size = 22, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid.minor = element_blank(),
+  panel.grid.major.y = element_blank(),
+  axis.title.x.top = ggtext::element_markdown(hjust = 0, margin = margin(b = 12)),
+  axis.text.y = element_text(hjust = 0),
+  legend.position = c(.7, .2),
+  legend.background = element_rect(fill = "white", color = NA),
+  legend.margin = margin(-5, 5, 5, 5),
+  plot.margin = margin(rep(20, 4)),
+  plot.caption = element_text(color = "grey45", size = rel(.65), hjust = 0, margin = margin(t = 30)),
+  plot.caption.position = "plot"
+)
+
+data <- 
+  readr::read_csv(here::here("materials", "data", "carbon-footprint-travel.csv")) |> 
+  filter(!stringr::str_detect(entity, "Ferry")) |> 
+  mutate(entity = case_when(
+    entity == "Bus" ~ "Public bus",
+    entity == "Medium electric vehicle (UK electricity)" ~ "Medium car (UK electricity)",
+    TRUE ~ entity
+  ))
+
+xlab <- "Carbon footprint of travel<br><span style='font-size:15pt;'>(grams of carbon dioxide equivalents per passenger kilometer)</span>"
+caption <- "UK Department for Business, Energy & Industrial Grenhouse gas reporting: conversion factors 2019."
+
+ggplot(data, aes(x = emissions, y = forcats::fct_reorder(entity, emissions))) +
+  geom_col(fill = "grey70", width = .7) +
+  geom_vline(xintercept = 0, color = "grey40") +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = c(0, 0), position = "top", 
+                     labels = scales::label_number(suffix = "g")) +
+  labs(x = xlab, y = NULL, caption = caption)
+```
+
+
+
+## Guide with Colors {.center}
+
+```{r}
+#| label: bar-example-colors-2
+#| echo: false
+#| fig-align: center
+data |>
+  mutate(type = if_else(
+    stringr::str_detect(entity, "car|Motorcycle|flight"),
+    "Other transport", "Public land transport"
+  )) |>
+  ggplot(aes(x = emissions, y = forcats::fct_reorder(entity, emissions))) +
+  geom_col(aes(fill = type), width = .7) +
+  geom_vline(xintercept = 0, color = "grey40") +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = c(0, 0), position = "top", 
+                     labels = scales::label_number(suffix = "g")) +
+  scale_fill_manual(
+    values = c("grey75", "#28a87d"), 
+    name = NULL, guide = "none"
+  ) +
+  labs(x = xlab, y = NULL, caption = caption)
+```
+
+
+
+## Guide with Colors {.center}
+
+```{r}
+#| label: bar-example-colors-3
+#| echo: false
+#| fig-align: center
+data|>
+  mutate(type = case_when(
+    stringr::str_detect(entity, "car|Motorcycle|vehicle") ~ "Private motorized transport",
+    stringr::str_detect(entity, "flight") ~ "Public air transport",
+    TRUE ~ "Public land transport"
+  )) |> 
+  ggplot(aes(x = emissions, y = forcats::fct_reorder(entity, emissions))) +
+  geom_col(aes(fill = type), width = .7) +
+  geom_vline(xintercept = 0, color = "grey40") +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = c(0, 0), position = "top", 
+                     labels = scales::label_number(suffix = "g")) +
+  scale_fill_manual(
+    values = c("#E6D8AC", "#97C1C7", "#28a87d"),
+    name = NULL, guide = guide_legend(reverse = TRUE)
+  ) +
+  labs(x = xlab, y = NULL, caption = caption)
+```
+
+
+
+## Assist the Viewer {.center}
+
+![[“Frankfurt vies for UK banking jobs post-Brexit”](https://www.ft.com/content/3f3ce35e-8c9b-11e6-8aa5-f79f5696c731) by Alan Smith & Laura Noonan (Financial Times)](img/ft-heatmap.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Frankfurt vies for UK banking jobs post-Brexit”](https://www.ft.com/content/3f3ce35e-8c9b-11e6-8aa5-f79f5696c731) by Alan Smith & Laura Noonan (Financial Times)](img/ft-heatmap-zoom.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Tesco is the nation’s primary AND secondary supermarket”](https://yougov.co.uk/topics/consumer/articles-reports/2019/04/05/tesco-nations-primary-secondary-supermarket) by Matthew Smith (YouGov)](img/yougov-heatmap.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Tesco is the nation’s primary AND secondary supermarket”](https://yougov.co.uk/topics/consumer/articles-reports/2019/04/05/tesco-nations-primary-secondary-supermarket) by Matthew Smith (YouGov)](img/yougov-heatmap-highlight-1.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Tesco is the nation’s primary AND secondary supermarket”](https://yougov.co.uk/topics/consumer/articles-reports/2019/04/05/tesco-nations-primary-secondary-supermarket) by Matthew Smith (YouGov)](img/yougov-heatmap-highlight-2.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Tesco is the nation’s primary AND secondary supermarket”](https://yougov.co.uk/topics/consumer/articles-reports/2019/04/05/tesco-nations-primary-secondary-supermarket) by Matthew Smith (YouGov)](img/yougov-heatmap-highlight-3.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Yearly Fluctuations in Area of Arctic Covered by Ice”](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0) by Derek Watkins (New York Times)](img/nyt-arctic-ice-assist-1.png)
+
+
+
+## Assist the Viewer {.center}
+
+![[“Yearly Fluctuations in Area of Arctic Covered by Ice”](https://www.nytimes.com/interactive/2015/03/24/science/earth/arctic-ice-low-winter-maximum.html?_r=0) by Derek Watkins (New York Times)](img/nyt-arctic-ice-assist-2.png)
+
+
+
+## Assist the Viewer {.center}
+
+![“100 Years of Streamflow Drought”, in collaboration with USGS](img/usgs-streamflow-droughts.png){fig-align="center"}
+
+
+
+## Assist the Viewer {.center}
+
+![“100 Years of Streamflow Drought”, in collaboration with USGS](img/usgs-streamflow-droughts-insets.png){fig-align="center"}
+
+
+
+## Assist the Viewer {.center}
+
+![Source: [Jan Kühn](https://www.linkedin.com/posts/jankuehn_datavisualization-activity-7108374728871948288-X7la)](img/richest-people-germany.png){fig-align="center"}
+
+
+
+## Assist the Viewer {.center}
+
+![Source: [Jan Kühn](https://www.linkedin.com/posts/jankuehn_datavisualization-activity-7108374728871948288-X7la)](img/richest-people-germany-zoom.png){fig-align="center"}
+
+
+
+
+
+
+
+## Illustrate with Images {.center}
+
+![Modified #TidyTuesday Contribution | Images: Allison Horst](img/penguins.png){fig-align="center"}
+
+
+
+## Illustrate with Images {.center}
+
+![[“Not my Cup of Coffee”](https://www.behance.net/gallery/100638417/Not-My-Cup-of-Coffee) (#TidyTuesday Contribution)](img/coffee-ratings.png){fig-align="center"}
+
+
+
+# Wrap-Up {background-color="black"}
+
+
+
+## {#wrap-up-wp-air-quality data-menu-title="Wrap-Up"}
+
+![Source: [“Clearing the Air”](https://www.washingtonpost.com/business/2019/06/06/why-crowded-meetings-conference-rooms-make-you-so-so-tired/) by Adam Ginsburg (Washington Post)](img/wp-air-quality.png)
+
+
+
+## {#wrap-up-wp-air-quality-notes data-menu-title="Wrap-Up"}
+
+![[Notes by Francis Gagnon](https://twitter.com/chezVoila/status/1136629250528862208) (Voilà)](img/wp-air-quality-notes.png)
+
+
+
+## {#summary data-menu-title="Summary"} 
+
+![](img/summary.png)
+
+
+
+# Exercises
+
+
+
+## Exercise 1
+
+::: questions
+<b style='font-size:1.3em;'>Take notes on the following fun graphic.</b>
+
+-   What is the take-home message you learn from the chart.
+-   What are elements used to guide and assist the viewer?
+-   Does the graphic work for you?
+:::
+
+
+
+## Exercise 1
+
+![Source: [“How hot dog contestants went from eating 10 to 76 hot dogs in 10 minutes”](https://www.washingtonpost.com/sports/2023/07/01/hot-dog-eating-contest-competitive-eater/) by Carson TerBush (Washington Post)](img/exercise-wp-hot-dogs.jpg)
+
+
+
+## Exercise 2
+
+::: questions
+<b style='font-size:1.3em;'>Take look at the following stacked bar graph.</b>
+
+-   What elements are used to guide the viewer? Does it work?
+-   Draw a version that makes it easier for a viewer to see the main message.
+-   How could you improve the aesthetic appeal of the graphic?
+:::
+
+
+## Exercise 2
+
+![Source: Storytelling with Data](exercise-stacked-bars.png)
+
+
+##  {background-image="img/exercise-what-now.png" background-position="center" background-size="75%"}

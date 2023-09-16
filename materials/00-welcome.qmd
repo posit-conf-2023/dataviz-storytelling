@@ -37,22 +37,29 @@ execute:
 # Welcome<br><br><br><br><br><br> {background-image="img/logo-welcome.png" background-position="center" background-size="40%"}
 
 
+
 # Welcome<br><br><br><br><br><br> {#course-logo-before data-menu-title="Course Logo Before" background-image="img/logo-welcome-before.png" background-position="center" background-size="40%"}
+
 
 
 ##  {#hello-blank data-menu-title="Hello" background-image="img/intro/hello-blank.png" background-position="center" background-size="62%"}
 
 
+
 ##  {#hello-team data-menu-title="Hello Team" background-image="img/intro/hello-team.png" background-position="center" background-size="62%"}
+
 
 
 ##  {#teaching-team data-menu-title="Teaching Team" background-image="img/intro/team-hex-grid.png" background-position="center" background-size="105%"}
 
 
+
 ##  {#hello-cedric data-menu-title="Hello Cédric" background-image="img/intro/hello-cedric.png" background-position="center" background-size="62%"}
 
 
+
 ##  {#cedric-avatars data-menu-title="Cédric Avatars" background-image="img/intro/avatars-logo.png" background-position="center" background-size="80%"}
+
 
 
 ##  {#cedric-dataviz-science data-menu-title="Cédric Projects Science" background-image="img/intro/projects-science.png" background-position="center" background-size="82%" background-color="#ABABAB"}
@@ -61,10 +68,12 @@ execute:
 :::
 
 
+
 ##  {#cedric-dataviz-clients data-menu-title="Cédric Projects Clients" background-image="img/intro/projects-clients.png" background-position="center" background-size="77%" background-color="#ABABAB"}
 
 ::: footer
 :::
+
 
 
 ##  {#cedric-dataviz-personal data-menu-title="Cédric Projects Personal"background-image="img/intro/projects-personal.png" background-position="center" background-size="85%" background-color="#ABABAB"}
@@ -73,10 +82,12 @@ execute:
 :::
 
 
+
 ##  {#cedric-blog data-menu-title="Cédric Blog"background-image="img/intro/blog.png" background-position="center" background-size="56%"}
 
 ::: footer
 :::
+
 
 
 ##  {#cedric-ggplot-tutorial data-menu-title="Cédric Blog Tutorial" background-image="img/intro/blog-tutorial.png" background-position="center" background-size="56%"}
@@ -85,9 +96,11 @@ execute:
 :::
 
 
+
 ## {#cedric-ggplot-tutorial-overview data-menu-title="Cédric Blog Tutorial Overview"}
 
 ![[cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)](img/intro/ggplot-tutorial-overview.png){fig-align="center" fig-alt="Overview of some exemplary plots included in my ggplot2 tutorial."}
+
 
 
 ##  {#cedric-rstudio-conf data-menu-title="Cédric Blog rstudio::conf" background-image="img/intro/blog-rstudioconf.png" background-position="center" background-size="56%"}
@@ -96,16 +109,41 @@ execute:
 :::
 
 
+
 ##  {#hello-jasmin data-menu-title="Hello Jasmin" background-image="img/intro/hello-jasmin.png" background-position="center" background-size="62%"}
+
+
+
+##  {#jasmin-dataviz data-menu-title="Jasmin Data Visualization"}
+
+![Graphic by Jasmin Sarah König](img/intro/jasmin-overview.png)
+
+
+
+##  {#jasmin-dataviz-observable data-menu-title="Jasmin Data Visualization"}
+
+<iframe width="100%" height="1106.421875" frameborder="0"
+ src="https://observablehq.com/embed/@jasminsworkspace/constitutional-regression@2225?cells=viewof+continent%2Cviewof+source%2Cviewof+Dataset%2Cviewof+Vars%2Cviewof+Democracy%2Clegend%2Cplotfinal%2Ctextbox"></iframe>
+
+
 
 
 ##  {#hello-ciera data-menu-title="Hello Ciera" background-image="img/intro/hello-ciera.png" background-position="center" background-size="62%"}
 
 
-##  {#hello-jonathan data-menu-title="Hello Jonathan" background-image="img/intro/hello-jonathan.png" background-position="center" background-size="62%"}
+
+##  {#hello-garrett data-menu-title="Hello Garrett" background-image="img/intro/hello-garrett.png" background-position="center" background-size="62%"}
+
+
+
+##  {#garrett-hex-sticker-art data-menu-title="Garret Hex Sticker Art"}
+
+![Alternative hex stickers by Garrett Grolemund](img/intro/garrett-hex-variants.jpeg)
+
 
 
 ##  {#hello-course data-menu-title="Hello Course" background-image="img/intro/hello-course.png" background-position="center" background-size="62%"}
+
 
 
 --------------------------------------------------------------------------------
@@ -122,6 +160,7 @@ execute:
 -   What are things you want to learn about data visualization?
 
 
+
 ## Announcements
 
 <br>
@@ -135,12 +174,12 @@ execute:
 
 
 
-
 ## {#course-webpage data-menu-title="Course Webpage" .center}
 
 <div style='text-align:center;'>
 <a href="https://posit-conf-2023.github.io/dataviz-ggplot2/" style='font-family:spline sans mono;font-size:50pt;font-weight:700;'>posit-conf-2023.github.io/<br>dataviz-ggplot2</a>
 </div>
+
 
 
 ## Announcements
@@ -152,6 +191,7 @@ execute:
 -  Participants who do not wish to be photographed have **red lanyards**; please note everyone's lanyard colors before taking a photo and respect their choices.
 -   The **Code of Conduct** and **COVID** policies can be found at [posit.co/code-of-conduct](https://posit.co/code-of-conduct). Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
 :::
+
 
 
 ## Communication Strategy

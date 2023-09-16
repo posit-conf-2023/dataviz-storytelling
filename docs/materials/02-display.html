@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="..//images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.191">
+
+  <meta name="author" content="Cédric Scherer // posit::conf // September 2023">
+  <title>Designing Data Visualizations to Successfully Tell a Story</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Designing Data Visualizations to Successfully Tell a Story">
+<meta property="og:description" content="Choose an Appropriate Display">
+<meta name="twitter:title" content="Designing Data Visualizations to Successfully Tell a Story">
+<meta name="twitter:description" content="Choose an Appropriate Display">
+<meta name="twitter:image" content="https://posit-conf-2023.github.io/dataviz-storytelling//images/twitter-card.png">
+<meta name="twitter:creator" content="@CedScherer">
+<meta name="twitter:image-height" content="679">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Designing Data Visualizations<br> to Successfully Tell a Story</h1>
+  <p class="subtitle"><span style="font-size:2em;">Choose an Appropriate Display</span></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://www.cedricscherer.com" style="color:#28a87d;font-weight:600;">Cédric Scherer</a> // posit::conf // September 2023 
+</div>
+</div>
+</div>
+
+</section>
+<section id="encodings" class="title-slide slide level1 center" data-background-color="#e6d9f2">
+<h1><span style="line-height:.97;">Encodings</span></h1>
+
+</section>
+
+<section>
+<section id="gestalt-principles-defintion" class="title-slide slide level1 center" data-menu-title="Gestalt Principles: Definition" data-background-color="#e6d9f2">
+<h1><span style="font-family:asap semicondensed;font-size:.6em;line-height:.75;font-weight:600;font-style:normal;color:#663399;">Mapping data values to visual attributes.</span></h1>
+
+</section>
+<section id="same-data-different-encodings" class="slide level2">
+<h2>Same Data, Different Encodings</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-text-1.png" width="2800"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-length_d995e2da8c3ceebb0565955aec908bb0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-length-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-position_b4c980e842aa54a6ae9fa4670ba73063">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-position-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-size_3e0dcf697c3aad64dd0f77bf671fc5a4">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-size-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-color_32ad2c602dc9dc97e03fef3f7d5ee77f">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-color-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="same-data-different-encodings-1" class="slide level2">
+<h2>Same Data, Different Encodings</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-text-label_4804e7b41b2da8de2efd4454acdf53b0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-text-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-length-label_ec227db027858821d9f54157e1e4ec9c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-length-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-position-label_47c00a12213e775b1d621c7c4aab4264">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-position-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-size-label_5844f9243478b750545c56ccfcda1918">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-size-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-shapes-color-label_7487dcc4997cdfa5aaf1ddddcfde63a3">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-shapes-color-label-1.png" width="2800"></p>
+</div>
+</div>
+</section>
+<section id="same-data-different-emphasis" class="slide level2">
+<h2>Same Data, Different Emphasis</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-plain_9dc354b184ceeeb717213c1130907692">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-plain-1.png" width="2800"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-weight_07d1c54f6337f6e1ed8d977df1894740">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-weight-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-color_31814136cfb4d4bf29aa6baeef2ed7b0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-color-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-size_8fe1ddf14c06134dab43484b0b7b28b8">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-size-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="same-data-different-emphasis-1" class="slide level2">
+<h2>Same Data, Different Emphasis</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-plain-label_f84b17be6b73e57a8639de5886d2d09a">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-plain-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-weight-label_9f8ce901f7ead7d562842f83d2141fd0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-weight-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-color-label_14c75a7eadd3b67d4eb1f588d5520aeb">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-color-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-text-size-label_af310f2bf4194c834c4b02538fb4bce0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-text-size-label-1.png" width="2800"></p>
+</div>
+</div>
+</section>
+<section id="wordcloud-issues" class="slide level2" data-menu-title="Wordclouds (and Alternatives)">
+<h2></h2>
+<p><br><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/wordcloud-data-to-viz.png"></p>
+<p></p><figcaption>Source: <a href="https://www.data-to-viz.com/graph/wordcloud.html">Data to Viz</a></figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/wordcloud-data-to-viz-lollipop.png"></p>
+<p></p><figcaption>Source: <a href="https://www.data-to-viz.com/graph/wordcloud.html">Data to Viz</a></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="encodings-judgements-yau" class="slide level2" data-menu-title="Scale of Perpetual Elementary Tasks">
+<h2></h2>
+<p><br><br><br><br></p>
+
+<img data-src="img/encodings-yau.png" class="r-stretch quarto-figure-center"><p class="caption">Source: “Data Points” by Nathan Yau (p.&nbsp;104)</p></section>
+<section id="encodings-judgements-cairo" class="slide level2" data-menu-title="Scale of Perpetual Elementary Tasks">
+<h2></h2>
+
+<img data-src="img/encodings-cleveland-mcgill.png" class="r-stretch quarto-figure-center"><p class="caption">Cleveland’s and McGill’s Scale of Perpetual Elementary Tasks<br>Source: “The Functional Art” by Alberto Cairo (p.&nbsp;120)</p></section>
+<section id="encodings-judgements-accurate" class="slide level2" data-menu-title="Scale of Perpetual Elementary Tasks">
+<h2></h2>
+
+<img data-src="img/encodings-cleveland-mcgill-accurate.png" class="r-stretch quarto-figure-center"><p class="caption">Cleveland’s and McGill’s Scale of Perpetual Elementary Tasks<br>Source: “The Functional Art” by Alberto Cairo (p.&nbsp;120)</p></section>
+<section id="encodings-judgements-generic" class="slide level2" data-menu-title="Scale of Perpetual Elementary Tasks">
+<h2></h2>
+
+<img data-src="img/encodings-cleveland-mcgill-generic.png" class="r-stretch quarto-figure-center"><p class="caption">Cleveland’s and McGill’s Scale of Perpetual Elementary Tasks<br>Source: “The Functional Art” by Alberto Cairo (p.&nbsp;120)</p></section>
+<section id="encodings-experiments-1" class="slide level2" data-menu-title="Decoding Quantities in Graphs">
+<h2></h2>
+
+<img data-src="img/encodings-mcgill-cleveland-results-1.png" class="r-stretch quarto-figure-center"><p class="caption">Source: “Data Visualization: A Practical Introduction” by Kieran Healy<br> Results based on Cleveland and McGill (1984, 1987)</p></section>
+<section id="encodings-experiments-2" class="slide level2" data-menu-title="Decoding Quantities in Graphs">
+<h2></h2>
+
+<img data-src="img/encodings-mcgill-cleveland-results-2.png" class="r-stretch quarto-figure-center"><p class="caption">Source: “Data Visualization: A Practical Introduction” by Kieran Healy<br> Results based on Cleveland and McGill (1984, 1987) and Heer &amp; Bostock (2010)</p></section>
+<section id="always-start-at-zero" class="slide level2">
+<h2>Always Start at Zero?</h2>
+<p><br></p>
+
+<img data-src="img/baseline-bars-handsondataviz.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://handsondataviz.org/chart-design.html">“Hands-On Data Visualization”</a> by Jack Dougherty &amp; Ilya Ilyankou</p><div class="fragment">
+<p><br>More on the topic: <a href="https://arxiv.org/pdf/1907.02035.pdf">Correl, Bertini &amp; Francoeri 2020</a> and <a href="https://amplab.colostate.edu/reprints/Witt_Graphs_YaxisRange.pdf">Witt (2019)</a></p>
+</div>
+</section>
+<section id="always-start-at-zero-1" class="slide level2">
+<h2>Always Start at Zero?</h2>
+<p><br></p>
+
+<img data-src="img/encoding-bars.png" class="r-stretch"></section>
+<section id="always-start-at-zero-2" class="slide level2">
+<h2>Always Start at Zero?</h2>
+<p><br></p>
+
+<img data-src="img/encoding-bars-fox.png" class="r-stretch"></section>
+<section id="always-start-at-zero-3" class="slide level2">
+<h2>Always Start at Zero?</h2>
+<p><br></p>
+
+<img data-src="img/baseline-lines-handsondataviz.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://handsondataviz.org/chart-design.html">“Hands-On Data Visualization”</a> by Jack Dougherty &amp; Ilya Ilyankou</p></section>
+<section id="encodings-position-baseline-golden-ratio" class="slide level2" data-menu-title="Golden Ratio Approach for Line Charts">
+<h2></h2>
+
+<img data-src="img/baseline-line-golden-ratio.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://chezvoila.com/blog/yaxis/">Francis Gagnon</a></p></section>
+<section id="same-data-different-scaling" class="slide level2">
+<h2>Same Data, Different Scaling</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-sizes-values_2dd3c15b2106f79803c61a088853b483">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-sizes-values-1.png" width="2800"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-bubble-area-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-bubble-range_6bf6a1f5340c470cbcf67bd5a889dcb8">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-bubble-range-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-bubble-radius_ab7925677603a0661cacede79ec142e9">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-bubble-radius-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="same-data-different-scaling-1" class="slide level2">
+<h2>Same Data, Different Scaling</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-sizes-values-label_07baa14b59fdf97d4ff6400803038076">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-sizes-values-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-bubble-area-label_0ed1bc0dbbc149008bc27f889c3b0f80">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-bubble-area-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-bubble-range-label_8309cb82df5c4ce8fc7d9d453a450c7b">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-bubble-range-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-bubble-radius-label_289180c92bfad5c250d2e31379f7ecd1">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-bubble-radius-label-1.png" width="2800"></p>
+</div>
+</div>
+</section>
+<section id="scmp-area-fail-1" class="slide level2" data-menu-title="The Area Problem">
+<h2></h2>
+
+<img data-src="img/scmp-russia-ukraine-area.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/">“Russia attacks Ukraine”</a> by SCMP Graphic (South China Morning Post)</p></section>
+<section id="scmp-area-fail-2" class="slide level2" data-menu-title="The Area Problem">
+<h2></h2>
+
+<img data-src="img/scmp-russia-ukraine-area-hl1.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/">“Russia attacks Ukraine”</a> by SCMP Graphic (South China Morning Post)</p></section>
+<section id="scmp-area-fail-3" class="slide level2" data-menu-title="The Area Problem">
+<h2></h2>
+
+<img data-src="img/scmp-russia-ukraine-area-hl2.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/">“Russia attacks Ukraine”</a> by SCMP Graphic (South China Morning Post)</p></section>
+<section id="scmp-area-fail-4" class="slide level2" data-menu-title="The Area Problem">
+<h2></h2>
+
+<img data-src="img/scmp-russia-ukraine-area-fixed.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/">“Russia attacks Ukraine”</a> by SCMP Graphic (South China Morning Post)</p></section>
+<section id="same-data-different-palettes" class="slide level2">
+<h2>Same Data, Different Palettes</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-values_ca751509e9294a88e99c93f1c38debad">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-values-1.png" width="2800"></p>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-grey_d2bd51b7c880d78a1e5efc2ad0c096c9">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-grey-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-seq-single_df7274bc841c049de591ff4c370f7df5">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-seq-single-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-seq-multi_6cdf3870da10cd370d686bfac2e96f02">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-seq-multi-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-div_0b59ea3bbb8318077174fa2564458486">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-div-1.png" width="2800"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="same-data-different-palettes-1" class="slide level2">
+<h2>Same Data, Different Palettes</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-values-label_16dafd178f2b37bcecd4451d7c74e8a7">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-values-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-grey-label_c4d67ecf10a47ba78bdfd30a05e78266">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-grey-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-seq-single-label_3448ff0cc4b2cf454fb8eee7cd0aac35">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-seq-single-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-seq-multi-label_90d6b8925120902689c943bc51856114">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-seq-multi-label-1.png" width="2800"></p>
+</div>
+</div>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-div-label_ca20cd84ac0bcbcfdc4d497afdd95882">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-div-label-1.png" width="2800"></p>
+</div>
+</div>
+</section>
+<section id="same-data-different-palettes-2" class="slide level2">
+<h2>Same Data, Different Palettes</h2>
+<div class="cell" data-hash="02-display_cache/revealjs/encodings-colors-sorted_482cee2e651f7468aa9078f0606e944b">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-sorted-1.png" width="2800"></p>
+</div>
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-sorted-2.png" width="2800"></p>
+</div>
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-sorted-3.png" width="2800"></p>
+</div>
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-sorted-4.png" width="2800"></p>
+</div>
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/encodings-colors-sorted-5.png" width="2800"></p>
+</div>
+</div>
+</section>
+<section id="color-palette-types" class="slide level2">
+<h2>Color Palette Types</h2>
+<p><br></p>
+
+<img data-src="img/color-palette-types-seq.png" class="r-stretch"></section>
+<section id="color-palette-types-dark-equals-more" class="slide level2">
+<h2>Color Palette Types: Dark Equals More (?)</h2>
+<p><br><br></p>
+
+<img data-src="img/color-palettes-example-seq-direction.png" class="r-stretch"></section>
+<section id="color-palette-types-dark-equals-more-1" class="slide level2" data-background-color="#282828">
+<h2>Color Palette Types: Dark Equals More (?)</h2>
+<p><br><br></p>
+
+<img data-src="img/color-palettes-example-seq-direction-dark.png" class="r-stretch"></section>
+<section id="color-palette-types-1" class="slide level2">
+<h2>Color Palette Types</h2>
+<p><br></p>
+
+<img data-src="img/color-palette-types-seq-div.png" class="r-stretch"></section>
+<section id="color-palette-types-sequential-or-diverging" class="slide level2">
+<h2>Color Palette Types: Sequential or Diverging?</h2>
+<p><br><br></p>
+
+<img data-src="img/color-palettes-example-seq-or-div.png" class="r-stretch"></section>
+<section id="color-palette-types-2" class="slide level2">
+<h2>Color Palette Types</h2>
+<p><br></p>
+
+<img data-src="img/color-palette-types.png" class="r-stretch"></section>
+<section id="color-palette-types-sequential" class="slide level2">
+<h2>Color Palette Types: Sequential</h2>
+<p><br><br></p>
+
+<img data-src="img/color-palettes-seq-or-cat-left.png" class="r-stretch quarto-figure-center"><p class="caption">Source: Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/diverging-vs-sequential-color-scales/">DataWrapper Blog</a></p></section>
+<section id="color-palette-types-sequential-qualitative" class="slide level2">
+<h2>Color Palette Types: <strike style="color:#000;">Sequential</strike> Qualitative!</h2>
+<p><br><br></p>
+
+<img data-src="img/color-palettes-seq-or-cat.png" class="r-stretch quarto-figure-center"><p class="caption">Source: Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/diverging-vs-sequential-color-scales/">DataWrapper Blog</a></p></section>
+<section id="color-palette-viridis-issues-1" class="slide level2" data-menu-title="The Viridis Problem">
+<h2></h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-viridis_d3e8cf070fd075930bb4f793c2163e8e">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-viridis-1.png" width="1100"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-viridis-desaturated_f5abcdaedcc72bc7a0eebfa12d566356">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-viridis-desaturated-1.png" width="1100"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="color-palette-viridis-issues-2" class="slide level2" data-menu-title="The Viridis Problem">
+<h2></h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-viridis_d3e8cf070fd075930bb4f793c2163e8e">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-viridis-1.png" width="1100"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-viridis-c_7111c31cf2b34ee417db46c1ef75f344">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-viridis-c-1.png" width="1100"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="color-palette-viridis-issues-3" class="slide level2" data-menu-title="The Viridis Problem">
+<h2></h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-viridis_d3e8cf070fd075930bb4f793c2163e8e">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-viridis-1.png" width="1100"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-grey_2fa44f197dc0f93c90e6f244bb9d04e3">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-grey-1.png" width="1100"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="color-palette-viridis-issues-4" class="slide level2" data-menu-title="The Viridis Problem">
+<h2></h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-viridis_d3e8cf070fd075930bb4f793c2163e8e">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-viridis-1.png" width="1100"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-scatter-viridis_504ad1689829b454435fd81afb0cb0c5">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-scatter-viridis-1.png" width="1100"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="color-palette-viridis-issues-5" class="slide level2" data-menu-title="The Viridis Problem">
+<h2></h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-grey_2fa44f197dc0f93c90e6f244bb9d04e3">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-grey-1.png" width="1100"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-scatter-grey-shape_51922f7930f0f94123764609df67c124">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-scatter-grey-shape-1.png" width="1100"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="color-palette-viridis-issues-6" class="slide level2" data-menu-title="The Viridis Problem">
+<h2></h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-bars-cat_d9405c3d9f58d038bc354e6523d2f927">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-bars-cat-1.png" width="1100"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/color-palette-scatter-cat_2c92ff8b67c64aac81b9a887e024f269">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/color-palette-scatter-cat-1.png" width="1100"></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="chart-type-choice" class="title-slide slide level1 center">
+<h1>Chart Type Choice</h1>
+
+</section>
+<section id="chart-selection-helpers-1" class="slide level2" data-menu-title="Chart Selection Helpers">
+<h2></h2>
+
+<img data-src="img/chart-selection-diagram.png" class="r-stretch quarto-figure-center"></section>
+<section id="chart-selection-helpers-2" class="slide level2" data-menu-title="Chart Selection Helpers">
+<h2></h2>
+<p><br><br></p>
+
+<img data-src="img/chart-selection-webpages.png" class="r-stretch quarto-figure-center"></section>
+<section id="chart-selection-helpers-3" class="slide level2" data-menu-title="Chart Selection Helpers">
+<h2></h2>
+
+<img data-src="img/chart-selection-datatoviz-poster.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://www.data-to-viz.com/">Data to Viz</a></p></section>
+<section id="chart-selection-helpers-4" class="slide level2" data-menu-title="Chart Selection Helpers">
+<h2></h2>
+
+<img data-src="img/chart-selection-datatoviz-details.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://www.data-to-viz.com/">Data to Viz</a></p></section></section>
+<section>
+<section id="section" class="title-slide slide level1 center" data-background-image="img/good-evil-avengers.jpg" data-background-position="center">
+<h1></h1>
+<div class="footer">
+<p>© AVENGERS Trademark of Marvel Characters, Inc.</p>
+</div>
+</section>
+<section id="chart-choice-story-climate-stripes-1" class="slide level2" data-menu-title="Chart Choice Depends on the Story" data-background-color="black">
+<h2></h2>
+
+<img data-src="img/climate-stripes-1.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://showyourstripes.info/">“Warming Stripes”</a> by Ed Hawkins (showyourstripes.info)</p></section>
+<section id="chart-choice-story-climate-stripes-2" class="slide level2" data-menu-title="Chart Choice Depends on the Story" data-background-color="black">
+<h2></h2>
+
+<img data-src="img/climate-stripes-2.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://showyourstripes.info/">“Warming Stripes”</a> by Ed Hawkins (showyourstripes.info)</p></section>
+<section id="chart-choice-story-climate-stripes-3" class="slide level2" data-menu-title="Chart Choice Depends on the Story" data-background-color="black">
+<h2></h2>
+
+<img data-src="img/climate-stripes-faq-1.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://showyourstripes.info/">“Warming Stripes”</a> by Ed Hawkins (showyourstripes.info)</p></section>
+<section id="chart-choice-story-climate-stripes-4" class="slide level2" data-menu-title="Chart Choice Depends on the Story" data-background-color="black">
+<h2></h2>
+
+<img data-src="img/climate-stripes-faq-2.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://showyourstripes.info/">“Warming Stripes”</a> by Ed Hawkins (showyourstripes.info)</p></section>
+<section id="chart-choice-story-migrants-1" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-1.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-2" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-2.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-3" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-3.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-4" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-4.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-5" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-5.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-6" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-6.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-7" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-7.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section>
+<section id="chart-choice-story-migrants-8" class="slide level2" data-menu-title="Chart Choice Depends on the Story">
+<h2></h2>
+<p><br></p>
+
+<img data-src="img/chart-choice-migrants-8.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba">“How maps in the media make us more negative about migrants”</a> by Maite Vermeulen, Leon de Korte &amp; Henk van Houtum</p></section></section>
+<section id="chart-types-to" class="title-slide slide level1 center" data-background-color="#62D0FF">
+<h1><span style="line-height:.97;">Chart Types to…</span></h1>
+
+</section>
+
+<section>
+<section id="visualize-distributions" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Visualize Distributions</span></h1>
+
+</section>
+<section id="visualize-distributions-1" class="slide level2">
+<h2>Visualize Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-histogram_2031476c74cefa18e219152945c965f7">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-histogram-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-area_ec03405742c1b9ae9eda00f0f6b37818">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-area-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-distributions-2" class="slide level2">
+<h2>Visualize Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-cumulative-density_451f6dc39457c115de3f65fca2cd7b2f">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-cumulative-density-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-qq_88e311b23e61b8958624d0b015e5d713">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-qq-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="compare-distributions" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Compare Distributions</span></h1>
+
+</section>
+<section id="compare-distributions-1" class="slide level2">
+<h2>Compare Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-histogram-stacked_ce3922d48875afd7714db7e690d7ca94">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-histogram-stacked-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-density-overlapping_aa7f0413b7a5206f62b156903155f90e">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-density-overlapping-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-distributions-2" class="slide level2">
+<h2>Compare Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-ridgeline_6ef02c3d57ceb62472bb489099b20eed">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-ridgeline-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-dot-plot_d356eb23f89300a3e17542891af0a945">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-dot-plot-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-distributions-3" class="slide level2">
+<h2>Compare Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-boxplot_b6feaad8b45488876ca0daa7d73f465b">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-boxplot-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-violin_94decaf84a4490825ea0c2b2b549bf07">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-violin-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-distributions-4" class="slide level2">
+<h2>Compare Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-boxplot_b6feaad8b45488876ca0daa7d73f465b">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-boxplot-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-violin-boxplot_eb8d107ed8b0e5e50a3343c91f9aa8d8">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-violin-boxplot-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-distributions-5" class="slide level2">
+<h2>Compare Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-stripplot_dd3b06b57f2a400ab899d24604617d7a">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-stripplot-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-distribution-beeswarm_1d1df625f7a7bb40afe061d20b7fcc9f">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-distribution-beeswarm-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="compare-amounts" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Compare Amounts</span></h1>
+
+</section>
+<section id="compare-amounts-1" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars_bde7455ac1c9e839e79f688e9493454c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-dots_5328cdf8f88275ec5aa5c887fe5197ea">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-dots-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-amounts-2" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars_bde7455ac1c9e839e79f688e9493454c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-dots-lines_094ff9ae82fa72109d9a6a2f58876b2c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-dots-lines-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-amounts-3" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars_bde7455ac1c9e839e79f688e9493454c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-lollipops_ff7e27cd1028911bdb7417d5661e9026">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-lollipops-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-amounts-4" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars-multiple-stacked_aebb771e8cf23672e749665119258234">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-multiple-stacked-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars-multiple-dodged_bcc1ea7ed90069c4e0872f7f9eec8a06">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-multiple-dodged-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-amounts-5" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars-multiple-stacked-alt_c6e111f9bec40cbc219e88ea218941f3">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-multiple-stacked-alt-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-bars-multiple-dodged-alt_a427f08450611e69e90bbb7e83686863">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-bars-multiple-dodged-alt-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-amounts-6" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-dots-multiple_0ebbc8457046a56046c48275f56fce1b">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-dots-multiple-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-dumbbell-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dumbbell-example-paygap-eu" class="slide level2" data-menu-title="Dumbbell Plot Example">
+<h2></h2>
+
+<img data-src="img/paygap-eu-dumbbell.png" class="r-stretch quarto-figure-center"></section>
+<section id="compare-amounts-7" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-dots-multiple_0ebbc8457046a56046c48275f56fce1b">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-dots-multiple-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-slope-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-amounts-8" class="slide level2">
+<h2>Compare Amounts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-heatmap_f5d1a1c8169023580719cee776784196">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-heatmap-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-amounts-heatmap-labels_f139438c88e4da90190a3d0173a56a04">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-amounts-heatmap-labels-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="compare-proportions" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Compare Proportions</span></h1>
+
+</section>
+<section id="compare-proportions-1" class="slide level2">
+<h2>Compare Proportions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-bars_adf5b2243da2fbe3fdb480176c2488fe">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-bars-stacked_84476ea653ea0280a758152387b105bf">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-bars-stacked-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-proportions-2" class="slide level2">
+<h2>Compare Proportions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-pie_8f027ea55eea2be66aada1abab87db69">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-pie-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-donut_72954bb63d8980eb799eda9608e4e461">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-donut-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-proportions-3" class="slide level2">
+<h2>Compare Proportions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-bars-stacked-100_bccb795aa18a7a330fd9d66bbd5645bf">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-bars-stacked-100-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-bars-stacked-multiple_b2a602f5ef2748b353dbd6196f547cf1">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-bars-stacked-multiple-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-proportions-4" class="slide level2">
+<h2>Compare Proportions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-bars-stacked-100_bccb795aa18a7a330fd9d66bbd5645bf">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-bars-stacked-100-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-pie-multiple_01c0ea2fa56281ba0f4f229c4850e71f">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-pie-multiple-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-proportions-5" class="slide level2">
+<h2>Compare Proportions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-treemap_deae4e2c7425e052fb50fe76badcd4e7">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-treemap-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-proportions-mosaic_7783ccf866f9f5736dfee37bc54c14a0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-proportions-mosaic-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="visualize-relationships" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Visualize Relationships</span></h1>
+
+</section>
+<section id="visualize-relationships-1" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter_61f140da600a1470fc03392268ff688f">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-bubble_4ea7bfe5ce93b7483a2235867221be7c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-bubble-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-2" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-overplotting-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-pointdensity_5d6b8a7e8dc87f381a96dbb1de4a8236">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-pointdensity-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-3" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-overplotting-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-binned_ed2c119d6dfeda85578c107b2b66fef2">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-binned-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-4" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-overplotting_667b4182ba892513267dfa1adf95e720">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-overplotting-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-hex_82f4afd68c89f7cb66caa32390b0f8b4">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-hex-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-5" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-overplotting_667b4182ba892513267dfa1adf95e720">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-overplotting-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-contour_4482a5199af36048c6256c33bb237e5e">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-contour-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-6" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-overplotting_667b4182ba892513267dfa1adf95e720">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-overplotting-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-scatter-contour-filled_0b03f460d48a5c6b6f7ddfaa0c5ddc3a">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-contour-filled-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-7" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries_01cae7d0b13c89ca39400854e052adca">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries-points_46180f2752322d7754027829da242bbe">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-points-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-relationships-8" class="slide level2">
+<h2>Visualize Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries-connected_dcab27826ef16429541145d673b5a567">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-connected-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-connected-scatterplot_d82560b10b5a46a6846d0842219627ad">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-connected-scatterplot-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="compare-relationships" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Compare Relationships</span></h1>
+
+</section>
+<section id="compare-relationships-1" class="slide level2">
+<h2>Compare Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries-multiple_45ec514f0251f7cb1d04c14d5454d589">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-multiple-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries-multiple-braids_0734a682be16ae92fb74ab15adbe1ae6">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-multiple-braids-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-relationships-2" class="slide level2">
+<h2>Compare Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries-multiple_45ec514f0251f7cb1d04c14d5454d589">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-multiple-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-timeseries-dumbbell_bd361225a87a92abde457ba1993aef00">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-timeseries-dumbbell-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+<p>:::: ::: :::</p>
+<p>::::</p>
+</section>
+<section id="compare-relationships-3" class="slide level2">
+<h2>Compare Relationships</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-correlogram-tile-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-relationships-correlogram-bubble_60a330e0ef73f559f9175825c7637ee0">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-relationships-correlogram-bubble-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="visualize-uncertainty" class="title-slide slide level1 center" data-background-color="#c4edff">
+<h1><span style="line-height:.97;">Visualize Uncertainty</span></h1>
+
+</section>
+<section id="visualize-uncertainty-1" class="slide level2">
+<h2>Visualize Uncertainty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-error-bars_966f53a1b4936fbe561df5c5e3506f63">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-error-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="visualize-uncertainty-2" class="slide level2">
+<h2>Visualize Uncertainty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-error-bars-title_442c955dc2dec2a38b1d0583a36a468c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-error-bars-title-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-error-bars-se_b1f610227eb552683bdd26d0a08936ba">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-error-bars-se-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-uncertainty-3" class="slide level2">
+<h2>Visualize Uncertainty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-error-bars_966f53a1b4936fbe561df5c5e3506f63">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-error-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-dynamites_3523edbec2a5fc726333764f58ba925d">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-dynamites-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="barbar-charts-raincloud-plots" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/shrek-barbar-raincloud.png" class="r-stretch quarto-figure-center"></section>
+<section id="barbar-charts-weissgerber-0" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-title.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-1" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-bars-1.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-2" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-bars-2.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-3" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-bars-3.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-4" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-bars-4.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-5" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-bars-6.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-6" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-paired-1.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-7" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-paired-2.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="barbar-charts-weissgerber-8" class="slide level2" data-menu-title="Dynamite Plots and Alternatives">
+<h2></h2>
+
+<img data-src="img/weissgerber-paired-3.png" class="r-stretch quarto-figure-center"><p class="caption">Modified from <a href="https://doi.org/10.1371/journal.pbio.1002128">Weissgerber et al.&nbsp;(2015) PLoS Biology</a></p></section>
+<section id="visualize-uncertainty-4" class="slide level2">
+<h2>Visualize Uncertainty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-error-bars_966f53a1b4936fbe561df5c5e3506f63">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-error-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-interval_c14cccab2a9c167bebc1e12b04934d80">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-interval-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-uncertainty-5" class="slide level2">
+<h2>Visualize Uncertainty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-error-bars_966f53a1b4936fbe561df5c5e3506f63">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-error-bars-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-eyes_3b6fc378fc868d46e308b837b86c1f13">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-eyes-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-uncertainty-6" class="slide level2">
+<h2>Visualize Uncertainty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-confidence-band_1aa245a336a86010f0dfc7efd48fed8c">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-confidence-band-1.png" width="1000"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-hash="02-display_cache/revealjs/chart-types-uncertainty-confidence-band-graded_35b039c51b9b0454acda44d8126772d1">
+<div class="cell-output-display">
+<p><img data-src="02-display_files/figure-revealjs/chart-types-uncertainty-confidence-band-graded-1.png" width="1000"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="solving-common-chart-issues" class="title-slide slide level1 center">
+<h1><span style="line-height:.97;">Solving Common Chart Issues</span></h1>
+
+</section>
+<section id="overplotting-issue" class="slide level2">
+<h2>Overplotting Issue</h2>
+
+<img data-src="02-display_files/figure-revealjs/chart-types-relationships-scatter-overplotting-solution-1.png" width="2800" class="r-stretch"></section>
+<section id="spaghetti-plots" class="slide level2">
+<h2>Spaghetti Plots</h2>
+
+<img data-src="img/2_jpmorgan_line_orig.png" class="r-stretch quarto-figure-center"></section>
+<section id="spaghetti-plots-1" class="slide level2">
+<h2>Spaghetti Plots</h2>
+
+<img data-src="02-display_files/figure-revealjs/spaghetti-plot-gapminder-1.png" width="2800" class="r-stretch"></section>
+<section id="spaghetti-plots-2" class="slide level2">
+<h2>Spaghetti Plots</h2>
+
+<img data-src="02-display_files/figure-revealjs/spaghetti-plot-gapminder-facet-1.png" width="2800" class="r-stretch"></section>
+<section id="spaghetti-plots-3" class="slide level2">
+<h2>Spaghetti Plots</h2>
+
+<img data-src="02-display_files/figure-revealjs/spaghetti-plot-gapminder-facet-shading-1.png" width="2800" class="r-stretch"></section>
+<section id="spaghetti-plots-4" class="slide level2">
+<h2>Spaghetti Plots</h2>
+
+<img data-src="img/2_jpmorgan_line_trend_alt.png" class="r-stretch quarto-figure-center"></section>
+<section id="stacked-bars-issue" class="slide level2">
+<h2>Stacked Bars Issue</h2>
+
+<img data-src="02-display_files/figure-revealjs/stacked-bars-cars-1.png" width="2800" class="r-stretch quarto-figure-center"></section>
+<section id="stacked-bars-issue-1" class="slide level2">
+<h2>Stacked Bars Issue</h2>
+
+<img data-src="02-display_files/figure-revealjs/stacked-bars-cars-lines-1.png" width="2800" class="r-stretch quarto-figure-center"></section>
+<section id="stacked-bars-issue-2" class="slide level2">
+<h2>Stacked Bars Issue</h2>
+
+<img data-src="02-display_files/figure-revealjs/stacked-bars-cars-facet-1.png" width="2800" class="r-stretch quarto-figure-center"></section>
+<section id="stacked-bars-issue-3" class="slide level2">
+<h2>Stacked Bars Issue</h2>
+
+<img data-src="02-display_files/figure-revealjs/stacked-bars-cars-facet-grey-1.png" width="2800" class="r-stretch quarto-figure-center"></section>
+<section id="stacked-bars-issue-4" class="slide level2">
+<h2>Stacked Bars Issue</h2>
+
+<img data-src="02-display_files/figure-revealjs/stacked-bars-cars-facet-total-1.png" width="2800" class="r-stretch quarto-figure-center"></section>
+<section id="dual-axis-issue" class="slide level2">
+<h2>Dual Axis Issue</h2>
+<p><span style="font-size:.8em;">Examples by Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/dualaxis/">DataWrapper Blog</a></span></p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="img/dual-axis-datawrapper-1.png"> <br><br></p>
+<div class="fragment">
+<p><img data-src="img/dual-axis-datawrapper-2.png"></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><img data-src="img/dual-axis-datawrapper-3.png"> <br><br></p>
+</div>
+<div class="fragment">
+<p><img data-src="img/dual-axis-datawrapper-4.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="dual-axis-issue-1" class="slide level2">
+<h2>Dual Axis Issue</h2>
+<p><br></p>
+
+<img data-src="img/spurious-correlations.png" class="r-stretch quarto-figure-center"><p class="caption">Source: <a href="https://tylervigen.com/spurious-correlations">Spurious Correlations</a></p></section>
+<section id="dual-axis-issue-2" class="slide level2">
+<h2>Dual Axis Issue</h2>
+
+<img data-src="img/dual-axis-datawrapper-wondering.png" class="r-stretch quarto-figure-center"><p class="caption"><br>Source: Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/dualaxis/">DataWrapper Blog</a></p></section>
+<section id="dual-axis-issue-3" class="slide level2">
+<h2>Dual Axis Issue</h2>
+
+<img data-src="img/dual-axis-trends-datawrapper.png" class="r-stretch quarto-figure-center"><p class="caption"><br>Source: Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/dualaxis/">DataWrapper Blog</a></p></section>
+<section id="dual-axis-issue-4" class="slide level2">
+<h2>Dual Axis Issue</h2>
+<p><br></p>
+
+<img data-src="img/dual-axis-datawrapper-solution-1.png" class="r-stretch quarto-figure-center"><p class="caption"><br>Source: Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/dualaxis/">DataWrapper Blog</a></p></section>
+<section id="dual-axis-issue-5" class="slide level2">
+<h2>Dual Axis Issue</h2>
+<p><br></p>
+
+<img data-src="img/dual-axis-datawrapper-solution-2.png" class="r-stretch quarto-figure-center"><p class="caption"><br>Source: Lisa Charlotte Muth, <a href="https://blog.datawrapper.de/dualaxis/">DataWrapper Blog</a></p></section>
+<section id="skewed-data" class="slide level2">
+<h2>Skewed Data</h2>
+
+<img data-src="02-display_files/figure-revealjs/bars-skewed-1.png" width="2800" class="r-stretch"></section>
+<section id="skewed-data-1" class="slide level2">
+<h2>Skewed Data</h2>
+
+<img data-src="02-display_files/figure-revealjs/bars-skewed-broken-axis-1.png" width="2800" class="r-stretch"></section>
+<section id="skewed-data-2" class="slide level2">
+<h2>Skewed Data</h2>
+
+<img data-src="02-display_files/figure-revealjs/bars-skewed-log-1.png" width="2800" class="r-stretch"></section>
+<section id="skewed-data-3" class="slide level2">
+<h2>Skewed Data</h2>
+
+<img data-src="02-display_files/figure-revealjs/bars-skewed-other-1.png" width="2800" class="r-stretch"></section>
+<section id="skewed-data-4" class="slide level2">
+<h2>Skewed Data</h2>
+<p><br></p>
+
+<img data-src="02-display_files/figure-revealjs/bars-skewed-panel-1.png" width="3600" class="r-stretch"></section></section>
+<section>
+<section id="exercises" class="title-slide slide level1 center">
+<h1>Exercises</h1>
+
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise 1</h2>
+<div class="question">
+<p><b style="font-size:1.3em;">Discuss the following graphic.</b></p>
+<ul>
+<li>What is the main message?</li>
+<li>Does the chart type work?</li>
+<li>Is there a better chart type?</li>
+<li>Draw an alternative version(s) using different chart type(s).</li>
+</ul>
+</div>
+</section>
+<section id="exercise-1-1" class="slide level2">
+<h2>Exercise 1</h2>
+
+<img data-src="img/exercise-pie.png" class="r-stretch quarto-figure-center"><p class="caption">Market share of visits to social network sites in November 2017,<br>found in the blog post on <a href="https://scc.ms.unimelb.edu.au/resources/data-visualisation-and-exploration/no_pie-charts">“Why you shouldn’t use pie charts”</a> by The University of Melbourne</p></section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise 2</h2>
+<div class="question">
+<p><b style="font-size:1.3em;">Imagine you could get your hands on additional data on market shares of visits to social network sites.</b> - What kind of data would you love to explore? - What would be stories you’d like to tell? - What could be suitable chart types to tell such a story?</p>
+</div>
+</section>
+<section id="section-1" class="slide level2" data-background-image="img/exercise-what-now.png" data-background-position="center" data-background-size="75%">
+<h2></h2>
+
+
+<img src="img/logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><a href="https://cedricscherer.com">Cédric Scherer</a> // posit::conf(2023)</p>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard","boardmarkerWidth":4},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: true,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

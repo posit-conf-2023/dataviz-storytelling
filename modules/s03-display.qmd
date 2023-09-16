@@ -1,0 +1,29 @@
+---
+title: "Choose an Appropriate Display"
+subtitle: "<span class='code'>11:00-12:30</span>"
+date: "2023-09-18"
+image: "images/02-display.png"
+tbl-colwidths: [5,20,75]
+---
+
+```{=html}
+<iframe class="slide-deck" src="../materials/02-display.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+<a href='../materials/02-display.html' target="_blank">View slides in full screen</a>
+
+
+# Outline
+
+-   Encodings
+-   Chart Type Choice
+-   Chart Types to...
+    -  Visualize Distributions
+    -  Compare Distributions
+    -  Compare Amounts
+    -  Visualize Relationships
+    -  Compare Relationships
+    -  Visualize Uncertainty
+-   Solving Common Chart Issues
+-   Exercises
+

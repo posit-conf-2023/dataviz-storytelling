@@ -126,7 +126,7 @@ execute:
 
 
 
-# Survey Time! {background-color="#e6d9f2"}
+# Exercise {background-color="#e6d9f2"}
 
 
 
@@ -697,11 +697,10 @@ Confront yourself with a <b>falsifiable universal statement:</b>
 :::
 
 
-# Exercises 
+# Exercise
 
 
-
-## Exercise 1
+## Exercise
 
 ::: question
 <b style='font-size:1.3em;'>Take a closer look at the following three visualizations.</b>
@@ -737,16 +736,4 @@ Confront yourself with a <b>falsifiable universal statement:</b>
 
 
 
-## UPDATE Exercise 2
-
-::: question
-<b style='font-size:1.3em;'>Imagine you are working for a candy company and want to introduce a new type of candy.</b>
-
-::: incremental
--  
-:::
-:::
-
-
-
-## {"img/exercise-what-now.png" background-position="center" background-size="75%"}
+## {background-image="img/exercise-what-now.png" background-position="center" background-size="75%"}

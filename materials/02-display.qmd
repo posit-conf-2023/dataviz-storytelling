@@ -1,0 +1,3378 @@
+---
+title: "Designing Data Visualizations<br> to Successfully Tell a Story"
+subtitle: "<span style='font-size:2em;'>Choose an Appropriate Display</span>"
+author: "<a href='https://www.cedricscherer.com' style='color:#28a87d;font-weight:600;'>Cédric Scherer</a>&ensp;//&ensp;posit::conf&ensp;//&ensp;September 2023"
+format:
+  revealjs:
+    theme: slides.scss
+    logo: img/logo.png
+    footer: '[Cédric Scherer](https://cedricscherer.com) // posit::conf(2023)'
+    transition: fade
+    progress: true
+    multiplex: false
+    preview-links: true
+    scrollable: false
+    hide-inactive-cursor: true
+    highlight-style: printing
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 4
+      buttons: true
+    pause: true
+editor: source
+knitr:
+  opts_chunk:
+    dev: "ragg_png"
+    retina: 3
+    dpi: 200
+execute:
+  freeze: auto
+  cache: true
+  echo: true
+  fig-width: 10.1
+  fig-height: 6.3
+  fig-align: center
+---
+
+
+# <span style='line-height:.97;'>Encodings</span> {background-color="#e6d9f2"}
+
+
+
+# <span style='font-family:asap semicondensed;font-size:.6em;line-height:.75;font-weight:600;font-style:normal;color:#663399;'>Mapping data values to visual attributes.</span> {#gestalt-principles-defintion data-menu-title="Gestalt Principles: Definition" background-color="#e6d9f2"}
+
+
+
+## Same Data, Different Encodings
+
+```{r}
+#| label: encodings-shapes-text
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 1.2
+library(ggplot2)
+
+data <- data.frame(
+  id = factor(1:20),
+  value = c(4, 3, 0, 7, 9, 6, 3, 2, 5, 1, 3, 8, 3, 6, 2, 1, 3, 5, 8, 3)
+)
+
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-shapes-length
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id)) +
+  geom_col(aes(y = value), fill = "grey65", width = .7) +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-shapes-position
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id)) +
+  geom_point(aes(y = value), color = "grey65", size = 3) +
+  scale_y_continuous(expand = c(.1, .1)) +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-shapes-size
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(size = value), shape = 21, color = "white", fill = "grey65") +
+  scale_size_area(max_size = 20, guide = "none") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-shapes-color
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_gradient(low = "grey90", high = "grey20", guide = "none") +
+  theme_void()
+```
+
+
+
+## Same Data, Different Encodings
+
+```{r}
+#| label: encodings-shapes-text-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Text", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-shapes-length-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id)) +
+  geom_col(aes(y = value), fill = "grey65", width = .7) +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 5, label = "Length", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-shapes-position-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id)) +
+  geom_point(aes(y = value), color = "grey65", size = 3) +
+  scale_y_continuous(expand = c(.1, .1)) +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 5, label = "Position", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-shapes-size-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(size = value), shape = 21, color = "white", fill = "grey65") +
+  scale_size_area(max_size = 20, guide = "none") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Size", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-shapes-color-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_gradient(low = "grey90", high = "grey20", guide = "none") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Color", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+
+
+## Same Data, Different Emphasis
+
+```{r}
+#| label: encodings-text-plain
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-text-weight
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+data |> 
+  dplyr::mutate(value = ifelse(value == 3, "**3**", as.character(value))) |> 
+  ggplot(aes(x = id, y = 1)) +
+  ggtext::geom_richtext(
+    aes(label = value), family = "Spline Sans Mono", color = "grey20", size = 7, fill = NA, label.color = NA
+  ) +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-text-color
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value, color = value == 3), family = "Spline Sans Mono", size = 7) +
+  scale_color_manual(values = c("grey65", "black"), guide = "none") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-text-size
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value, size = value == 3), family = "Spline Sans Mono", color = "grey20") +
+  scale_size_manual(values = c(5, 12), guide = "none") +
+  theme_void()
+```
+
+
+
+## Same Data, Different Emphasis
+
+```{r}
+#| label: encodings-text-plain-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Plain", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)  +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-text-weight-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+data |> 
+  dplyr::mutate(value = ifelse(value == 3, "**3**", as.character(value))) |> 
+  ggplot(aes(x = id, y = 1)) +
+  ggtext::geom_richtext(
+    aes(label = value), family = "Spline Sans Mono", color = "grey20", size = 7, fill = NA, label.color = NA
+  ) +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Weight", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)  +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-text-color-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value, color = value == 3), family = "Spline Sans Mono", size = 7) +
+  scale_color_manual(values = c("grey65", "black"), guide = "none") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Color", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)  +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-text-size-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value, size = value == 3), family = "Spline Sans Mono", color = "grey20") +
+  scale_size_manual(values = c(5, 12), guide = "none") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 3.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Size", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)  +
+  theme_void()
+```
+
+
+
+## {#wordcloud-issues data-menu-title="Wordclouds (and Alternatives)"}
+
+<br><br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Source: [Data to Viz](https://www.data-to-viz.com/graph/wordcloud.html)](img/wordcloud-data-to-viz.png)
+:::
+
+::: {.column width="50%"}
+::: fragment
+![Source: [Data to Viz](https://www.data-to-viz.com/graph/wordcloud.html)](img/wordcloud-data-to-viz-lollipop.png)
+:::
+:::
+
+::::
+
+
+
+## {#encodings-judgements-yau data-menu-title="Scale of Perpetual Elementary Tasks"} 
+
+<br><br><br><br>
+
+![Source: “Data Points” by Nathan Yau (p. 104)](img/encodings-yau.png)
+
+
+
+## {#encodings-judgements-cairo data-menu-title="Scale of Perpetual Elementary Tasks"}
+
+![Cleveland’s and McGill’s Scale of Perpetual Elementary Tasks<br>Source: “The Functional Art” by Alberto Cairo (p. 120)](img/encodings-cleveland-mcgill.png)
+
+
+
+## {#encodings-judgements-accurate data-menu-title="Scale of Perpetual Elementary Tasks"}
+
+![Cleveland’s and McGill’s Scale of Perpetual Elementary Tasks<br>Source: “The Functional Art” by Alberto Cairo (p. 120)](img/encodings-cleveland-mcgill-accurate.png)
+
+
+
+## {#encodings-judgements-generic data-menu-title="Scale of Perpetual Elementary Tasks"}
+
+![Cleveland’s and McGill’s Scale of Perpetual Elementary Tasks<br>Source: “The Functional Art” by Alberto Cairo (p. 120)](img/encodings-cleveland-mcgill-generic.png)
+
+
+
+## {#encodings-experiments-1 data-menu-title="Decoding Quantities in Graphs"}
+
+![Source: “Data Visualization: A Practical Introduction” by Kieran Healy<br> Results based on Cleveland and McGill (1984, 1987)](img/encodings-mcgill-cleveland-results-1.png)
+
+
+
+## {#encodings-experiments-2 data-menu-title="Decoding Quantities in Graphs"}
+
+![Source: “Data Visualization: A Practical Introduction” by Kieran Healy<br> Results based on Cleveland and McGill (1984, 1987) and Heer & Bostock (2010)](img/encodings-mcgill-cleveland-results-2.png)
+
+
+
+
+
+
+
+## Always Start at Zero?
+
+<br>
+
+![Source: [“Hands-On Data Visualization”](https://handsondataviz.org/chart-design.html) by Jack Dougherty & Ilya Ilyankou](img/baseline-bars-handsondataviz.png)
+
+. . .
+
+<br>More on the topic: [Correl, Bertini & Francoeri 2020](https://arxiv.org/pdf/1907.02035.pdf) and [Witt (2019)](https://amplab.colostate.edu/reprints/Witt_Graphs_YaxisRange.pdf)
+
+
+
+
+## Always Start at Zero?
+
+<br>
+
+![](img/encoding-bars.png)
+
+
+
+
+## Always Start at Zero?
+
+<br>
+
+![](img/encoding-bars-fox.png)
+
+
+
+## Always Start at Zero?
+
+<br>
+
+![Source: [“Hands-On Data Visualization”](https://handsondataviz.org/chart-design.html) by Jack Dougherty & Ilya Ilyankou](img/baseline-lines-handsondataviz.png)
+
+
+
+## {#encodings-position-baseline-golden-ratio data-menu-title="Golden Ratio Approach for Line Charts"}
+
+![Source: [Francis Gagnon](https://chezvoila.com/blog/yaxis/)](img/baseline-line-golden-ratio.png) 
+
+
+
+
+## Same Data, Different Scaling
+
+```{r}
+#| label: encodings-sizes-values
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-bubble-area
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 1.2
+g <- ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(size = value), shape = 21, color = "white", fill = "grey65") +
+  theme_void()
+
+g + scale_size_area(max_size = 20, guide = "none")
+```
+
+. . .
+
+```{r}
+#| label: encodings-bubble-range
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+g + scale_size(range = c(3, 20), guide = "none")
+```
+
+. . .
+
+```{r}
+#| label: encodings-bubble-radius
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+g + scale_radius(range = c(0, 20), guide = "none")
+```
+
+
+
+## Same Data, Different Scaling
+
+```{r}
+#| label: encodings-sizes-values-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  annotate(geom = "rect", xmin = -Inf, xmax = 4.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Values", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-bubble-area-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+g + scale_size_area(max_size = 20, guide = "none") + 
+  annotate(geom = "rect", xmin = -Inf, xmax = 4.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Area", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)
+```
+
+```{r}
+#| label: encodings-bubble-range-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+g + scale_size(range = c(3, 20), guide = "none") + 
+  annotate(geom = "rect", xmin = -Inf, xmax = 4.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Fixed range", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)
+```
+
+```{r}
+#| label: encodings-bubble-radius-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+g + scale_radius(range = c(0, 20), guide = "none") + 
+  annotate(geom = "rect", xmin = -Inf, xmax = 4.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Radius", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0)
+```
+
+
+
+## {#scmp-area-fail-1 data-menu-title="The Area Problem"}
+
+![[“Russia attacks Ukraine”](https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/) by SCMP Graphic (South China Morning Post)](img/scmp-russia-ukraine-area.png)
+
+
+
+## {#scmp-area-fail-2 data-menu-title="The Area Problem"}
+
+![[“Russia attacks Ukraine”](https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/) by SCMP Graphic (South China Morning Post)](img/scmp-russia-ukraine-area-hl1.png)
+
+
+
+## {#scmp-area-fail-3 data-menu-title="The Area Problem"}
+
+![[“Russia attacks Ukraine”](https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/) by SCMP Graphic (South China Morning Post)](img/scmp-russia-ukraine-area-hl2.png)
+
+
+
+## {#scmp-area-fail-4 data-menu-title="The Area Problem"}
+
+![[“Russia attacks Ukraine”](https://multimedia.scmp.com/infographics/news/world/article/3168280/ukraine-crisis/) by SCMP Graphic (South China Morning Post)](img/scmp-russia-ukraine-area-fixed.png)
+
+
+
+## Same Data, Different Palettes
+
+```{r}
+#| label: encodings-colors-values
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-colors-grey
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_gradient(low = "grey90", high = "grey20", guide = "none") +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-colors-seq-single
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_distiller(palette = "Blues", guide = "none", direction = 1) +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-colors-seq-multi
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  #scale_fill_viridis_c(direction = -1, guide = "none") +
+  scico::scale_fill_scico(palette = "batlowW", guide = "none", end = .97, direction = -1) +
+  theme_void()
+```
+
+. . .
+
+```{r}
+#| label: encodings-colors-div
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_distiller(palette = "PRGn", guide = "none", direction = 1) +
+  theme_void()
+```
+
+
+
+
+## Same Data, Different Palettes
+
+```{r}
+#| label: encodings-colors-values-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_text(aes(label = value), family = "Spline Sans Mono", size = 7, color = "grey20") +
+  annotate(geom = "rect", xmin = -Inf,xmax = 8.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Values", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-colors-grey-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_gradient(low = "grey90", high = "grey20", guide = "none") +
+  annotate(geom = "rect", xmin = -Inf,xmax = 8.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Sequential (desaturated)", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-colors-seq-single-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_distiller(palette = "Blues", guide = "none", direction = 1) +
+  annotate(geom = "rect", xmin = -Inf,xmax = 8.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Sequential (single-hue)", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-colors-seq-multi-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  #scale_fill_viridis_c(direction = -1, guide = "none") +
+  scico::scale_fill_scico(palette = "batlowW", guide = "none", end = .97, direction = -1) +
+  annotate(geom = "rect", xmin = -Inf,xmax = 8.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Sequential (multi-hue)", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+```{r}
+#| label: encodings-colors-div-label
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+ggplot(data, aes(x = id, y = 1)) +
+  geom_point(aes(fill = value), shape = 22, size = 15) +
+  scale_fill_distiller(palette = "PRGn", guide = "none", direction = 1) +
+  annotate(geom = "rect", xmin = -Inf,xmax = 8.5, ymin = -Inf, ymax = Inf, fill = "white") +
+  annotate(geom = "text", x = 1, y = 1, label = "Diverging", hjust = 0, size = 12, 
+           family = "Asap SemiCondensed", fontface = "bold", label.size = 0) +
+  theme_void()
+```
+
+
+
+## Same Data, Different Palettes
+
+```{r}
+#| label: encodings-colors-sorted
+#| echo: false
+#| fig-width: 14
+#| fig-height: 1.2
+g <- ggplot(data.frame(x = 0:9), aes(x = x, y = 1)) + theme_void()
+g + geom_text(aes(label = x), family = "Spline Sans Mono", size = 7, color = "grey20")
+
+gp <- g + geom_point(aes(fill = x), shape = 22, size = 25)
+gp + scale_fill_gradient(low = "grey90", high = "grey20", guide = "none")
+gp + scale_fill_distiller(palette = "Blues", guide = "none", direction = 1)
+gp + scico::scale_fill_scico(palette = "batlowW", guide = "none", direction = -1, end = .97)
+gp + scale_fill_distiller(palette = "PRGn", guide = "none", direction = 1)
+```
+
+
+
+## Color Palette Types
+
+<br>
+
+![](img/color-palette-types-seq.png)
+
+
+
+## Color Palette Types: Dark Equals More (?)
+
+<br><br>
+
+![](img/color-palettes-example-seq-direction.png)
+
+
+
+## Color Palette Types: Dark Equals More (?) {background-color="#282828"}
+
+<br><br>
+
+![](img/color-palettes-example-seq-direction-dark.png)
+
+
+
+## Color Palette Types
+
+<br>
+
+![](img/color-palette-types-seq-div.png)
+
+
+
+## Color Palette Types: Sequential or Diverging?
+
+<br><br>
+
+![](img/color-palettes-example-seq-or-div.png)
+
+
+
+## Color Palette Types
+
+<br>
+
+![](img/color-palette-types.png)
+
+
+
+## Color Palette Types: Sequential
+
+<br><br>
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/diverging-vs-sequential-color-scales/)](img/color-palettes-seq-or-cat-left.png)
+
+
+
+## Color Palette Types: <strike style="color:#000;">Sequential</strike> Qualitative!
+
+<br><br>
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/diverging-vs-sequential-color-scales/)](img/color-palettes-seq-or-cat.png)
+
+
+
+## {#color-palette-viridis-issues-1 data-menu-title="The Viridis Problem"}
+
+<br>
+
+```{r}
+#| label: color-palette-cat-viridis-prep
+#| echo: false
+#| cache: false
+data1 <- data.frame(
+  cat = factor(c("Africa", "Americas", "Asia", "Europe")),
+  value = c(5.7, 11.2, 9.1, 15.4)
+)
+
+theme_set(theme_minimal(base_size = 22, base_family = "Asap SemiCondensed"))
+theme_update(panel.grid = element_blank())
+
+
+g1 <- ggplot(data1, aes(x = cat, y = value, fill = cat)) + 
+  geom_col(width = .8) + 
+  geom_hline(yintercept = 0, color = "grey30", linewidth = 3) +
+  scale_y_continuous(expand = c(0, 0), breaks = 0:3*5) +
+  labs(x = NULL, y = NULL) +
+  theme(panel.grid.major.x = element_blank(), legend.position = "none",
+        axis.text.y = element_blank())
+
+set.seed(123)
+
+data2 <- data.frame(cat = rep(data1$cat, 10)) |> 
+  dplyr::rowwise() |>
+  dplyr::mutate(x = rnorm(n = 1, mean = as.numeric(cat)), 
+                y = rnorm(n = 1, mean = as.numeric(cat)))
+
+g2 <- ggplot(data2, aes(x = x, y = y, color = cat)) +
+  labs(x = NULL, y = NULL, shape = NULL, color = NULL) +
+  coord_cartesian(clip = "off") +
+  theme(legend.position = "top", legend.justification = "left",
+        axis.text.x = element_blank(), axis.text.y = element_blank())
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-viridis
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g1 +
+  scale_fill_viridis_d(direction = -1, end = .97, guide = "none")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: color-palette-bars-viridis-desaturated
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g1 + 
+  geom_col(width = .8, 
+           aes(fill = cat, fill = after_scale(colorspace::desaturate(fill, 1)))) +
+  scale_fill_viridis_d(direction = -1, end = .97, guide = "none") + 
+  geom_hline(yintercept = 0, color = "grey30", linewidth = 3)
+```
+:::
+:::
+
+::::
+
+
+
+## {#color-palette-viridis-issues-2 data-menu-title="The Viridis Problem"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-viridis
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-viridis-c
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+ggplot(data1, aes(x = cat, y = value, fill = value)) + 
+  geom_col(width = .8) + 
+  geom_hline(yintercept = 0, color = "grey30", linewidth = 3) +
+  scale_y_continuous(expand = c(0, 0), breaks = 0:3*5) +
+  scale_fill_viridis_c(direction = -1, end = .97, guide = "none") +
+  labs(x = NULL, y = NULL) +
+  theme(panel.grid.major.x = element_blank(), legend.position = "none",
+        axis.text.y = element_blank())
+```
+:::
+
+::::
+
+
+
+## {#color-palette-viridis-issues-3 data-menu-title="The Viridis Problem"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-viridis
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-grey
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g1 + 
+  geom_col(width = .8, fill = "grey60") + 
+  geom_hline(yintercept = 0, color = "grey30", linewidth = 3)
+```
+:::
+
+::::
+
+
+
+## {#color-palette-viridis-issues-4 data-menu-title="The Viridis Problem"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-viridis
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-scatter-viridis
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g2 + 
+  geom_point(size = 6) + 
+  scale_color_viridis_d(direction = -1, end = .97)
+```
+:::
+
+::::
+
+
+
+## {#color-palette-viridis-issues-5 data-menu-title="The Viridis Problem"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-grey
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-scatter-grey-shape
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g2 + 
+  geom_point(size = 6, aes(shape = cat), color = "grey30", fill = "grey60") +
+  scale_shape_manual(values = c(23, 24, 22, 21))
+```
+:::
+
+::::
+
+
+
+## {#color-palette-viridis-issues-6 data-menu-title="The Viridis Problem"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-bars-cat
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g1 + 
+  scale_fill_manual(values = c("#7e3fbb", "#c07c18", "#007cb1", "#19a47a"), 
+                    guide = "none")
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: color-palette-scatter-cat
+#| echo: false
+#| fig-width: 5.5
+#| fig-height: 6.3
+g2 + 
+  geom_point(size = 6) + 
+  scale_color_manual(values = c("#7e3fbb", "#c07c18", "#007cb1", "#19a47a"))
+```
+:::
+
+::::
+
+
+
+# Chart Type Choice
+
+
+
+## {#chart-selection-helpers-1 data-menu-title="Chart Selection Helpers"}
+
+![](img/chart-selection-diagram.png){fig-align="center"}
+
+
+
+## {#chart-selection-helpers-2 data-menu-title="Chart Selection Helpers"}
+
+<br><br>
+
+![](img/chart-selection-webpages.png){fig-align="center"}
+
+
+
+## {#chart-selection-helpers-3 data-menu-title="Chart Selection Helpers"}
+
+![Source: [Data to Viz](https://www.data-to-viz.com/)](img/chart-selection-datatoviz-poster.png){fig-align="center"}
+
+
+
+## {#chart-selection-helpers-4 data-menu-title="Chart Selection Helpers"}
+
+![Source: [Data to Viz](https://www.data-to-viz.com/)](img/chart-selection-datatoviz-details.png){fig-align="center"}
+
+
+
+#  {background-image="img/good-evil-avengers.jpg" background-position="center"}
+
+::: footer
+© AVENGERS Trademark of Marvel Characters, Inc.
+:::
+
+
+
+## {#chart-choice-story-climate-stripes-1 data-menu-title="Chart Choice Depends on the Story" background-color="black"}
+
+![[“Warming Stripes”](https://showyourstripes.info/) by Ed Hawkins (showyourstripes.info)](img/climate-stripes-1.png)
+
+
+
+## {#chart-choice-story-climate-stripes-2 data-menu-title="Chart Choice Depends on the Story" background-color="black"}
+
+![[“Warming Stripes”](https://showyourstripes.info/) by Ed Hawkins (showyourstripes.info)](img/climate-stripes-2.png)
+
+
+
+## {#chart-choice-story-climate-stripes-3 data-menu-title="Chart Choice Depends on the Story" background-color="black"}
+
+![[“Warming Stripes”](https://showyourstripes.info/) by Ed Hawkins (showyourstripes.info)](img/climate-stripes-faq-1.png)
+
+
+
+## {#chart-choice-story-climate-stripes-4 data-menu-title="Chart Choice Depends on the Story" background-color="black"}
+
+![[“Warming Stripes”](https://showyourstripes.info/) by Ed Hawkins (showyourstripes.info)](img/climate-stripes-faq-2.png)
+
+
+
+## {#chart-choice-story-migrants-1 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-1.png)
+
+
+
+## {#chart-choice-story-migrants-2 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-2.png)
+
+
+
+## {#chart-choice-story-migrants-3 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-3.png)
+
+
+
+## {#chart-choice-story-migrants-4 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-4.png)
+
+
+
+## {#chart-choice-story-migrants-5 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-5.png)
+
+
+
+## {#chart-choice-story-migrants-6 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-6.png)
+
+
+
+## {#chart-choice-story-migrants-7 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-7.png)
+
+
+
+## {#chart-choice-story-migrants-8 data-menu-title="Chart Choice Depends on the Story"}
+
+<br>
+
+![[“How maps in the media make us more negative about migrants
+”](https://thecorrespondent.com/664/how-maps-in-the-media-make-us-more-negative-about-migrants/738023272448-bac255ba) by Maite Vermeulen, Leon de Korte & Henk van Houtum](img/chart-choice-migrants-8.png)
+
+
+
+# <span style='line-height:.97;'>Chart Types to...</span> {background-color="#62D0FF"}
+
+```{r}
+#| label: chart-types-prep
+#| include: false
+#| cache: false
+library(ggplot2)
+library(palmerpenguins)
+
+penguins <- penguins |> 
+  dplyr::mutate(species = factor(species, levels = c("Adelie", "Gentoo",  "Chinstrap"))) |> 
+  dplyr::filter(!is.na(sex))
+
+theme_set(theme_classic(base_family = "Asap SemiCondensed", base_size = 16))
+theme_update(
+  plot.margin = margin(rep(15, 4)),
+  axis.text = element_blank(),
+  panel.grid = element_blank(),
+  plot.title = element_text(face = "bold", margin = margin(b = 20), size = rel(1.35)),
+  plot.title.position = "plot",
+  axis.line = element_line(color = "grey45", linewidth = 1),
+  axis.title.x = element_text(color = "grey45", margin = margin(t = 10)),
+  axis.title.x.top = element_text(color = "grey45", margin = margin(b = 10)),
+  axis.title.y = element_text(color = "grey45", margin = margin(r = 10)),
+  axis.ticks = element_line(color = "grey45"),
+  legend.position = "top",
+  legend.title = element_text(color = "grey45"),
+  legend.text = element_text(margin = margin(t = 3, b = 3), color = "grey45"),
+  legend.background = element_rect(fill = NA, color = NA),
+  legend.justification = "left"
+)
+```
+
+
+
+# <span style='line-height:.97;'>Visualize Distributions</span> {background-color="#c4edff"}
+
+
+
+## Visualize Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-histogram
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_histogram(fill = "#28A87D", color = "#28A87D", binwidth = 2) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = "Numeric Variable", y = "Count", title = "Histogram")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-distribution-area
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = flipper_length_mm)) + 
+  geom_density(fill = "#28A87D", color = "#28A87D", bw = 1.2) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = "Numeric Variable", y = "Density", title = "Density Plot")
+```
+:::
+:::
+
+::::
+
+
+
+## Visualize Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-cumulative-density
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = flipper_length_mm)) + 
+  stat_ecdf(color = "#28A87D", linewidth = .9) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = "Numeric Variable", y = "Cumulative Density", title = "Cumulative Density Plot (ECDF)")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-distribution-qq
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(sample = flipper_length_mm)) + 
+  stat_qq_line(color = "grey45", linewidth = .5) +
+  stat_qq(color = "#28A87D", linewidth = .9) +
+  coord_cartesian(expand = FALSE, clip = "off", xlim = c(-3.1, NA)) +
+  labs(x = "Sample Quantiles", y = "Theoretical Quantiles", title = "Quantile-Quantile Plot (QQ)")
+```
+:::
+:::
+
+::::
+
+
+
+# <span style='line-height:.97;'>Compare Distributions</span> {background-color="#c4edff"}
+
+
+
+## Compare Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-histogram-stacked
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = body_mass_g)) + 
+  geom_histogram(aes(fill = sex, color = after_scale(fill))) +
+  coord_cartesian(expand = FALSE) +
+  scale_fill_manual(values = c("#28A87D", "#19694e"), name = NULL,
+                    labels = c("Category 1", "Category 2")) +
+  labs(x = "Numeric Variable", y = "Count", title = "Histogram (stacked)") +
+  theme(legend.direction = "vertical", legend.position = c(.6, .9))
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-distribution-density-overlapping
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = body_mass_g)) + 
+  geom_density(aes(fill = sex, color = after_scale(fill)), alpha = .5, 
+               linewidth = 1, bw = 100) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_fill_manual(values = c("#28A87D", "#19694e"), name = NULL,
+                    labels = c("Category 1", "Category 2")) +
+  labs(x = "Numeric Variable", y = "Count", title = "Density Plot (overlapping)") +
+  theme(legend.direction = "vertical", legend.position = c(.6, .9))
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-ridgeline
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = body_mass_g, y = sex)) + 
+  ggridges::geom_density_ridges(
+    aes(fill = sex, color = after_scale(fill)),
+    alpha = .5, size = 1, bandwidth = 100
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_discrete(expand = c(.1, .1)) +
+  scale_fill_manual(values = c("#28A87D", "#19694e"), guide = "none") +
+  labs(x = "Numeric Variable", y = "Categorical Variable", title = "Ridgeline Plot") +
+  theme(legend.direction = "vertical", legend.position = c(.8, .9))
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-distribution-dot-plot
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = body_mass_g, y = sex)) + 
+  ggdist::stat_dots(aes(fill = sex), color = NA) +
+  scale_y_discrete(expand = c(.05, .05)) +
+  scale_fill_manual(values = c("#28A87D", "#19694e"), guide = "none") +
+  labs(x = "Numeric Variable", y = "Categorical Variable", title = "Dot Plots") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-boxplot
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = forcats::fct_rev(species), y = bill_length_mm)) + 
+  geom_boxplot(color = "#28A87D", fill = "#d9f6ec", size = 1.2) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Box-Whisker Plot")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-distribution-violin
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = forcats::fct_rev(species), y = bill_length_mm)) + 
+  geom_violin(fill = "#28A87D", color = NA, size = 1.2, bw = 1, width = .8) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Violin Plot")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-boxplot
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-violin-boxplot
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = forcats::fct_rev(species), y = bill_length_mm)) + 
+  geom_violin(fill = "#28A87D", color = NA, size = 1.2, bw = 1, width = .8) +
+  geom_boxplot(width = .1, color = "#d9f6ec", fill = "#28A87D", size = .6, outlier.colour = NA) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Violin Plot")
+```
+:::
+
+::::
+
+
+
+## Compare Distributions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-distribution-stripplot
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = forcats::fct_rev(species), y = bill_length_mm)) + 
+  geom_point(color = "#28A87D", size = 1.8, alpha = .8, 
+             position = position_jitter(seed = 2023, width = .2)) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Strip Plot")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-distribution-beeswarm
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = forcats::fct_rev(species), y = bill_length_mm)) + 
+  ggbeeswarm::geom_beeswarm(color = "#28A87D", cex = 1.8) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Beeswarm Plot")
+```
+:::
+:::
+
+::::
+
+
+
+# <span style='line-height:.97;'>Compare Amounts</span> {background-color="#c4edff"}
+
+
+
+## Compare Amounts
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species)) + 
+  geom_bar(fill = "#28A87D", width = .7) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Bar Chart")
+```
+
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-amounts-dots
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species)) + 
+  stat_count(geom = "point", color = "#28A87D", size = 7) +
+  scale_x_discrete(expand = c(.12, .12)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 160)) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Dot Plot")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-dots-lines
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species)) + 
+  stat_count(geom = "point", color = "#28A87D", size = 7) +
+  geom_vline(xintercept = c(1.5, 2.5), linetype = "dotted", color = "grey45") +
+  scale_x_discrete(expand = c(.12, .12)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 160)) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Dot Plot")
+```
+:::
+
+::::
+
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-lollipops
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(species) |> 
+  ggplot(aes(x = species, y = n)) + 
+  geom_linerange(aes(ymin = 0, ymax = n), color = "#28A87D", linewidth = 1.2) +
+  geom_point(color = "#28A87D", size = 7) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 160)) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Lollipop Chart")
+```
+:::
+
+::::
+
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-bars-multiple-stacked
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(penguins, body_mass_g > 3200), 
+       aes(x = species, group = sex, fill = sex)) + 
+  geom_bar(width = .7) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_fill_manual(values = c("#28A87D", "#19694e"), name = NULL, 
+                    labels = c("Category 1", "Category 2")) +
+  labs(x = "Categorical Variable", y = "Count", title = "Bar Chart (stacked)")
+```
+
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-amounts-bars-multiple-dodged
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(penguins, body_mass_g > 3200), 
+       aes(x = species, group = sex, fill = sex)) + 
+  geom_bar(width = .7, position = position_dodge2(width = .7)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_fill_manual(values = c("#28A87D", "#19694e"), name = NULL, 
+                    labels = c("Category 1", "Category 2")) +
+  labs(x = "Categorical Variable", y = "Count", title = "Bar Chart (grouped)")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-bars-multiple-stacked-alt
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(penguins, body_mass_g > 3200), 
+       aes(x = sex, group = species, fill = species)) + 
+  geom_bar(width = .7) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_fill_manual(values = c("#5AD8AE", "#28A87D", "#19694e"), name = NULL,
+                    labels = c("Category 1", "Category 2", "Category 3")) +
+  labs(x = "Categorical Variable", y = "Count", title = "Bar Chart (stacked)")
+```
+
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-amounts-bars-multiple-dodged-alt
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(penguins, body_mass_g > 3200), 
+       aes(x = sex, group = species, fill = species)) + 
+  geom_bar(width = .7, position = position_dodge2(width = .7)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_fill_manual(values = c("#5AD8AE", "#28A87D", "#19694e"), name = NULL,
+                    labels = c("Category 1", "Category 2", "Category 3")) +
+  labs(x = "Categorical Variable", y = "Count", title = "Bar Chart (grouped)")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-dots-multiple
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::filter(body_mass_g > 3200) |> 
+  dplyr::count(species, sex) |> 
+  ggplot(aes(x = species, y = n, group = sex, color = sex)) + 
+  geom_point(size = 5) +
+  geom_vline(xintercept = c(1.5, 2.5), linetype = "dotted", color = "grey45") +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.12, .12)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(28, 75)) +
+  scale_color_manual(values = c("#28A87D", "#19694e"), name = NULL, 
+                     labels = c("Category 1", "Category 2")) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Dot Plot")
+```
+
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-amounts-dumbbell
+#| echo: false
+#| cache: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins_n <- 
+  penguins |> 
+  dplyr::filter(body_mass_g > 3200) |> 
+  dplyr::count(species, sex)
+
+penguins_n_wide <- tidyr::pivot_wider(
+  penguins_n, id_cols = c(species), names_from = sex, values_from = n
+)
+
+penguins_n |> 
+  ggplot(aes(x = species, y = n, group = sex, color = sex)) + 
+  geom_linerange(data = penguins_n_wide, inherit.aes = FALSE, 
+                 aes(x = species, ymin = male, ymax = female),
+                 linewidth = .9, color = "grey30") +
+  geom_point(size = 5) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = c(.12, .12)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(28, 75)) +
+  scale_color_manual(values = c("#28A87D", "#19694e"), name = NULL, 
+                     labels = c("Category 1", "Category 2")) +
+  labs(x = "Categorical Variable", y = "Count", title = "Dumbbell Plot")
+```
+:::
+:::
+
+::::
+
+
+
+## {#dumbbell-example-paygap-eu data-menu-title="Dumbbell Plot Example"}
+
+![](img/paygap-eu-dumbbell.png){fig-align="center"}
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-amounts-dots-multiple
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-amounts-slope
+#| echo: false
+#| cache: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins_n <- 
+  penguins |> 
+  dplyr::filter(body_mass_g > 3200) |> 
+  dplyr::count(species, sex)
+
+penguins_n_wide <- tidyr::pivot_wider(
+  penguins_n, id_cols = c(species), names_from = sex, values_from = n
+)
+
+ggplot(penguins_n, aes(x = sex, y = n, color = species)) + 
+  geom_segment(
+    data = penguins_n_wide, 
+    aes(x = "male", xend = "female", y = male, yend = female),
+    linewidth = .9, color = "grey30"
+  ) +
+  geom_point(size = 5) +
+  scale_x_discrete(expand = c(.1, .1)) +
+  scale_y_continuous(limits = c(26, NA)) +
+  scale_color_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), name = NULL,
+                     labels = c("Category 1", "Category 2", "Category 3")) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Slope Chart")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Amounts
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: chart-types-amounts-heatmap
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins_n, aes(x = sex, y = species, fill = n)) + 
+  geom_tile(color = "white", size = 3) +
+  coord_cartesian(clip = "off") +
+  coord_cartesian(clip = "off", expand = FALSE) +
+  scale_x_discrete(position = "top") +
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"),
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Categorical Variable", y = "Categorical Variable", 
+       fill = "Numeric Variable", title = "Heatmap") +
+  theme(axis.line = element_blank(), axis.ticks = element_blank(), 
+        legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-amounts-heatmap-labels
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins_n, aes(x = sex, y = species, fill = n)) + 
+  geom_tile(color = "white", size = 3) +
+  geom_text(aes(label = n, color = n > 50), 
+            family = "Asap SemiCondensed", size = 7) +
+  coord_cartesian(clip = "off", expand = FALSE) +
+  scale_x_discrete(position = "top") +
+  scale_color_manual(values = c("black", "white"), guide = "none") +
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"),
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Categorical Variable", y = "Categorical Variable", 
+       fill = "Numeric Variable", title = "Heatmap Table") +
+  theme(axis.line = element_blank(), axis.ticks = element_blank(), 
+        legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+:::
+
+::::
+
+
+
+# <span style='line-height:.97;'>Compare Proportions</span> {background-color="#c4edff"}
+
+
+
+## Compare Proportions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-proportions-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(island) |> 
+  dplyr::mutate(perc = n / sum(n)) |> 
+  ggplot(aes(x = island, y = perc)) + 
+  geom_col(fill = "#28A87D", width = .7) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Categorical Variable", y = "Percentage", title = "Bar Chart")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-proportions-bars-stacked
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(island) |> 
+  dplyr::mutate(perc = n / sum(n)) |> 
+  ggplot(aes(x = 1, y = perc, fill = rev(island))) + 
+  geom_col(width = .7) +
+  scale_x_continuous(guide = "none") +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_fill_manual(values = c("#5AD8AE", "#28A87D", "#19694e"), name = NULL,
+                    labels = c("Category 3", "Category 2", "Category 1"),
+                    guide = guide_legend(reverse = TRUE)) +
+  labs(x = NULL, y = "Percentage", title = "Bar Chart (stacked to 100%)")
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Proportions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-proportions-pie
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(island) |> 
+  ggplot() +
+  ggforce::geom_arc_bar(
+    aes(x0 = 0, y0 = 0, r0 = 0, r = 1, amount = n, fill = island), 
+    stat = "pie", color = "white", linewidth = 1.5
+  ) +
+  geom_text(
+    x = c(.5, -.4, -.27), y = c(0, -.2, .6), label = c("Cat. 1", "Cat. 2", "Cat. 3"),
+    color = "white", size = 7, family = "Asap SemiCondensed", fontface = "bold"
+  ) + 
+  coord_fixed() +
+  scale_fill_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), guide = "none") +
+  labs(x = NULL, y = NULL, title = "Pie Chart") +
+  theme(axis.line = element_blank(), axis.ticks = element_blank())
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-proportions-donut
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(island) |> 
+  ggplot() +
+  ggforce::geom_arc_bar(
+    aes(x0 = 0, y0 = 0, r0 = 2, r = 1, amount = n, fill = island), 
+    stat = "pie", color = "white", linewidth = 1.5
+  ) +
+  geom_text(
+    x = c(1.5, -1.3, -.7), y = c(0, -.7, 1.35), label = c("Cat. 1", "Cat. 2", "Cat. 3"),
+    color = "white", size = 7, family = "Asap SemiCondensed", fontface = "bold"
+  ) + 
+  coord_fixed() +
+  scale_fill_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), guide = "none") +
+  labs(x = NULL, y = NULL, title = "Donut Chart") +
+  theme(axis.line = element_blank(), axis.ticks = element_blank())
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Proportions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-proportions-bars-stacked-100
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(year = factor(year), island) |> 
+  dplyr::group_by(year) |> 
+  dplyr::mutate(perc = n / sum(n)) |> 
+  ggplot(aes(y = year, x = perc, fill = rev(island))) + 
+  geom_col(width = .7) +
+  scale_x_continuous(expand = c(0, 0)) +
+  #scale_y_continuous(guide = "none") +
+  scale_fill_manual(values = c("#5AD8AE", "#28A87D", "#19694e"), name = NULL,
+                    labels = c("Category 3", "Category 2", "Category 1"),
+                    guide = guide_legend(reverse = TRUE)) +
+  labs(y = "Categorical Variable", x = "Percentage", title = "Bar Chart (stacked to 100%)") +
+  theme(axis.line.y = element_blank(), axis.ticks.y = element_blank())
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-proportions-bars-stacked-multiple
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(year = factor(year), island) |> 
+  dplyr::group_by(year) |> 
+  dplyr::mutate(perc = n / sum(n)) |> 
+  ggplot(aes(y = rev(island), x = perc, fill = island, alpha = year)) + 
+  geom_col(width = .7) +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_fill_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), guide = "none") +
+  scale_alpha_manual(values = c(.4, .7, 1), name = NULL,
+                    labels = c("Category C", "Category B", "Category A"),
+                    guide = guide_legend(reverse = TRUE)) +
+  labs(y = "Categorical Variable", x = "Percentage", title = "Bar Chart (stacked by category)") +
+  theme(axis.line.y = element_blank(), axis.ticks.y = element_blank())
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Proportions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-proportions-bars-stacked-100
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-proportions-pie-multiple
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(island, year) |> 
+  dplyr::mutate(
+    year = dplyr::case_when(year == 2007 ~ "Category A", 
+                            year == 2008 ~ "Category B", 
+                            TRUE ~ "Category C")
+  ) |> 
+  ggplot() +
+  ggforce::geom_arc_bar(
+    aes(x0 = 0, y0 = 0, r0 = 0, r = 1, amount = n, fill = island), 
+    stat = "pie", color = "white", linewidth = .7
+  ) +
+  facet_wrap(~ year) + 
+  coord_fixed() +
+  scale_fill_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), name = NULL,
+                    labels = c("Category 1", "Category 2", "Category 3")) +
+  labs(x = NULL, y = NULL, title = "Pie Chart") +
+  theme(axis.line = element_blank(), axis.ticks = element_blank(),
+        strip.background = element_rect(color = NA, fill = NA),
+        strip.text = element_text(color = "grey45"),
+        legend.position = "bottom",
+        plot.title = element_text(margin = margin(b = 60)),
+        plot.margin = margin(15, 15, 120, 15))
+```
+:::
+
+::::
+
+
+
+## Compare Proportions
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-proportions-treemap
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::count(island, year) |> 
+  dplyr::mutate(
+    year = dplyr::case_when(year == 2007 ~ "Category 1", 
+                            year == 2008 ~ "Category 2", 
+                            TRUE ~ "Category 3"),
+    island = factor(island, labels = c("Category A", "Category B", "Cat. C"))
+  ) |> 
+  ggplot(aes(area = n, fill = year, subgroup = island)) +
+  treemapify::geom_treemap(start = "topleft") +
+  treemapify::geom_treemap_subgroup_border(color = "white", start = "topleft") +
+  treemapify::geom_treemap_subgroup_text(
+    colour = "white", family = "Asap SemiCondensed", size = 16, fontface = "bold",
+    place = "center", start = "topleft"
+  ) +
+  coord_cartesian(expand = FALSE) +
+  scale_fill_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), name = NULL) +
+  labs(x = NULL, y = NULL, title = "Treemap") +
+  theme(axis.line = element_blank(), axis.ticks = element_blank())
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-proportions-mosaic
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+library(ggmosaic)
+
+penguins |>
+  dplyr::mutate(
+    year = dplyr::case_when(year == 2007 ~ "Category 1",
+                            year == 2008 ~ "Category 2",
+                            TRUE ~ "Category 3")
+  ) |>
+  ggplot() +
+  geom_mosaic(aes(x = product(year, island), fill = year)) +
+  coord_cartesian(expand = FALSE) +
+  scale_fill_manual(values = c("#19694e", "#28A87D", "#5AD8AE"), name = NULL) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Mosaic Plot") + ## TODO: check if y lab
+  theme(axis.line = element_blank(), axis.ticks = element_blank())
+```
+:::
+:::
+
+::::
+
+
+
+# <span style='line-height:.97;'>Visualize Relationships</span> {background-color="#c4edff"}
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::filter(year == 2009) |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point(color = "#28A87D", size = 2, alpha = .8) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Scatter Plot")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-relationships-bubble
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+penguins |> 
+  dplyr::filter(year == 2009) |> 
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point(aes(size = bill_depth_mm), color = "#28A87D", 
+             fill = "#28A87D", shape = 21, alpha = .5, stroke = .8) +
+  scale_size(guide = guide_legend(title.position = "top", title.hjust = .5)) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Buuble Chart",
+       size = "Numeric Variable") +
+  theme(legend.text = element_blank(), legend.justification = "center")
+```
+:::
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-overplotting
+#| echo: false
+#| cache: false
+#| fig-width: 5
+#| fig-height: 5.5
+set.seed(2023) 
+
+g <- 
+  data.frame(
+    x = rnorm(n = 3000, mean = 0, sd = 1),
+    y = rnorm(n = 3000, mean = 25, sd = 7)
+  ) |>
+  dplyr::mutate(y = x + log(y)) |> 
+  ggplot(aes(x = x, y = y)) +
+  coord_cartesian(xlim = c(-3.6, 4.6), ylim = c(-1.2, 8.1))
+
+g + 
+  geom_point(color = "#28A87D", size = 2, alpha = .15) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Scatter Plot")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-relationships-scatter-pointdensity
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+g + 
+  ggpointdensity::geom_pointdensity() +
+  scale_color_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), name = "Density",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Scatter Plot: Point Density") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-overplotting
+#| echo: false
+#| cache: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-binned
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+g + 
+  geom_bin2d(color = "white", binwidth = c(.2, .3), linewidth = .5) +
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), name = "Count",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Binned Scatter Plot: Tile Grid") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-overplotting
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-hex
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+g + 
+  geom_hex(color = "white", binwidth = c(.2, .3)) +
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), name = "Count",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Binned Scatter Plot: Hex Grid") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-overplotting
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-contour
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+g + 
+  geom_density_2d(color = "#28A87D") +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Density Contour Plot") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-overplotting
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-scatter-contour-filled
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+g +
+  geom_density_2d_filled() +
+  scale_fill_manual(
+    values = colorRampPalette(c("white", "#28A87D"))(8), guide = "none"
+  ) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Density Contour Plot") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-timeseries
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(gapminder::gapminder, country == "United States"),
+       aes(x = year, y = gdpPercap)) + 
+  geom_line(color = "#28A87D", linewidth = 2, lineend = "round") +
+  coord_cartesian(ylim = c(8000, NA)) + 
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Line Chart")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-relationships-timeseries-points
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(gapminder::gapminder, country == "United States"),
+       aes(x = year, y = gdpPercap)) + 
+  geom_line(color = "#28A87D", linewidth = 1.2) +
+  geom_point(color = "white", fill = "#28A87D", shape = 21, size = 5, stroke = 1.2) +
+  coord_cartesian(ylim = c(8000, NA)) + 
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Line Chart with Observation Markers")
+```
+:::
+:::
+
+::::
+
+
+
+## Visualize Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-timeseries-connected
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+data.frame(
+    t = 1:12,
+    x = c(-3, -2.5, -4, -2, 0, 1, 5, 7.5, 9, 6, 3.5, 2.5),
+    y = c(5, 2, 0, 5, 6, 5.5, 7, 1, -2, -1, -4, 1)
+  ) |> 
+  ggplot(aes(x = t, y = y)) + 
+  geom_line(aes(color = x), linewidth = 1.2) +
+  geom_point(aes(fill = x), color = "white", shape = 21, size = 5, stroke = 1) +
+  coord_cartesian(ylim = c(-5.5, NA)) + 
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), name = "Numeric Variable",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  scale_color_gradientn(colors = c("#8ae3c5", "#28A87D", "#0a291f"), guide = "none") +
+  labs(x = "Time", y = "Numeric Variable", title = "Line Chart (Timeseries)") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-relationships-connected-scatterplot
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+data.frame(
+    t = 1:12,
+    x = c(-3, -2.5, -4, -2, 0, 1, 5, 7.5, 9, 6, 3.5, 2.5),
+    y = c(5, 2, 0, 5, 6, 5.5, 7, 1, -2, -1, -4, 1)
+  ) |> 
+  ggplot(aes(x = x, y = y)) + 
+  geom_path(aes(color = t), linewidth = 1.2) +
+  geom_point(aes(fill = t), color = "white", shape = 21, size = 5, stroke = 1) +
+  coord_cartesian(ylim = c(-4.5, NA)) + 
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), name = "Time",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  scale_color_gradientn(colors = c("#8ae3c5", "#28A87D", "#0a291f"), guide = "none") +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Connected Scatterplot") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+:::
+
+::::
+
+
+
+# <span style='line-height:.97;'>Compare Relationships</span> {background-color="#c4edff"}
+
+
+
+## Compare Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-timeseries-multiple
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(gapminder::gapminder, country %in% c("United States", "Japan")),
+       aes(x = year, y = lifeExp)) + 
+  geom_line(aes(color = country), linewidth = 1.2, lineend = "round") +
+  coord_cartesian(ylim = c(58, NA), expand = FALSE, clip = "off") +
+  scale_color_manual(values = c("#28A87D", "#9C55E3"), name = NULL,
+                     labels = c("Category 1", "Category 2")) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Line Chart") +
+  theme(legend.position = c(.03, .89))
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-relationships-timeseries-multiple-braids
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+df_wide <- 
+  gapminder::gapminder |> 
+  dplyr::filter(country %in% c("United States", "Japan")) |> 
+  tidyr::pivot_wider(id_cols = c(year), names_from = country, values_from = lifeExp)
+
+ggplot(dplyr::filter(gapminder::gapminder, country %in% c("United States", "Japan")),
+       aes(x = year, y = lifeExp))+
+  ggbraid::geom_braid(
+    data = df_wide, inherit.aes = FALSE, 
+    aes(x = year, ymin = Japan, ymax = `United States`, 
+        fill = Japan < `United States`), alpha = .3
+  ) +
+  geom_line(aes(color = country), linewidth = 1.2, lineend = "round") +
+  coord_cartesian(ylim = c(58, NA), expand = FALSE, clip = "off") +
+  scale_color_manual(values = c("#28A87D", "#9C55E3"), name = NULL,
+                     labels = c("Category 1", "Category 2")) +
+  scale_fill_manual(values = c("#28A87D", "#9C55E3"), guide = "none") +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Line Chart with Ribbons") + 
+  theme(legend.position = c(.03, .89))
+```
+:::
+:::
+
+::::
+
+
+
+## Compare Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-timeseries-multiple
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-timeseries-dumbbell
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+df_wide <- 
+  gapminder::gapminder |> 
+  dplyr::filter(country %in% c("United States", "Japan")) |> 
+  tidyr::pivot_wider(id_cols = c(year), names_from = country, values_from = lifeExp) |> 
+  dplyr::mutate(greater = dplyr::if_else(Japan < `United States`, "United States", "Japan"))
+
+ggplot(dplyr::filter(gapminder::gapminder, country %in% c("United States", "Japan")),
+       aes(x = year, y = lifeExp)) +
+  geom_linerange(
+    data = df_wide, inherit.aes = FALSE, 
+    aes(x = year, ymin = Japan, ymax = `United States`, color = greater),
+    linewidth = .9, alpha = .65, show.legend = FALSE
+  ) +
+  geom_point(aes(color = country), size = 3) +
+  scale_color_manual(values = c("#28A87D", "#9C55E3"), name = NULL,
+                     labels = c("Category 1", "Category 2")) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Dumbbell Chart") + 
+  theme(legend.position = c(.03, .89))
+```
+:::
+:::
+
+::::
+:::
+:::
+
+::::
+
+
+
+## Compare Relationships
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-correlogram-tile
+#| echo: false
+#| cache: false
+#| fig-width: 5
+#| fig-height: 6.3
+corm <-
+  penguins |>
+  dplyr::select(bill_depth_mm, bill_length_mm, flipper_length_mm) |>
+  corrr::correlate(diagonal = 1) |>
+  corrr::shave(upper = FALSE)|>
+  tidyr::pivot_longer(
+    cols = -term,
+    names_to = "colname",
+    values_to = "corr"
+  )
+
+ggplot(corm, aes(x = term, y = colname, fill = corr)) +
+  geom_tile() +
+  coord_fixed(expand = FALSE) +
+  scale_x_discrete(position = "top") +
+  scale_fill_gradient2(
+    low = "#EFAC00", high = "#28A87D", mid = "grey90", na.value = "white",
+    name = "Correlation Metric",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Categorical Variable", y = "Categorical Variable", title = "Correlogram (Tiles)") +
+  theme(axis.line = element_blank(), legend.text = element_blank(), 
+        legend.key.width = unit(3, "lines"), legend.key.height = unit(.6, "lines"), 
+        legend.justification = "center")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-relationships-correlogram-bubble
+#| echo: false
+#| fig-width: 5
+#| fig-height: 6.3
+ggplot(corm, aes(x = term, y = colname, fill = corr)) +
+  geom_point(aes(size = abs(corr)), shape = 21, color = "grey30", stroke = .6) +
+  coord_fixed() +
+  scale_x_discrete(position = "top") +
+  scale_fill_gradient2(
+    low = "#EFAC00", high = "#28A87D", mid = "grey90", na.value = "white",
+    name = "Correlation Metric",
+    guide = guide_colorbar(ticks = FALSE, title.position = "top", title.hjust = .5)
+  ) +
+  scale_size_area(max_size = 35, guide = "none") +
+  labs(x = "Categorical Variable", y = "Categorical Variable", title = "Correlogram (Bubbles)") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"), 
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+# <span style='line-height:.97;'>Visualize Uncertainty</span> {background-color="#c4edff"}
+
+
+
+## Visualize Uncertainty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-error-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) + 
+  stat_summary(fun.data = function(y) mean_sdl(y, mult = 1),
+               color = "#28A87D", size = 1.5, linewidth = 1.2) + 
+  stat_summary(geom = "errorbar", fun.data = function(y) mean_sdl(y, mult = 1),
+               color = "#28A87D", width = .3, linewidth = 1.2) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Error Bars") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::: {.column width="50%"}
+:::
+
+::::
+
+
+
+## Visualize Uncertainty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-error-bars-title
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) + 
+  stat_summary(fun.data = function(y) mean_sdl(y, mult = 1),
+               color = "#28A87D", size = 1.5, linewidth = 1.2) + 
+  stat_summary(geom = "errorbar", fun.data = function(y) mean_sdl(y, mult = 1),
+               color = "#28A87D", width = .3, linewidth = 1.2) +
+  labs(x = "Categorical Vairable", y = "Numeric Variable", title = "Error Bars: mean ± SD") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-error-bars-se
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) + 
+  stat_summary(color = "#28A87D", size = 1, linewidth = 1.2) + 
+  stat_summary(geom = "errorbar",
+               color = "#28A87D", width = .3, linewidth = 1.2) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Error Bars: mean ± SE") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Uncertainty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-error-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-dynamites
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) + 
+  stat_summary(geom = "bar", fill = "#28A87D", width = .7) + 
+  stat_summary(geom = "errorbar", fun.data = function(y) mean_sdl(y, mult = 1),
+               color = "grey30", width = .15, linewidth = 1.2) +
+  coord_cartesian(clip = "off") +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Dynamite Plots") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## {#barbar-charts-raincloud-plots data-menu-title="Dynamite Plots and Alternatives"}
+
+![](img/shrek-barbar-raincloud.png){fig-align="center"}
+
+
+
+## {#barbar-charts-weissgerber-0 data-menu-title="Dynamite Plots and Alternatives"}
+
+![[Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-title.png)
+
+
+
+## {#barbar-charts-weissgerber-1 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-bars-1.png)
+
+
+
+## {#barbar-charts-weissgerber-2 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-bars-2.png)
+
+
+
+## {#barbar-charts-weissgerber-3 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-bars-3.png)
+
+
+
+## {#barbar-charts-weissgerber-4 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-bars-4.png)
+
+
+
+## {#barbar-charts-weissgerber-5 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-bars-6.png)
+
+
+
+## {#barbar-charts-weissgerber-6 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-paired-1.png)
+
+
+
+## {#barbar-charts-weissgerber-7 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-paired-2.png)
+
+
+
+## {#barbar-charts-weissgerber-8 data-menu-title="Dynamite Plots and Alternatives"}
+
+![Modified from [Weissgerber et al. (2015) PLoS Biology](https://doi.org/10.1371/journal.pbio.1002128)](img/weissgerber-paired-3.png)
+
+
+
+
+## Visualize Uncertainty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-error-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-interval
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) + 
+  ggdist::stat_pointinterval(color = "#28A87F", point_size = 4) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Multi-Interval Errors Bars") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Uncertainty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-error-bars
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-eyes
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) + 
+  ggdist::stat_halfeye(color = "#28A87F", fill = "#aaebd5", point_size = 4, adjust = .7) +
+  labs(x = "Categorical Variable", y = "Numeric Variable", title = "Half-Eye Plots") +
+  theme(legend.text = element_blank(), legend.key.width = unit(3, "lines"),
+        legend.key.height = unit(.6, "lines"), legend.justification = "center")
+```
+:::
+
+::::
+
+
+
+## Visualize Uncertainty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: chart-types-uncertainty-confidence-band
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(gapminder::gapminder, continent == "Europe"), 
+       aes(x = year, y = gdpPercap)) + 
+  geom_smooth(color = "#1D785A", fill = "#7adfbd", linewidth = 2, lineend = "round") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 5)) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Confidence Band")
+```
+:::
+
+::: {.column width="50%"}
+::: fragment
+```{r}
+#| label: chart-types-uncertainty-confidence-band-graded
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5.5
+ggplot(dplyr::filter(gapminder::gapminder, continent == "Europe"), 
+       aes(x = year, y = gdpPercap)) + 
+  ggdist::stat_lineribbon(.width = c(.25, .5, .75, 0.95), 
+                          color = "#155942", linewidth = 2, lineend = "round") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_fill_manual(
+    values = colorRampPalette(c("#d9f6ec", "#28A87F"))(4), 
+    name = "Uncertainty Level", labels = c("95%", "75%", "50%", "25%"), 
+    guide = guide_legend(reverse = TRUE, title.position = "top", title.hjust = .5)
+  ) +
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Graded Confidence Bands") +
+  theme(legend.key.width = unit(2, "lines"), legend.justification = "center")
+```
+:::
+:::
+
+:::
+
+
+
+# <span style='line-height:.97;'>Solving Common Chart Issues</span>
+
+
+
+## Overplotting Issue
+
+```{r}
+#| label: chart-types-relationships-scatter-overplotting-solution
+#| echo: false
+#| fig-width: 14
+#| fig-height: 7.8
+op1 <- g + 
+  geom_point(color = "#28A87D", size = 2, alpha = .15) +
+  labs(x = NULL, y = NULL)
+
+op2 <- g + 
+  ggpointdensity::geom_pointdensity() +
+  scale_color_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), guide = "none") +
+  labs(x = NULL, y = NULL)
+
+op3 <- g + 
+  geom_hex(color = "white", binwidth = c(.2, .3)) +
+  scale_fill_gradientn(
+    colors = c("#8ae3c5", "#28A87D", "#0a291f"), guide = "none"
+  ) +
+  labs(x = NULL, y = NULL)
+
+op4 <- g + 
+  geom_density_2d(color = "#28A87D") +
+  labs(x = NULL, y = NULL)
+
+library(patchwork)
+
+op1 + op2 + op3 + op4
+```
+
+
+
+## Spaghetti Plots
+
+![](img/2_jpmorgan_line_orig.png){fig-align="center"}
+
+
+
+## Spaghetti Plots
+
+```{r}
+#| label: spaghetti-plot-gapminder
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 7.7
+library(gapminder)
+
+theme_set(theme_minimal(base_size = 22, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid.minor = element_blank(),
+  plot.margin = margin(rep(20, 4)),
+  strip.text = element_text(size = rel(1)),
+  panel.spacing.x = unit(3.5, "lines"),
+  panel.spacing.y = unit(1.5, "lines")
+)
+
+countries_g7 <- c("Japan", "United States", "Canada", "France", "Germany", "Italy", "United Kingdom")
+
+gm_g7 <- 
+  gapminder |> 
+  dplyr::filter(country %in% countries_g7) |> 
+  dplyr::group_by(country) |> 
+  dplyr::mutate(lifeExp_last = lifeExp[which(year == 2007)]) |> 
+  dplyr::ungroup()
+
+colors <- RColorBrewer::brewer.pal(name = "Dark2", n = 7)
+names(colors) <- countries_g7
+
+g <- 
+  ggplot(data = gm_g7, aes(x = year, y = lifeExp)) +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_x_continuous(breaks = seq(1952, 2007, by = 5)) +
+  scale_y_continuous(limits = c(59, 85)) +
+  scale_color_manual(values = colors) +
+  labs(x = NULL, y = "Life expectancy", color = NULL) +
+  theme(legend.justification = "top")
+
+g + 
+  geom_line(aes(color = forcats::fct_reorder(country, -lifeExp_last)), linewidth = .7)
+```
+
+
+
+## Spaghetti Plots
+
+```{r}
+#| label: spaghetti-plot-gapminder-facet
+#| echo: false
+#| fig-width: 14
+#| fig-height: 7.7
+gf <- g + 
+  facet_wrap(~ forcats::fct_reorder(country, -lifeExp_last), nrow = 2, scales = "free_x") +
+  scale_x_continuous(breaks = c(1952, 2007)) +
+  guides(color = "none") +
+  theme(plot.margin = margin(20, 20, 20, 20), axis.title.y = element_text(hjust = 1, margin = margin(r = 12)))
+
+gf + 
+  geom_line(linewidth = 1.2)
+```
+
+
+
+## Spaghetti Plots
+
+```{r}
+#| label: spaghetti-plot-gapminder-facet-shading
+#| echo: false
+#| fig-width: 14
+#| fig-height: 7.7
+gf + 
+  geom_line(data = dplyr::select(gm_g7, country2 = country, year, lifeExp), 
+            aes(group = country2), color = "grey40", alpha = .5, linewidth = .5) + 
+  geom_line(linewidth = 1.2)
+```
+
+
+
+## Spaghetti Plots
+
+![](img/2_jpmorgan_line_trend_alt.png){fig-align="center"}
+
+
+
+## Stacked Bars Issue
+
+```{r}
+#| label: stacked-bars-cars-prep
+#| echo: false
+#| cache: false
+theme_set(theme_minimal(base_size = 24, base_family = "Asap SemiCondensed"))
+theme_update(
+  panel.grid = element_blank(),
+  plot.title.position = "plot",
+  plot.caption.position = "plot",
+  plot.title = ggtext::element_textbox_simple(
+    size = rel(1.7), face = "bold", margin = margin(b = 35), color = "grey40"
+  ),
+  plot.caption = element_text(hjust = 0, color = "grey40", size = rel(.75), margin = margin(t = 40)),
+  legend.position = "none",
+  axis.title.y = element_text(margin = margin(r = 15)),
+  axis.text.x = element_text(size = rel(1.15)),
+  axis.ticks.y = element_line(color = "grey70", linewidth = .4),
+  axis.ticks.length.y = unit(.7, "lines"),
+  strip.text.x = element_text(size = rel(1.8), family = "Asap SemiCondensed", 
+                                color = "grey40", margin = margin(b = 20)),
+  panel.spacing.x = unit(3, "lines")
+)
+
+auto_zulassung_kraftstoff <- 
+  rio::import(here::here("materials", "data", "5_abb_entwicklung-pkw-neuzulass-kraftstoffart_2023-04-28.xlsx"), skip = 8) |> 
+  tibble::as_tibble() |> 
+  janitor::clean_names() |> 
+  dplyr::filter(!is.na(x1)) |> 
+  dplyr::select(jahr = x1, benzin:pkw_gesamt)
+
+zulassung_det_long <- 
+  auto_zulassung_kraftstoff |> 
+  dplyr::mutate(
+    `Benzin &\nDiesel` = benzin + diesel,
+    andere = flussiggas + erdgas + sonstige
+  ) |> 
+  dplyr::select(jahr, pkw_gesamt, `Benzin &\nDiesel`, 
+                Hybrid = hybrid, Elektro = elektro, andere) |> 
+  tidyr::pivot_longer(cols = -c(jahr, pkw_gesamt), names_to = "type", values_to = "number") |> 
+  dplyr::filter(jahr >= 2018, type != "andere") |> 
+  dplyr::mutate(
+    type = factor(type, levels = c("Benzin &\nDiesel", "Hybrid", "Elektro")),
+    type = factor(type, labels = c("Gasoline & Diesel", "Hybrid", "Electric")))
+```
+
+```{r}
+#| label: stacked-bars-cars
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gb <- 
+  ggplot(zulassung_det_long, 
+         aes(x = jahr, y = number, fill = forcats::fct_rev(type))) +
+  geom_col(width = .7) +
+  geom_hline(
+    yintercept = c(0, 1), lineend = "round", 
+    linewidth = .4, color = "grey70"
+  ) +
+  labs(
+    x = NULL, y = NULL, title = "New vehicle registrations in Germany", 
+    caption = "Source: Federal ministry for digital and transport / Kraftfahrt-Bundesamt • Graphic: Cédric Scherer"
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(breaks = 2017:2022, expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::label_number(scale = 1/1000000, suffix = "M"), expand = c(.01, .01)) +  
+  scale_fill_manual(values = c("#28A87D", "#5ACDA6", "#EFAC00"), name = NULL) +
+  theme(legend.position = "right",
+        legend.text = element_text(size = rel(1), margin = margin(5, 0, 5, 0)),
+        plot.margin = margin(15, 15, 10, 15))
+
+gb
+```
+
+
+
+## Stacked Bars Issue
+
+```{r}
+#| label: stacked-bars-cars-lines
+#| echo: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+ggplot(zulassung_det_long, 
+       aes(x = jahr, y = number, color = type)) +
+  geomtextpath::geom_textline(
+    aes(label = paste(type, "  ")), vjust = 1.5, hjust = 1, size = 10, family = "Asap SemiCondensed", fontface = "bold"
+  ) +
+  geom_line(aes(color = type, color = after_scale(prismatic::clr_lighten(color, .5))), linewidth = 2.5) +
+  geom_point(size = 8) +
+  labs(
+    x = NULL, y = NULL, title = "New vehicle registrations in Germany", 
+    caption = "Source: Federal ministry for digital and transport / Kraftfahrt-Bundesamt • Graphic: Cédric Scherer"
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_continuous(breaks = 2017:2022, expand = c(0, 0)) +
+  scale_y_continuous(labels = scales::label_number(scale = 1/1000000, suffix = "M"), expand = c(.01, .01), limits = c(0, NA)) +  
+  scale_color_manual(values = c("#EFAC00", "#5ACDA6", "#28A87D"), name = NULL) +
+  theme(plot.margin = margin(15, 25, 10, 15),
+        panel.grid.major.y = element_line(color = "grey70", linewidth = .4))
+```
+
+
+
+## Stacked Bars Issue
+
+```{r}
+#| label: stacked-bars-cars-facet
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gf <- gb +
+  geom_col(width = .7, aes(fill = forcats::fct_rev(type))) +
+  geom_hline(
+    yintercept = c(0, 1), lineend = "round", 
+    linewidth = .4, color = "grey70"
+  ) +
+  facet_wrap(~type) +
+  theme(legend.position = "none") 
+
+gf
+```
+
+
+
+## Stacked Bars Issue
+
+```{r}
+#| label: stacked-bars-cars-facet-grey
+#| echo: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gf +
+  scale_fill_manual(values = c("grey25", "grey25", "grey25"))
+```
+
+
+
+## Stacked Bars Issue
+
+```{r}
+#| label: stacked-bars-cars-facet-total
+#| echo: false
+#| fig-width: 14
+#| fig-height: 11
+#| fig-align: center
+gf +
+  geom_col(data = dplyr::select(zulassung_det_long, -type), fill = "grey85", width = .7) +
+  geom_col(width = .7, fill = "grey25") +
+  geom_hline(
+    yintercept = c(0, 1), lineend = "round", 
+    linewidth = .4, color = "grey70"
+  )
+```
+
+
+
+## Dual Axis Issue
+
+<span style='font-size:.8em;'>Examples by Lisa Charlotte Muth, <a href='https://blog.datawrapper.de/dualaxis/'>DataWrapper Blog</a></span>
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](img/dual-axis-datawrapper-1.png)
+<br><br>
+
+::: fragment
+![](img/dual-axis-datawrapper-2.png)
+:::
+:::
+
+::: {.column width="50%"}
+::: fragment
+![](img/dual-axis-datawrapper-3.png)
+<br><br>
+:::
+
+::: fragment
+![](img/dual-axis-datawrapper-4.png)
+:::
+:::
+
+::::
+
+
+
+## Dual Axis Issue
+
+<br>
+
+![Source: [Spurious Correlations](https://tylervigen.com/spurious-correlations)](img/spurious-correlations.png)
+
+
+
+## Dual Axis Issue
+
+![<br>Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/dualaxis/)](img/dual-axis-datawrapper-wondering.png)
+
+
+
+## Dual Axis Issue
+
+![<br>Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/dualaxis/)](img/dual-axis-trends-datawrapper.png)
+
+
+
+## Dual Axis Issue
+
+<br>
+
+![<br>Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/dualaxis/)](img/dual-axis-datawrapper-solution-1.png)
+
+
+
+## Dual Axis Issue
+
+<br>
+
+![<br>Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/dualaxis/)](img/dual-axis-datawrapper-solution-2.png)
+
+
+
+## Skewed Data
+
+```{r}
+#| label: bars-skewed
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 7.8
+data <- data.frame(
+  grp = LETTERS[1:15],
+  value = c(265, 254, 233, 17, 16, 14, 10, 7, 5.5, 5.5, 4, 3, 2, 1.5, 1.2)
+)
+
+ggplot(data, aes(x = grp, y = value)) +
+  geom_col(fill = "grey55", width = .75) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = "Category", y = "Value")
+```
+
+
+
+## Skewed Data
+
+```{r}
+#| label: bars-skewed-broken-axis
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 7.8
+data |> 
+  dplyr::mutate(value = ifelse(value > 20, value - 200, value)) |> 
+  ggplot(aes(x = grp, y = value)) +
+  geom_col(fill = "grey55", width = .75) +
+  annotate(geom = "rect", xmin = -Inf, xmax = Inf, ymin = 23, ymax = 26, fill = "white", color = "white") +
+  coord_cartesian(expand = FALSE, clip = "off") +
+  scale_y_continuous(breaks = c(0, 20, 30, 50), labels = c(0, 20, 230, 250)) +
+  labs(x = "Category", y = "Value")
+```
+
+
+
+## Skewed Data
+
+```{r}
+#| label: bars-skewed-log
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 7.8
+ggplot(data, aes(x = grp, y = value)) +
+  geom_col(fill = "grey55", width = .75) +
+  coord_cartesian(expand = FALSE) +
+  scale_y_log10() +
+  labs(x = "Category", y = "Value")
+```
+
+
+
+## Skewed Data
+
+```{r}
+#| label: bars-skewed-other
+#| echo: false
+#| cache: false
+#| fig-width: 14
+#| fig-height: 7.8
+data |> 
+  dplyr::mutate(grp = ifelse(value > 20, grp, "other")) |> 
+  dplyr::group_by(grp) |> 
+  dplyr::summarize(value = sum(value)) |> 
+  ggplot(aes(x = grp, y = value)) +
+  geom_col(fill = "grey55", width = .75) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = "Category", y = "Value")
+```
+
+
+
+## Skewed Data
+
+<br>
+
+```{r}
+#| label: bars-skewed-panel
+#| echo: false
+#| cache: false
+#| fig-width: 18
+#| fig-height: 7.8
+p1 <- data |> 
+  dplyr::mutate(grp = ifelse(value > 20, grp, "other")) |> 
+  dplyr::group_by(grp) |> 
+  dplyr::summarize(value = sum(value)) |> 
+  ggplot(aes(x = grp, y = value, fill = grp == "other")) +
+  geom_col(width = .75) +
+  coord_cartesian(expand = FALSE) +
+  scale_fill_manual(values = c("#28A87D", "grey65"), guide = "none") +
+  labs(x = "Category", y = "Value", title = "All categories")
+
+p2 <- data |> 
+  dplyr::filter(value < 20) |> 
+  ggplot(aes(x = grp, y = value)) +
+  geom_col(fill = "grey65", width = .75) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = "Category", y = "Value", title = "Other categories")
+
+library(patchwork)
+p1 + plot_spacer() + p2 + plot_layout(widths = c(.4, .05, 1))
+```
+
+
+
+
+# Exercises
+
+
+
+## Exercise 1
+
+::: question
+<b style='font-size:1.3em;'>Discuss the following graphic.</b>
+
+-   What is the main message?
+-   Does the chart type work?
+-   Is there a better chart type?
+-   Draw an alternative version(s) using different chart type(s).
+:::
+
+
+## Exercise 1
+
+![Market share of visits to social network sites in November 2017,<br>found in the blog post on [“Why you shouldn’t use pie charts”](https://scc.ms.unimelb.edu.au/resources/data-visualisation-and-exploration/no_pie-charts) by The University of Melbourne](img/exercise-pie.png)
+
+
+
+## Exercise 2
+
+::: question
+<b style='font-size:1.3em;'>Imagine you could get your hands on additional data on market shares of visits to social network sites.</b>
+-   What kind of data would you love to explore?
+-   What would be stories you'd like to tell?
+-   What could be suitable chart types to tell such a story?
+:::
+
+
+
+##  {background-image="img/exercise-what-now.png" background-position="center" background-size="75%"}

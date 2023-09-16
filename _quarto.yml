@@ -10,9 +10,9 @@ website:
   page-navigation: true
   title: ""
   description: "Homepage for posit::conf(2023) workshop"
-  site-url: "https://posit-conf-2023.github.io/dataviz-ggplot2/"
+  site-url: "https://posit-conf-2023.github.io/dataviz-storytelling/"
   
-  repo-url: https://github.com/posit-conf-2023/dataviz-ggplot2
+  repo-url: https://github.com/posit-conf-2023/dataviz-storytelling
   repo-actions: [edit, issue]
 
   open-graph: true
@@ -33,19 +33,11 @@ website:
     pinned: true
     align: center
     right:
-      - icon: download
-        text: Downloads
-        menu: 
-          - text: All Course Materials
-            href: materials/positconf-2023-ggplot2-materials.zip
       - icon: file-certificate
         href: license.qmd
       - icon: github
         href: https://github.com/posit-conf-2023/dataviz-storytelling
         text: GitHub
-      - icon: notebook-fill
-        href: https://google.com
-        text: Posit Connect
     left:
       - text: Information
         menu: 
@@ -57,14 +49,14 @@ website:
             href: team.qmd
       - text: Sessions
         menu: 
-          - text: Fundamentals & Workflows
-            href: modules/s01-fundamentals.qmd
-          - text: Working with Text
-            href: modules/s03-text.qmd
-          - text: Working with Colors
-            href: modules/s05-colors.qmd
-          - text: Working with Theming
-            href: modules/s07-theming.qmd
+          - text: Foundations of Data Visualization
+            href: modules/s01-foundations.qmd
+          - text: Choose an Appropriate Display
+            href: modules/s03-display.qmd
+          - text: Think Like a Designer
+            href: modules/s05-design.qmd
+          - text: Guide the View(er)
+            href: modules/s07-guide.qmd
 
 format:
   html:
