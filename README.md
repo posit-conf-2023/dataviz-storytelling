@@ -32,15 +32,15 @@ This course is for you if you:
 
 ## Schedule (TBA)
 
-| Time          | Activity         |
-| :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
-| 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Session 2        |
-| 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
-| 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+| Time          | Activity                            |
+| :------------ | :---------------------------------- |
+| 09:00 - 10:30 | Foundamentals of Data Visualization |
+| 10:30 - 11:00 | *Coffee break*                      |
+| 11:00 - 12:30 | Choose an Appropriate Display       |
+| 12:30 - 13:30 | *Lunch break*                       |
+| 13:30 - 15:00 | Think Like a Designer               |
+| 15:00 - 15:30 | *Coffee break*                      |
+| 15:30 - 17:00 | Guide the View(er)                  |
 
 
 ## Prework
