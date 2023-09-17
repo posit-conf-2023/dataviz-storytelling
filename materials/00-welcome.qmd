@@ -34,15 +34,15 @@ execute:
 ---
 
 
+# Welcome<br><br><br><br><br><br> {background-image="img/logo-welcome-before.png" background-position="center" background-size="40%"}
+
+
+
 # Welcome<br><br><br><br><br><br> {background-image="img/logo-welcome.png" background-position="center" background-size="40%"}
 
 
 
-# Welcome<br><br><br><br><br><br> {#course-logo-before data-menu-title="Course Logo Before" background-image="img/logo-welcome-before.png" background-position="center" background-size="40%"}
-
-
-
-##  {#hello-blank data-menu-title="Hello" background-image="img/intro/hello-blank.png" background-position="center" background-size="62%"}
+## {#hello-blank data-menu-title="Hello" background-image="img/intro/hello-blank.png" background-position="center" background-size="62%"}
 
 
 
@@ -129,6 +129,12 @@ execute:
 
 
 ##  {#hello-ciera data-menu-title="Hello Ciera" background-image="img/intro/hello-ciera.png" background-position="center" background-size="62%"}
+
+
+
+##  {#ciera-ceramic-art data-menu-title="Ciera Ceramic Art"}
+
+![Ceramic art by Ciera Martinez](img/intro/ciera-ceramic-art.png)
 
 
 
