@@ -687,7 +687,27 @@ data|>
 
 
 
+## Assist the Viewer {.center}
 
+![Source: [Jan Kühn](https://www.linkedin.com/posts/jankuehn_datavisualization-activity-7108374728871948288-X7la)](img/richest-people-germany-zoom.png){fig-align="center"}
+
+
+
+## Assist the Viewer {.center}
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/text-in-data-visualizations/)](img/datawrapper-direct-labels.png){fig-align="center"}
+
+
+
+## Assist the Viewer {.center}
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/text-in-data-visualizations/)](img/datawrapper-axis-placement.png){fig-align="center"}
+
+
+
+## Assist the Viewer {.center}
+
+![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/text-in-data-visualizations/)](img/datawrapper-axis-units.png){fig-align="center"}
 
 
 
