@@ -2118,7 +2118,7 @@ penguins |>
   geom_point(aes(size = bill_depth_mm), color = "#28A87D", 
              fill = "#28A87D", shape = 21, alpha = .5, stroke = .8) +
   scale_size(guide = guide_legend(title.position = "top", title.hjust = .5)) +
-  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Buuble Chart",
+  labs(x = "Numeric Variable", y = "Numeric Variable", title = "Bubble Chart",
        size = "Numeric Variable") +
   theme(legend.text = element_blank(), legend.justification = "center")
 ```

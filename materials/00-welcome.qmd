@@ -134,6 +134,8 @@ execute:
 
 ##  {#ciera-ceramic-art data-menu-title="Ciera Ceramic Art"}
 
+<br>
+
 ![Ceramic art by Ciera Martinez](img/intro/ciera-ceramic-art.png)
 
 
@@ -183,7 +185,7 @@ execute:
 ## {#course-webpage data-menu-title="Course Webpage" .center}
 
 <div style='text-align:center;'>
-<a href="https://posit-conf-2023.github.io/dataviz-ggplot2/" style='font-family:spline sans mono;font-size:50pt;font-weight:700;'>posit-conf-2023.github.io/<br>dataviz-ggplot2</a>
+<a href="https://posit-conf-2023.github.io/dataviz-storytelling/" style='font-family:spline sans mono;font-size:50pt;font-weight:700;'>posit-conf-2023.github.io/<br>dataviz-storytelling</a>
 </div>
 
 

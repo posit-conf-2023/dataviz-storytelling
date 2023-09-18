@@ -67,7 +67,7 @@
     "href": "materials/00-welcome.html#course-webpage",
     "title": "Designing Data Visualizationsto Successfully Tell a Story",
     "section": "",
-    "text": "posit-conf-2023.github.io/dataviz-ggplot2"
+    "text": "posit-conf-2023.github.io/dataviz-storytelling"
   },
   {
     "objectID": "materials/00-welcome.html#announcements-1",
@@ -1664,13 +1664,6 @@
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-test-apca-2",
-    "href": "materials/03-design.html#contrast-test-apca-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
   },
   {
     "objectID": "materials/03-design.html#contrast-test-apca-3",
