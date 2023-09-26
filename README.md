@@ -1,9 +1,8 @@
-Designing Data Visualizations to Successfully Tell a Story
-================
+# [Designing Data Visualizations to Successfully Tell a Story](https://posit-conf-2023.github.io/dataviz-storytelling/)
 
 ### posit::conf 2023
 
-by Cédric Scherer
+by Cédric Scherer[<img src="https://raw.githubusercontent.com/posit-conf-2023/dataviz-ggplot2/main/images/logo.png" align="right" width="150">](https://posit-conf-2023.github.io/dataviz-ggplot2/)
 
 -----
 
