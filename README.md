@@ -2,7 +2,7 @@
 
 ### posit::conf 2023
 
-by Cédric Scherer[<img src="https://raw.githubusercontent.com/posit-conf-2023/dataviz-ggplot2/main/images/logo.png" align="right" width="150">](https://posit-conf-2023.github.io/dataviz-ggplot2/)
+by Cédric Scherer[<img src="https://raw.githubusercontent.com/posit-conf-2023/dataviz-storytelling/main/images/logo.png" align="right" width="150">](https://posit-conf-2023.github.io/dataviz-storytelling/)
 
 -----
 
