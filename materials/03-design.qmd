@@ -1024,7 +1024,7 @@ ggplot(movies, aes(x = gross_millions,
   geom_col(fill = "grey70", width = .75) +
   scale_x_continuous(expand = c(.01, .01), labels = scales::label_dollar(suffix = "M")) +
   scale_y_discrete(labels = c("Coco", "Ferdinand", 
-"Greatest Showman", "Jumanji (WTTJ)", "Pich Perfect 3", 
+"Greatest Showman", "Pich Perfect 3", "Jumanji: WTTJ", 
 "Star Wars VIII")) +
   labs(y = "Movie name", x = "Weekend gross") +
   theme(panel.grid.major.y = element_blank(),

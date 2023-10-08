@@ -87,7 +87,7 @@ execute:
 
 
 
-## {#dataviz-history-minard data-menu-title="DataViz History"}
+## {#dataviz-history-minard-napoleon data-menu-title="DataViz History"}
 
 <br>
 
@@ -95,9 +95,9 @@ execute:
 
 
 
-## {#dataviz-history-minard-2 data-menu-title="DataViz History"}
+## {#dataviz-history-minard-napoleon-hannibal data-menu-title="DataViz History"}
 
-![“Carte figurative des pertes successives en hommes de l'Armée Française dans la campagne de Russie 1812–1813” and “Carte figurative des pertes successives en hommes de l'Armée qu'Annibal conduisit d'Espagne en Italie en traversant les Gaules (selon Polybe)” by Charles Joseph Minard (1869)](img/minard-full.png)
+![“Carte figurative des pertes successives en hommes de l'Armée qu'Annibal conduisit d'Espagne en Italie en traversant les Gaules (selon Polybe)” (top) and “Carte figurative des pertes successives en hommes de l'Armée Française dans la campagne de Russie 1812–1813” (bottom) by Charles Joseph Minard (1869)](img/minard-full.png)
 
 . . .
 
@@ -106,7 +106,9 @@ execute:
 <li style='font-size:.6em;'>some data visualization practioners call it (one of) <b>the best statistical drawings ever created</b></li>
 </ul>
 
-## {#dataviz-history-minard-3 data-menu-title="DataViz History"}
+
+
+## {#dataviz-history-minard-cotton data-menu-title="DataViz History"}
 
 <br>
 
@@ -114,15 +116,21 @@ execute:
 
 
 
-## {#dataviz-history-minard-4 data-menu-title="DataViz History"}
+## {#dataviz-history-minard-paris data-menu-title="DataViz History"}
 
 ![“Carte figurative et approximative des poids des bestiaux venus á Paris sur les chemins de fer en 1862” by Charles Joseph Minard (1864)](img/minard-paris.jpg)
 
 
 
-## {#dataviz-history-minard-5 data-menu-title="DataViz History"}
+## {#dataviz-history-minard-canal data-menu-title="DataViz History"}
 
 ![“Tableau figuratif du mouvement commercial du Canal du Centre en 1844” by Charles Joseph Minard (1845)](img/minard-canal.jpg)
+
+
+
+## {#dataviz-history-minard-canal-quote data-menu-title="DataViz History"}
+
+![“Tableau figuratif du mouvement commercial du Canal du Centre en 1844” by Charles Joseph Minard (1845)](img/minard-canal-quote.jpg)
 
 
 
@@ -159,7 +167,7 @@ execute:
 
 
 
-## {#mental-calendar-results-2 data-menu-title="Mental Calender: Results"}
+## {#mental-calendar-results-coxcomb data-menu-title="Mental Calender: Results"}
 
 <br>
 
@@ -171,11 +179,11 @@ execute:
 
 <br>
 
-![“Diagram of the causes and mortality in the army in the East” by Florence Nightingale (1858)](img/nightingale-mortality.jpg)
+![“Diagram of the causes and mortality in the army in the East” (a so-called *coxcomb diagram*) by Florence Nightingale (1858)](img/nightingale-mortality.jpg)
 
 
 
-## {#dataviz-history-nightingale-2 data-menu-title="DataViz History"}
+## {#dataviz-history-nightingale-bars data-menu-title="DataViz History"}
 
 <br>
 
@@ -187,7 +195,7 @@ execute:
 
 
 
-# <span style='font-size:.5em;color:#BBBBBB;line-height:.9;font-weight:500;'>... make both <b style='color:#EDCBA0;font-weight:700;'>calculations and graphs</b>.<br>Both sorts of output should be studied; each will <b style='color:#EDCBA0;font-weight:700;'>contribute to understanding</b>.</span><br><br><span style='font-size:.3em;color:#e2e2e2;line-height:.9;font-weight:300;font-style:normal;'>F. J. Anscombe (1973)</span>{#quote-anscombe data-menu-title="Quote F. J. Anscombe" background-color="#000000" }
+# <span style='font-size:.5em;color:#BBBBBB;line-height:.9;font-weight:500;'>... make both <b style='color:#EDCBA0;font-weight:700;'>calculations and graphs</b>.<br>Both sorts of output should be studied;<br>each will <b style='color:#EDCBA0;font-weight:700;'>contribute to understanding</b>.</span><br><br><span style='font-size:.3em;color:#e2e2e2;line-height:.9;font-weight:300;font-style:normal;'>F. J. Anscombe (1973)</span>{#quote-anscombe data-menu-title="Quote F. J. Anscombe" background-color="#000000" }
 
 
 
@@ -294,8 +302,8 @@ dino +
 
 :::: {.columns}
 
-::: {.column width="65%"}
-![Source: The Economist](img/kobak-shpilkin.png)
+::: {.column width="57%"}
+![[“Russian elections once again had a suspiciously neat result”](https://www.economist.com/graphic-detail/2021/10/11/russian-elections-once-again-had-a-suspiciously-neat-result) by The Economist](img/kobak-shpilkin.png)
 :::
 
 ::: {.column width="35%"}
@@ -311,8 +319,8 @@ dino +
 
 :::: {.columns}
 
-::: {.column width="65%"}
-![Source: The Economist](img/kobak-shpilkin-zoom.png)
+::: {.column width="57%"}
+![[“Russian elections once again had a suspiciously neat result”](https://www.economist.com/graphic-detail/2021/10/11/russian-elections-once-again-had-a-suspiciously-neat-result) by The Economist](img/kobak-shpilkin-zoom.png)
 :::
 
 ::: {.column width="35%"}
@@ -324,7 +332,7 @@ dino +
 
 
 
-## <em style='font-size:.9em;line-height:.7;font-weight:500;font-family:literata;'>A good data visualization can mean the difference between <b style='color:#28A87D;font-weight:800;'>success</b> and <b style='color:#B48200;font-weight:800;'>failure</b>.</em>{#success-failure data-menu-title="Success or Failure" background-color="#d8d8d8"}
+## <em style='font-size:.9em;line-height:.7;font-weight:500;font-family:literata;color:#000000;'>A good data visualization can mean the difference between <b style='color:#28A87D;font-weight:800;'>success</b> and <b style='color:#B48200;font-weight:800;'>failure</b>.</em>{#success-failure data-menu-title="Success or Failure" background-color="#d8d8d8"}
 
 <br>
 
@@ -383,7 +391,10 @@ dino +
 
 
 
-# Data Pitfalls {background-color="#FFD166"}
+# <span style='line-height:1.3;'>Data Integrity<br></span> {background-color="#FFD166"}
+
+<div style='font-family:asap semicondensed;font-size:2em;font-weight:700;font-style:normal;color:#B48200;text-align:center;'>and Potential Pitfalls...</div>
+
 
 
 
@@ -435,9 +446,11 @@ dino +
 <br>
 <span style='font-size:1.2em;line-height:1.5;'>
 <b>&ensp;—&ensp;only a subset:</b><br>
-&emsp;&emsp;→&ensp;not crime but <u>reported</u> crime<br>
+&emsp;&emsp;→&ensp;not crime but <u>reported</u> crime<sup>*</sup><br>
 &emsp;&emsp;→&ensp;historical or present state<br>
 </span>
+
+<span style='font-size:.65em;color:#808080;'><br>* or rats, UFO sightings, ...</span>
 
 
 
@@ -457,7 +470,7 @@ dino +
 
 
 
-## {#meteorites data-menu-title="Information: Completeness" background-color="#000000"}
+## {#meteorites data-menu-title="Information: Completeness" background-color="#171717"}
 
 <br><br>
 
@@ -482,7 +495,9 @@ g <-
   labs(x = "Flipper length (mm)", y = NULL) +
   theme_minimal(base_size = 24, base_family = "Asap SemiCondensed") +
   theme(panel.grid = element_blank(),
-        axis.ticks.x = element_line(color = "grey30"))
+        axis.ticks.x = element_line(color = "grey30"),
+        axis.text = element_text(size = rel(.9)),
+        axis.title.x = element_text(margin = margin(t = 12)))
 
 g + 
   geom_histogram(fill = "grey65", color = "grey65", binwidth = 1) +
@@ -611,10 +626,6 @@ Confront yourself with a <b>falsifiable universal statement:</b>
 
 
 ## {#audience-4 data-menu-title="Who's My Audience?" background-image="img/audience-4.png" background-position="center"}
-
-
-
-## {#audience-5 data-menu-title="Who's My Audience?" background-image="img/audience-5.png" background-position="center"}
 
 
 

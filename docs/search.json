@@ -119,36 +119,43 @@
     "text": "Source: “Patchwork Kingdoms” by Nadieh Bremer"
   },
   {
-    "objectID": "materials/01-foundations.html#dataviz-history-minard",
-    "href": "materials/01-foundations.html#dataviz-history-minard",
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-napoleon",
+    "href": "materials/01-foundations.html#dataviz-history-minard-napoleon",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "“Carte figurative des pertes successives en hommes de l’Armée Française dans la campagne de Russie 1812–1813” by Charles Joseph Minard (1869)"
   },
   {
-    "objectID": "materials/01-foundations.html#dataviz-history-minard-2",
-    "href": "materials/01-foundations.html#dataviz-history-minard-2",
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-napoleon-hannibal",
+    "href": "materials/01-foundations.html#dataviz-history-minard-napoleon-hannibal",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "“Carte figurative des pertes successives en hommes de l’Armée Française dans la campagne de Russie 1812–1813” and “Carte figurative des pertes successives en hommes de l’Armée qu’Annibal conduisit d’Espagne en Italie en traversant les Gaules (selon Polybe)” by Charles Joseph Minard (1869)\n\n\nshows the force levels of the armies of Hannibal (218 BC) and Napoleon (1812-1813), respectively\n\n\nsome data visualization practioners call it (one of) the best statistical drawings ever created"
+    "text": "“Carte figurative des pertes successives en hommes de l’Armée qu’Annibal conduisit d’Espagne en Italie en traversant les Gaules (selon Polybe)” (top) and “Carte figurative des pertes successives en hommes de l’Armée Française dans la campagne de Russie 1812–1813” (bottom) by Charles Joseph Minard (1869)\n\n\nshows the force levels of the armies of Hannibal (218 BC) and Napoleon (1812-1813), respectively\n\n\nsome data visualization practioners call it (one of) the best statistical drawings ever created"
   },
   {
-    "objectID": "materials/01-foundations.html#dataviz-history-minard-3",
-    "href": "materials/01-foundations.html#dataviz-history-minard-3",
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-cotton",
+    "href": "materials/01-foundations.html#dataviz-history-minard-cotton",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "“Carte figurative et approximative des quantités de coton brut importées en Europe en 1858, en 1864 et en 1865” by Charles Joseph Minard (1866)"
   },
   {
-    "objectID": "materials/01-foundations.html#dataviz-history-minard-4",
-    "href": "materials/01-foundations.html#dataviz-history-minard-4",
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-paris",
+    "href": "materials/01-foundations.html#dataviz-history-minard-paris",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "“Carte figurative et approximative des poids des bestiaux venus á Paris sur les chemins de fer en 1862” by Charles Joseph Minard (1864)"
   },
   {
-    "objectID": "materials/01-foundations.html#dataviz-history-minard-5",
-    "href": "materials/01-foundations.html#dataviz-history-minard-5",
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-canal",
+    "href": "materials/01-foundations.html#dataviz-history-minard-canal",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Tableau figuratif du mouvement commercial du Canal du Centre en 1844” by Charles Joseph Minard (1845)"
+  },
+  {
+    "objectID": "materials/01-foundations.html#dataviz-history-minard-canal-quote",
+    "href": "materials/01-foundations.html#dataviz-history-minard-canal-quote",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "“Tableau figuratif du mouvement commercial du Canal du Centre en 1844” by Charles Joseph Minard (1845)"
@@ -168,8 +175,8 @@
     "text": "Wheel diagram of 76,922 placements of the months of December and March on the circumference of an empty circle.Graphics by Henrik Lied at NRKbeta. Laeng & Hofseth, Front Psychol. 2019"
   },
   {
-    "objectID": "materials/01-foundations.html#mental-calendar-results-2",
-    "href": "materials/01-foundations.html#mental-calendar-results-2",
+    "objectID": "materials/01-foundations.html#mental-calendar-results-coxcomb",
+    "href": "materials/01-foundations.html#mental-calendar-results-coxcomb",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "Proportion of respondents choosing opposite direction of time on the year’s wheel. Graphics by Vidar Kvien, NRK. Laeng & Hofseth, Front Psychol. 2019"
@@ -179,11 +186,11 @@
     "href": "materials/01-foundations.html#dataviz-history-nightingale-1",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "“Diagram of the causes and mortality in the army in the East” by Florence Nightingale (1858)"
+    "text": "“Diagram of the causes and mortality in the army in the East” (a so-called coxcomb diagram) by Florence Nightingale (1858)"
   },
   {
-    "objectID": "materials/01-foundations.html#dataviz-history-nightingale-2",
-    "href": "materials/01-foundations.html#dataviz-history-nightingale-2",
+    "objectID": "materials/01-foundations.html#dataviz-history-nightingale-bars",
+    "href": "materials/01-foundations.html#dataviz-history-nightingale-bars",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "“Relative mortality of the army at home and of the English male population at corresponding ages” by Florence Nightingale (1858)"
@@ -200,14 +207,14 @@
     "href": "materials/01-foundations.html#visualize-your-data-1",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Visualize Your Data!",
-    "text": "Visualize Your Data!\n\n\n\n\n\nSource: The Economist\n\n\n\n “When Dmitry Kobak and Sergey Shpilkin […] analysed the results, they found that an unusually high number of turnout and vote-share results were multiples of five (eg, 50%, 55%, 60%), a tell-tale sign of manipulation.”"
+    "text": "Visualize Your Data!\n\n\n\n\n\n“Russian elections once again had a suspiciously neat result” by The Economist\n\n\n\n “When Dmitry Kobak and Sergey Shpilkin […] analysed the results, they found that an unusually high number of turnout and vote-share results were multiples of five (eg, 50%, 55%, 60%), a tell-tale sign of manipulation.”"
   },
   {
     "objectID": "materials/01-foundations.html#visualize-your-data-2",
     "href": "materials/01-foundations.html#visualize-your-data-2",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Visualize Your Data!",
-    "text": "Visualize Your Data!\n\n\n\n\n\nSource: The Economist\n\n\n\n “When Dmitry Kobak and Sergey Shpilkin […] analysed the results, they found that an unusually high number of turnout and vote-share results were multiples of five (eg, 50%, 55%, 60%), a tell-tale sign of manipulation.”"
+    "text": "Visualize Your Data!\n\n\n\n\n\n“Russian elections once again had a suspiciously neat result” by The Economist\n\n\n\n “When Dmitry Kobak and Sergey Shpilkin […] analysed the results, they found that an unusually high number of turnout and vote-share results were multiples of five (eg, 50%, 55%, 60%), a tell-tale sign of manipulation.”"
   },
   {
     "objectID": "materials/01-foundations.html#success-failure",
@@ -224,15 +231,15 @@
     "text": "What Makes a Good Data Visualization?\n\n\n  → Integrity (information)\n\n\n  → Story (interestingness)\n\n\n  → Goal (usefulness)\n\n\n  → Visual Form (beauty)"
   },
   {
-    "objectID": "materials/01-foundations.html#data-pitfalls-1",
-    "href": "materials/01-foundations.html#data-pitfalls-1",
+    "objectID": "materials/01-foundations.html#data-pitfalls",
+    "href": "materials/01-foundations.html#data-pitfalls",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Data Pitfalls",
     "text": "Data Pitfalls\n\n\nepistemic errors — how we think about data\ntechnical traps — how we process data\nmathematical miscues — how we calculate data\nstatistical slipups — how we compare data\nanalytical aberrations — how we analyze data\ngraphical gaffes — how we visualize data\ndesign dangers — how we dress up data"
   },
   {
-    "objectID": "materials/01-foundations.html#data-pitfalls-2",
-    "href": "materials/01-foundations.html#data-pitfalls-2",
+    "objectID": "materials/01-foundations.html#data-pitfalls-1",
+    "href": "materials/01-foundations.html#data-pitfalls-1",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Data Pitfalls",
     "text": "Data Pitfalls\n\nepistemic errors — how we think about data\ntechnical traps — how we process data\nmathematical miscues — how we calculate data\nstatistical slipups — how we compare data\nanalytical aberrations — how we analyze data\ngraphical gaffes — how we visualize data\ndesign dangers — how we dress up data"
@@ -242,7 +249,7 @@
     "href": "materials/01-foundations.html#integrity-of-information",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Integrity of Information",
-    "text": "Integrity of Information\n   — data quality:   → guesstimation, precision, and failures   → miscalculations and errors   → incomplete data and missing values   → summaries and aggregations \n\n   — only a subset:   → not crime but reported crime   → historical or present state"
+    "text": "Integrity of Information\n   — data quality:   → guesstimation, precision, and failures   → miscalculations and errors   → incomplete data and missing values   → summaries and aggregations \n\n   — only a subset:   → not crime but reported crime*   → historical or present state \n* or rats, UFO sightings, …"
   },
   {
     "objectID": "materials/01-foundations.html#section-1",
@@ -579,6 +586,13 @@
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Color Palette Types: Sequential or Diverging?",
     "text": "Color Palette Types: Sequential or Diverging?"
+  },
+  {
+    "objectID": "materials/02-display.html#color-palette-types-midpoint",
+    "href": "materials/02-display.html#color-palette-types-midpoint",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Color Palette Types: Midpoint",
+    "text": "Color Palette Types: Midpoint"
   },
   {
     "objectID": "materials/02-display.html#color-palette-types-2",

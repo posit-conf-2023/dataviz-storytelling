@@ -737,6 +737,14 @@ gp + scale_fill_distiller(palette = "PRGn", guide = "none", direction = 1)
 
 
 
+## Color Palette Types: Midpoint {background-color="#171717"}
+
+<br><br>
+
+![](img/color-palettes-example-div-midpoint.png)
+
+
+
 ## Color Palette Types
 
 <br>
@@ -1282,7 +1290,7 @@ ggplot(penguins, aes(x = body_mass_g)) +
   coord_cartesian(expand = FALSE, clip = "off") +
   scale_fill_manual(values = c("#28A87D", "#19694e"), name = NULL,
                     labels = c("Category 1", "Category 2")) +
-  labs(x = "Numeric Variable", y = "Count", title = "Density Plot (overlapping)") +
+  labs(x = "Numeric Variable", y = "Density", title = "Density Plot (overlapping)") +
   theme(legend.direction = "vertical", legend.position = c(.6, .9))
 ```
 :::

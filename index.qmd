@@ -1,5 +1,5 @@
 ---
-title: "<i style='font-family:Literata;font-size:2.75rem;font-weight:800;line-height:.9;'>Designing Data Visualizations to Successfully Tell a Story</i>"
+title: "<i style='font-family:Literata;font-weight:800;line-height:.9;'>Designing Data Visualizations to Successfully Tell a Story</i>"
 ---
 
 ![](images/logo.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Course Hex Logo" width="185"}
