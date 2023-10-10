@@ -751,7 +751,7 @@ data|>
 
 ## Exercise 1
 
-::: questions
+::: question
 <b style='font-size:1.3em;'>Take notes on the following fun graphic.</b>
 
 -   What is the take-home message you learn from the chart.
@@ -769,7 +769,7 @@ data|>
 
 ## Exercise 2
 
-::: questions
+::: question
 <b style='font-size:1.3em;'>Take look at the following stacked bar graph.</b>
 
 -   What elements are used to guide the viewer? Does it work?
@@ -780,7 +780,7 @@ data|>
 
 ## Exercise 2
 
-![Source: Storytelling with Data](exercise-stacked-bars.png)
+![Source: Storytelling with Data](img/exercise-stacked-bars.png)
 
 
 ##  {background-image="img/exercise-what-now.png" background-position="center" background-size="75%"}

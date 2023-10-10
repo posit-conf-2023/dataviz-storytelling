@@ -35,19 +35,19 @@ execute:
 ---
 
 
-# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>is any graphical representation<br>of information and data.</span>{background-color="#000000"}
+# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap;font-stretch:87.5%;font-weight:500;'>is any graphical representation<br>of information and data.</span>{background-color="#000000"}
 
 
 
-# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>helps to amplify cognition, gain insights, discover, explain, and make decisions.</span>{background-color="#000000"}
+# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap;font-stretch:87.5%;font-weight:500;'>helps to amplify cognition, gain insights, discover, explain, and make decisions.</span>{background-color="#000000"}
 
 
 
-# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>converts information into visual forms<br>as quantifiable features.</span>{background-color="#000000"}
+# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap;font-stretch:87.5%;font-weight:500;'>converts information into visual forms<br>as quantifiable features.</span>{background-color="#000000"}
 
 
 
-# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;font-family:Asap SemiCondensed;font-weight:500;'>is part art and part science.<br><span style='color:#000000;'>.</span></span>{background-color="#000000"}
+# Data Visualization<br><br><span style='color:#e2e2e2;font-size:.6em;Asap;font-stretch:87.5%;font-weight:500;'>is part art and part science.<br><span style='color:#000000;'>.</span></span>{background-color="#000000"}
 
 
 
