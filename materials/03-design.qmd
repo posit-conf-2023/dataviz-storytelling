@@ -1276,13 +1276,13 @@ ggplot(movies, aes(x = gross_millions,
 
 
 
-## {#contrast-apca-viz-datawrapper-2 data-menu-title="Test Your Colors: Contrast"}
+## {#contrast-apca-viz-datawrapper data-menu-title="Test Your Colors: Contrast"}
 
 ![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/color-contrast-check-data-vis-wcag-apca/)](img/apca-wcag-contrast-datawrapper.png)
 
 
 
-## {#contrast-test-apca-3 data-menu-title="Test Your Colors: Contrast"}
+## {#contrast-test-apca-2 data-menu-title="Test Your Colors: Contrast"}
 
 ![The [Myndex APCA Contrast Calculator](https://www.myndex.com/APCA/) displays modern contrast ratios for various combinations of text size and font weight](img/apca-contrast-test-2.png)
 
@@ -1294,13 +1294,13 @@ ggplot(movies, aes(x = gross_millions,
 
 
 
-## {#contrast-apca-viz-datawrapper-1 data-menu-title="Test Your Colors: Contrast"}
+## {#contrast-apca-viz-datawrapper-2 data-menu-title="Test Your Colors: Contrast"}
 
 ![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/color-contrast-check-data-vis-wcag-apca/)](img/apca-contrast-datawrapper-1.png)
 
 
 
-## {#contrast-apca-viz-datawrapper-2 data-menu-title="Test Your Colors: Contrast"}
+## {#contrast-apca-viz-datawrapper-3 data-menu-title="Test Your Colors: Contrast"}
 
 ![Source: Lisa Charlotte Muth, [DataWrapper Blog](https://blog.datawrapper.de/color-contrast-check-data-vis-wcag-apca/)](img/apca-contrast-datawrapper-2.png)
 

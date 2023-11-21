@@ -1208,7 +1208,7 @@
     "href": "materials/02-display.html#exercise-2",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Exercise 2",
-    "text": "Exercise 2\n\nImagine you could get your hands on additional data on market shares of visits to social network sites. - What kind of data would you love to explore? - What would be stories you’d like to tell? - What could be suitable chart types to tell such a story?"
+    "text": "Exercise 2\n\nImagine you could get your hands on additional data on market shares of visits to social network sites.\n\nWhat kind of data would you love to explore?\nWhat would be stories you’d like to tell?\nWhat could be suitable chart types to tell such a story?"
   },
   {
     "objectID": "materials/02-display.html#section-1",
@@ -1673,11 +1673,18 @@
     "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
   },
   {
-    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
-    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
+    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper",
+    "href": "materials/03-design.html#contrast-apca-viz-datawrapper",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-test-apca-2",
+    "href": "materials/03-design.html#contrast-test-apca-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
   },
   {
     "objectID": "materials/03-design.html#contrast-test-apca-3",
@@ -1687,8 +1694,15 @@
     "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
   },
   {
-    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-1",
-    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-1",
+    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
+    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-3",
+    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-3",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"

@@ -3376,6 +3376,7 @@ p1 + plot_spacer() + p2 + plot_layout(widths = c(.4, .05, 1))
 
 ::: question
 <b style='font-size:1.3em;'>Imagine you could get your hands on additional data on market shares of visits to social network sites.</b>
+
 -   What kind of data would you love to explore?
 -   What would be stories you'd like to tell?
 -   What could be suitable chart types to tell such a story?
