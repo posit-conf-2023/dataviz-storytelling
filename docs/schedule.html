@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.191">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,7 +57,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -90,10 +91,14 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Schedule">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://posit-conf-2023.github.io/dataviz-storytelling/modules/images/01-foundations.png">
+<meta property="og:image:height" content="1688">
+<meta property="og:image:width" content="2100">
 <meta name="twitter:title" content="Schedule">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://posit-conf-2023.github.io/dataviz-storytelling//images/twitter-card.png">
@@ -114,6 +119,7 @@ ul.task-list li input[type="checkbox"] {
     <img src="./images/logo.png" alt="" class="navbar-logo">
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -174,7 +180,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">GitHub</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -223,88 +230,88 @@ Module
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574221757" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.315" data-listing-title-sort="Foundations of Data Visualization" data-listing-filename-sort="s01-foundations.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947201" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Foundations of Data Visualization" data-listing-filename-sort="s01-foundations.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/01-foundations.png" style="height: 40px;">
+<td>
+<span class="listing-image"><img src="./modules/images/01-foundations.png" style="height: 40px;"></span>
 </td>
-<td class="listing-subtitle">
-<span class="code">09:00-10:30</span>
+<td>
+<span class="listing-subtitle"><span class="code">09:00-10:30</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s01-foundations.html" class="title">Foundations of Data Visualization</a>
+<td>
+<a href="./modules/s01-foundations.html" class="title listing-title">Foundations of Data Visualization</a>
 </td>
 </tr>
-<tr data-index="1" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574221792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.125" data-listing-title-sort="Coffee Break" data-listing-filename-sort="s02-break.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947201" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Coffee Break" data-listing-filename-sort="s02-break.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/coffee-break.png" style="height: 40px;" alt="A coffee cup.">
+<td>
+<span class="listing-image"><img src="./modules/images/coffee-break.png" style="height: 40px;" alt="A coffee cup."></span>
 </td>
-<td class="listing-subtitle">
-<span class="code" style="color:#b3b3b3;">10:30-11:00</span>
+<td>
+<span class="listing-subtitle"><span class="code" style="color:#b3b3b3;">10:30-11:00</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s02-break.html" class="title">Coffee Break</a>
+<td>
+<a href="./modules/s02-break.html" class="title listing-title">Coffee Break</a>
 </td>
 </tr>
-<tr data-index="2" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574221721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.395" data-listing-title-sort="Choose an Appropriate Display" data-listing-filename-sort="s03-display.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947201" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Choose an Appropriate Display" data-listing-filename-sort="s03-display.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/02-display.png" style="height: 40px;">
+<td>
+<span class="listing-image"><img src="./modules/images/02-display.png" style="height: 40px;"></span>
 </td>
-<td class="listing-subtitle">
-<span class="code">11:00-12:30</span>
+<td>
+<span class="listing-subtitle"><span class="code">11:00-12:30</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s03-display.html" class="title">Choose an Appropriate Display</a>
+<td>
+<a href="./modules/s03-display.html" class="title listing-title">Choose an Appropriate Display</a>
 </td>
 </tr>
-<tr data-index="3" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574221971" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.095" data-listing-title-sort="Lunch Break" data-listing-filename-sort="s04-lunch.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947202" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Lunch Break" data-listing-filename-sort="s04-lunch.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/lunch-break.png" style="height: 40px;" alt="Plate and utensils.">
+<td>
+<span class="listing-image"><img src="./modules/images/lunch-break.png" style="height: 40px;" alt="Plate and utensils."></span>
 </td>
-<td class="listing-subtitle">
-<span class="code" style="color:#b3b3b3;">12:30-13:30</span>
+<td>
+<span class="listing-subtitle"><span class="code" style="color:#b3b3b3;">12:30-13:30</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s04-lunch.html" class="title">Lunch Break</a>
+<td>
+<a href="./modules/s04-lunch.html" class="title listing-title">Lunch Break</a>
 </td>
 </tr>
-<tr data-index="4" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574221792" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.34" data-listing-title-sort="Think Like a Designer" data-listing-filename-sort="s05-design.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="4" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947202" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Think Like a Designer" data-listing-filename-sort="s05-design.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/03-design.png" style="height: 40px;">
+<td>
+<span class="listing-image"><img src="./modules/images/03-design.png" style="height: 40px;"></span>
 </td>
-<td class="listing-subtitle">
-<span class="code">13:30-15:00</span>
+<td>
+<span class="listing-subtitle"><span class="code">13:30-15:00</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s05-design.html" class="title">Think Like a Designer</a>
+<td>
+<a href="./modules/s05-design.html" class="title listing-title">Think Like a Designer</a>
 </td>
 </tr>
-<tr data-index="5" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574225141" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.125" data-listing-title-sort="Coffee Break" data-listing-filename-sort="s06-break.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947202" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Coffee Break" data-listing-filename-sort="s06-break.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/coffee-break.png" style="height: 40px;" alt="A coffee cup.">
+<td>
+<span class="listing-image"><img src="./modules/images/coffee-break.png" style="height: 40px;" alt="A coffee cup."></span>
 </td>
-<td class="listing-subtitle">
-<span class="code" style="color:#b3b3b3;">15:00-15:30</span>
+<td>
+<span class="listing-subtitle"><span class="code" style="color:#b3b3b3;">15:00-15:30</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s06-break.html" class="title">Coffee Break</a>
+<td>
+<a href="./modules/s06-break.html" class="title listing-title">Coffee Break</a>
 </td>
 </tr>
-<tr data-index="6" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700574221721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="0.215" data-listing-title-sort="Guide the View(er)" data-listing-filename-sort="s07-guide.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-listing-date-sort="1694988000000" data-listing-file-modified-sort="1700573947202" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Guide the View(er)" data-listing-filename-sort="s07-guide.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
-<td class="listing-image">
-<img src="./modules/images/04-guide.png" style="height: 40px;">
+<td>
+<span class="listing-image"><img src="./modules/images/04-guide.png" style="height: 40px;"></span>
 </td>
-<td class="listing-subtitle">
-<span class="code">15:30-17:00</span>
+<td>
+<span class="listing-subtitle"><span class="code">15:30-17:00</span></span>
 </td>
-<td class="listing-title">
-<a href="./modules/s07-guide.html" class="title">Guide the View(er)</a>
+<td>
+<a href="./modules/s07-guide.html" class="title listing-title">Guide the View(er)</a>
 </td>
 </tr>
 </tbody>
@@ -346,9 +353,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -542,6 +563,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/posit-conf-2023/dataviz-storytelling/edit/main/schedule.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/posit-conf-2023/dataviz-storytelling/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
     <div class="nav-footer-right">© Copyright 2023</div>
   </div>
 </footer>

@@ -1,87 +1,605 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "modules/s07-guide.html",
+    "href": "modules/s07-guide.html",
+    "title": "Guide the View(er)",
+    "section": "",
+    "text": "View slides in full screen\n\nOutline\n\nThe Power of Annotations\n(Don’t) Confuse with Colors\nAssist the Viewer\nIllustrate with Images\nWrap-Up\nExercises"
+  },
+  {
+    "objectID": "modules/s05-design.html",
+    "href": "modules/s05-design.html",
+    "title": "Think Like a Designer",
+    "section": "",
+    "text": "View slides in full screen\n\nOutline\n\nGestalt Principles\nEliminating Disctractions\nExercise\nEmphasizing Insights\nPreattentive Attributes\nCreating Compositions\nAlignment & Layout\nChoice of Colors\nTest Your Colors: CVD\nTest Your Colors: Contrast\nChoice of Typefaces\nExercise"
+  },
+  {
+    "objectID": "modules/s03-display.html",
+    "href": "modules/s03-display.html",
+    "title": "Choose an Appropriate Display",
+    "section": "",
+    "text": "View slides in full screen\n\nOutline\n\nEncodings\nChart Type Choice\nChart Types to…\n\nVisualize Distributions\nCompare Distributions\nCompare Amounts\nVisualize Relationships\nCompare Relationships\nVisualize Uncertainty\n\nSolving Common Chart Issues\nExercises"
+  },
+  {
+    "objectID": "modules/s01-foundations.html",
+    "href": "modules/s01-foundations.html",
+    "title": "Foundations of Data Visualization",
+    "section": "",
+    "text": "View slides in full screen\n\nOutline\n\nWelcome\nDefinitions of Data Visualization\nData Visualization Examples\nData Visualization History\nVisualize Your Data!\nWhat Makes a Good Data Visualization?\nData Pitfalls\nContext\nThe Audience\nExercise"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-figure-and-ground",
+    "href": "materials/03-design.html#principle-of-figure-and-ground",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Figure and Ground",
+    "text": "Principle of Figure and Ground"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-proximity",
+    "href": "materials/03-design.html#principle-of-proximity",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Proximity",
+    "text": "Principle of Proximity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-similarity",
+    "href": "materials/03-design.html#principle-of-similarity",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Similarity",
+    "text": "Principle of Similarity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-common-region",
+    "href": "materials/03-design.html#principle-of-common-region",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Common Region",
+    "text": "Principle of Common Region"
+  },
+  {
+    "objectID": "materials/03-design.html#principles-of-continuity-and-closure",
+    "href": "materials/03-design.html#principles-of-continuity-and-closure",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principles of Continuity and Closure",
+    "text": "Principles of Continuity and Closure"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-figure-and-ground-1",
+    "href": "materials/03-design.html#principle-of-figure-and-ground-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Figure and Ground",
+    "text": "Principle of Figure and Ground"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-figure-and-ground-2",
+    "href": "materials/03-design.html#principle-of-figure-and-ground-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Figure and Ground",
+    "text": "Principle of Figure and Ground"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-closure",
+    "href": "materials/03-design.html#principle-of-closure",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Closure",
+    "text": "Principle of Closure"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-closure-1",
+    "href": "materials/03-design.html#principle-of-closure-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Closure",
+    "text": "Principle of Closure"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-closure-2",
+    "href": "materials/03-design.html#principle-of-closure-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Closure",
+    "text": "Principle of Closure"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-similarity-1",
+    "href": "materials/03-design.html#principle-of-similarity-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Similarity",
+    "text": "Principle of Similarity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-similarity-2",
+    "href": "materials/03-design.html#principle-of-similarity-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Similarity",
+    "text": "Principle of Similarity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-proximity-1",
+    "href": "materials/03-design.html#principle-of-proximity-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Proximity",
+    "text": "Principle of Proximity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-proximity-2",
+    "href": "materials/03-design.html#principle-of-proximity-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Proximity",
+    "text": "Principle of Proximity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-connectivity",
+    "href": "materials/03-design.html#principle-of-connectivity",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Connectivity",
+    "text": "Principle of Connectivity"
+  },
+  {
+    "objectID": "materials/03-design.html#principle-of-connectivity-1",
+    "href": "materials/03-design.html#principle-of-connectivity-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Principle of Connectivity",
+    "text": "Principle of Connectivity"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter",
+    "href": "materials/03-design.html#declutter",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-1",
+    "href": "materials/03-design.html#declutter-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-2",
+    "href": "materials/03-design.html#declutter-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-3",
+    "href": "materials/03-design.html#declutter-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-4",
+    "href": "materials/03-design.html#declutter-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-5",
+    "href": "materials/03-design.html#declutter-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-6",
+    "href": "materials/03-design.html#declutter-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-7",
+    "href": "materials/03-design.html#declutter-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-8",
+    "href": "materials/03-design.html#declutter-8",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-9",
+    "href": "materials/03-design.html#declutter-9",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#declutter-10",
+    "href": "materials/03-design.html#declutter-10",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Declutter!",
+    "text": "Declutter!"
+  },
+  {
+    "objectID": "materials/03-design.html#exercise-1",
+    "href": "materials/03-design.html#exercise-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nEliminate the clutter from the line chart on the next slide.\n\nAfterwards, answer the following:\n\n\nWhat is the main message?\nIs all the data relevant?\nWhat would you change?\nHow can you emphasize the main message?"
+  },
+  {
+    "objectID": "materials/03-design.html#wheres-waldo",
+    "href": "materials/03-design.html#wheres-waldo",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "A posit::conf(2023) Workshop by Cédric Scherer\n📆  September 17, 2023\n⏰  09:00–17:00 CDT\n🏨  Grand Hall K"
+    "text": "Source: “Where’s Waldo?” by Martin Handford © Kilburn & Strode LLP"
   },
   {
-    "objectID": "index.html#is-this-course-for-me",
-    "href": "index.html#is-this-course-for-me",
+    "objectID": "materials/03-design.html#wheres-waldo-solutions",
+    "href": "materials/03-design.html#wheres-waldo-solutions",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Is this course for me?",
-    "text": "Is this course for me?\nThis course will be appropriate for you if you:\n\nwant to understand and learn the art of communicating data with impactful visualizations,\naim to improve your data visualization design to create effective and informative graphics, and\nare willing to spend a bit more time choosing the right chart, proper color palettes, and suitable fonts along with additional elements to guide the viewer."
-  },
-  {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "License",
     "section": "",
-    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License."
+    "text": "Source: “Where’s Waldo?” by Martin Handford © Kilburn & Strode LLP"
   },
   {
-    "objectID": "materials/00-welcome.html#cedric-ggplot-tutorial-overview",
-    "href": "materials/00-welcome.html#cedric-ggplot-tutorial-overview",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "objectID": "materials/03-design.html#preattentive-attributes-overview",
+    "href": "materials/03-design.html#preattentive-attributes-overview",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r"
+    "text": "Adapted from Stephen Few and others"
   },
   {
-    "objectID": "materials/00-welcome.html#jasmin-dataviz",
-    "href": "materials/00-welcome.html#jasmin-dataviz",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "objectID": "materials/03-design.html#main-principles-of-graphic-design",
+    "href": "materials/03-design.html#main-principles-of-graphic-design",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Main Principles of Graphic Design",
+    "text": "Main Principles of Graphic Design\n\n     → Unity     → Variety     → Hierarchy \n\n The balance between unity and variety can lead to hierarchy."
+  },
+  {
+    "objectID": "materials/03-design.html#graphic-design-principles-layout",
+    "href": "materials/03-design.html#graphic-design-principles-layout",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "Graphic by Jasmin Sarah König"
+    "text": "Created by Lindsay Betzendahl\n\n\n\n\n\n\n\nCreated by Lindsay Betzendahl"
   },
   {
-    "objectID": "materials/00-welcome.html#ciera-ceramic-art",
-    "href": "materials/00-welcome.html#ciera-ceramic-art",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "objectID": "materials/03-design.html#graphic-design-principles-charts-1",
+    "href": "materials/03-design.html#graphic-design-principles-charts-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "Ceramic art by Ciera Martinez"
+    "text": "Source: Ernest & Young"
   },
   {
-    "objectID": "materials/00-welcome.html#garrett-hex-sticker-art",
-    "href": "materials/00-welcome.html#garrett-hex-sticker-art",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "objectID": "materials/03-design.html#graphic-design-principles-charts-2",
+    "href": "materials/03-design.html#graphic-design-principles-charts-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "Alternative hex stickers by Garrett Grolemund"
+    "text": "Reworked version of the charts by Ernest & Young"
   },
   {
-    "objectID": "materials/00-welcome.html#conversation-starters",
-    "href": "materials/00-welcome.html#conversation-starters",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
-    "section": "Conversation Starters",
-    "text": "Conversation Starters\n\nWhat’s your name?\nWhere do you feel home?\nWhen did you program for the first time? In which language?\nWhat’s your favorite animal / plant / color / typeface?\nWhere did you spend your summer?\nWhom would you like to meet during the posit::conf?\nWhich chart types are you looking forward to try?\nWhat are things you want to learn about data visualization?"
-  },
-  {
-    "objectID": "materials/00-welcome.html#announcements",
-    "href": "materials/00-welcome.html#announcements",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
-    "section": "Announcements",
-    "text": "Announcements\n\nWiFi\n\nUsername: Posit Conf 2023\nPassword: conf2023\n\nCourse Materials\n\nWebpage: posit-conf-2023.github.io/dataviz-storytelling"
-  },
-  {
-    "objectID": "materials/00-welcome.html#course-webpage",
-    "href": "materials/00-welcome.html#course-webpage",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "objectID": "materials/03-design.html#graphic-design-principles-charts-3",
+    "href": "materials/03-design.html#graphic-design-principles-charts-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
-    "text": "posit-conf-2023.github.io/dataviz-storytelling"
+    "text": "Reworked version of the charts by Ernest & Young"
   },
   {
-    "objectID": "materials/00-welcome.html#announcements-1",
-    "href": "materials/00-welcome.html#announcements-1",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
-    "section": "Announcements",
-    "text": "Announcements\n\n\nGender-neutral bathrooms are located among the Grand Suite Bathrooms.\nThe two meditation/prayer rooms (Grand Suite 2A and Grand Suite 2B) are open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm\nThe lactation room is located in Grand Suite 1 and open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm.\nParticipants who do not wish to be photographed have red lanyards; please note everyone’s lanyard colors before taking a photo and respect their choices.\nThe Code of Conduct and COVID policies can be found at posit.co/code-of-conduct. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information."
+    "objectID": "materials/03-design.html#graphic-design-principles-table-1",
+    "href": "materials/03-design.html#graphic-design-principles-table-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Credit Suisse"
   },
   {
-    "objectID": "materials/00-welcome.html#communication-strategy",
-    "href": "materials/00-welcome.html#communication-strategy",
-    "title": "Designing Data Visualizationsto Successfully Tell a Story",
-    "section": "Communication Strategy",
-    "text": "Communication Strategy\n\n\n\nGreen sticky note — I am done with the exercise\nPink sticky note — I need help or support\nYou can ask questions / comment at any time during the course.\nPlease avoid questions during the breaks to give us a chance to recover.\nWe will be using Discord as our main digital communication method.\nTeam up with your neighbors for exercises — and lunch!\nWe will collect feedback twice during the day (more later)."
+    "objectID": "materials/03-design.html#graphic-design-principles-table-2",
+    "href": "materials/03-design.html#graphic-design-principles-table-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Reworked version of the table by Credit Suisse"
+  },
+  {
+    "objectID": "materials/03-design.html#graphic-design-principles-table-3",
+    "href": "materials/03-design.html#graphic-design-principles-table-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Reworked version of the table by Credit Suisse"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts",
+    "href": "materials/03-design.html#alignment-in-charts",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-1",
+    "href": "materials/03-design.html#alignment-in-charts-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-2",
+    "href": "materials/03-design.html#alignment-in-charts-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-3",
+    "href": "materials/03-design.html#alignment-in-charts-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-4",
+    "href": "materials/03-design.html#alignment-in-charts-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-5",
+    "href": "materials/03-design.html#alignment-in-charts-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-6",
+    "href": "materials/03-design.html#alignment-in-charts-6",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-7",
+    "href": "materials/03-design.html#alignment-in-charts-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#alignment-in-charts-8",
+    "href": "materials/03-design.html#alignment-in-charts-8",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Alignment in Charts",
+    "text": "Alignment in Charts"
+  },
+  {
+    "objectID": "materials/03-design.html#modular-design",
+    "href": "materials/03-design.html#modular-design",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Modular Design",
+    "text": "Modular Design\n\n\nSource: londonphotography.org.uk"
+  },
+  {
+    "objectID": "materials/03-design.html#rainbow-4",
+    "href": "materials/03-design.html#rainbow-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Modified example from Fabio Crameri"
+  },
+  {
+    "objectID": "materials/03-design.html#rainbow-7",
+    "href": "materials/03-design.html#rainbow-7",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "“Turbo, An Improved Rainbow Colormap for Visualization” by Anton Mikhailov (Google Research)"
+  },
+  {
+    "objectID": "materials/03-design.html#be-consistent",
+    "href": "materials/03-design.html#be-consistent",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Be Consistent",
+    "text": "Be Consistent\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#use-intuitive-colors",
+    "href": "materials/03-design.html#use-intuitive-colors",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Use Intuitive Colors (?)",
+    "text": "Use Intuitive Colors (?)\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#use-intuitive-colors-1",
+    "href": "materials/03-design.html#use-intuitive-colors-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Use Intuitive Colors (?)",
+    "text": "Use Intuitive Colors (?)\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#faithland",
+    "href": "materials/03-design.html#faithland",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Vivid Maps"
+  },
+  {
+    "objectID": "materials/03-design.html#faithland-true",
+    "href": "materials/03-design.html#faithland-true",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Vivid Maps"
+  },
+  {
+    "objectID": "materials/03-design.html#design-with-the-colorblind-in-mind",
+    "href": "materials/03-design.html#design-with-the-colorblind-in-mind",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Design with the Colorblind in Mind",
+    "text": "Design with the Colorblind in Mind\n\nSource: “Fundamentals of Data Visualization” by Claus O. Wilke"
+  },
+  {
+    "objectID": "materials/03-design.html#design-with-the-colorblind-in-mind-1",
+    "href": "materials/03-design.html#design-with-the-colorblind-in-mind-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Design with the Colorblind in Mind",
+    "text": "Design with the Colorblind in Mind\n\nSource: “Fundamentals of Data Visualization” by Claus O. Wilke"
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-example",
+    "href": "materials/03-design.html#cvd-test-example",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Contribution to the SWDchallenge by Alex Varlamoff — tested with a color-blindness simulator"
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-tool",
+    "href": "materials/03-design.html#cvd-test-tool",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Contribution to the SWDchallenge by Alex Varlamoff — tested with a color-blindness simulator"
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-vizpalette",
+    "href": "materials/03-design.html#cvd-test-vizpalette",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-vizpalette-deuteranopia",
+    "href": "materials/03-design.html#cvd-test-vizpalette-deuteranopia",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-vizpalette-greyscale",
+    "href": "materials/03-design.html#cvd-test-vizpalette-greyscale",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-vizpalette-dark-bg",
+    "href": "materials/03-design.html#cvd-test-vizpalette-dark-bg",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-test-apca-1",
+    "href": "materials/03-design.html#contrast-test-apca-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper",
+    "href": "materials/03-design.html#contrast-apca-viz-datawrapper",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-test-apca-2",
+    "href": "materials/03-design.html#contrast-test-apca-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-test-apca-3",
+    "href": "materials/03-design.html#contrast-test-apca-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
+    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-3",
+    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-3",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-test-apca-4",
+    "href": "materials/03-design.html#contrast-test-apca-4",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
+  },
+  {
+    "objectID": "materials/03-design.html#contrast-test-apca-5",
+    "href": "materials/03-design.html#contrast-test-apca-5",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-test-vizpalette-viridis",
+    "href": "materials/03-design.html#cvd-test-vizpalette-viridis",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Viridis colors, tested with VizPalette"
+  },
+  {
+    "objectID": "materials/03-design.html#cvd-width",
+    "href": "materials/03-design.html#cvd-width",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: “Fundamentals of Data Visualization” by Claus O. Wilke"
+  },
+  {
+    "objectID": "materials/03-design.html#typography-keep-it-simple-fontsizes",
+    "href": "materials/03-design.html#typography-keep-it-simple-fontsizes",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#font-readability",
+    "href": "materials/03-design.html#font-readability",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
+  },
+  {
+    "objectID": "materials/03-design.html#the-1il-test",
+    "href": "materials/03-design.html#the-1il-test",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "The 1Il Test",
+    "text": "The 1Il Test"
+  },
+  {
+    "objectID": "materials/03-design.html#the-1il-test-1",
+    "href": "materials/03-design.html#the-1il-test-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "The 1Il Test",
+    "text": "The 1Il Test"
+  },
+  {
+    "objectID": "materials/03-design.html#exercise-2-1",
+    "href": "materials/03-design.html#exercise-2-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nRevisit the line chart from exercise 1 of the first session.\n\nWhat are preattentive attributes used in this graphic?\nHow do you like the layout and alignment of the graphic? Is there anything you would change?\n\n\n\n\n\nRevisit the pie chart from exercise 1 of the first session.\n\nWhich design decisions are potentially problematic?\nHow could you use preattentive attributes to tell a story using the same data?"
+  },
+  {
+    "objectID": "materials/03-design.html#line-chart-arctic-ice",
+    "href": "materials/03-design.html#line-chart-arctic-ice",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: “Yearly Fluctuations in Area of Arctic Covered by Ice” by Derek Watkins (New York Times)"
+  },
+  {
+    "objectID": "materials/03-design.html#pie-charts-emissions",
+    "href": "materials/03-design.html#pie-charts-emissions",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Source: Dr. Robert Rohde (Tweet)"
+  },
+  {
+    "objectID": "materials/03-design.html#section-1",
+    "href": "materials/03-design.html#section-1",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "Cédric Scherer // posit::conf(2023)"
   },
   {
     "objectID": "materials/01-foundations.html#dataviz-office",
@@ -263,7 +781,7 @@
     "href": "materials/01-foundations.html#typology-of-information-graphics",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "Typology of Information Graphics",
-    "text": "Typology of Information Graphics\n\nIs the information conceptual or measurable?\n → Type of information: depict information schematically <> convert information into visual forms\n\n\nIs the aim to explore or to explain the information?\n → Purpose of the graphic: facilitate discovery <> communicate information"
+    "text": "Typology of Information Graphics\n\nIs the information conceptual or measurable?\n → Type of information: depict information schematically &lt;&gt; convert information into visual forms\n\n\nIs the aim to explore or to explain the information?\n → Purpose of the graphic: facilitate discovery &lt;&gt; communicate information"
   },
   {
     "objectID": "materials/01-foundations.html#typology-of-information-graphics-scheme",
@@ -376,6 +894,90 @@
     "title": "Designing Data Visualizations to Successfully Tell a Story",
     "section": "",
     "text": "Cédric Scherer // posit::conf(2023)"
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "",
+    "text": "A posit::conf(2023) Workshop by Cédric Scherer\n📆  September 17, 2023\n⏰  09:00–17:00 CDT\n🏨  Grand Hall K"
+  },
+  {
+    "objectID": "index.html#is-this-course-for-me",
+    "href": "index.html#is-this-course-for-me",
+    "title": "Designing Data Visualizations to Successfully Tell a Story",
+    "section": "Is this course for me?",
+    "text": "Is this course for me?\nThis course will be appropriate for you if you:\n\nwant to understand and learn the art of communicating data with impactful visualizations,\naim to improve your data visualization design to create effective and informative graphics, and\nare willing to spend a bit more time choosing the right chart, proper color palettes, and suitable fonts along with additional elements to guide the viewer."
+  },
+  {
+    "objectID": "materials/00-welcome.html#cedric-ggplot-tutorial-overview",
+    "href": "materials/00-welcome.html#cedric-ggplot-tutorial-overview",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r"
+  },
+  {
+    "objectID": "materials/00-welcome.html#jasmin-dataviz",
+    "href": "materials/00-welcome.html#jasmin-dataviz",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "Graphic by Jasmin Sarah König"
+  },
+  {
+    "objectID": "materials/00-welcome.html#ciera-ceramic-art",
+    "href": "materials/00-welcome.html#ciera-ceramic-art",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "Ceramic art by Ciera Martinez"
+  },
+  {
+    "objectID": "materials/00-welcome.html#garrett-hex-sticker-art",
+    "href": "materials/00-welcome.html#garrett-hex-sticker-art",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "Alternative hex stickers by Garrett Grolemund"
+  },
+  {
+    "objectID": "materials/00-welcome.html#conversation-starters",
+    "href": "materials/00-welcome.html#conversation-starters",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Conversation Starters",
+    "text": "Conversation Starters\n\nWhat’s your name?\nWhere do you feel home?\nWhen did you program for the first time? In which language?\nWhat’s your favorite animal / plant / color / typeface?\nWhere did you spend your summer?\nWhom would you like to meet during the posit::conf?\nWhich chart types are you looking forward to try?\nWhat are things you want to learn about data visualization?"
+  },
+  {
+    "objectID": "materials/00-welcome.html#announcements",
+    "href": "materials/00-welcome.html#announcements",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Announcements",
+    "text": "Announcements\n\nWiFi\n\nUsername: Posit Conf 2023\nPassword: conf2023\n\nCourse Materials\n\nWebpage: posit-conf-2023.github.io/dataviz-storytelling"
+  },
+  {
+    "objectID": "materials/00-welcome.html#course-webpage",
+    "href": "materials/00-welcome.html#course-webpage",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "",
+    "text": "posit-conf-2023.github.io/dataviz-storytelling"
+  },
+  {
+    "objectID": "materials/00-welcome.html#announcements-1",
+    "href": "materials/00-welcome.html#announcements-1",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Announcements",
+    "text": "Announcements\n\n\nGender-neutral bathrooms are located among the Grand Suite Bathrooms.\nThe two meditation/prayer rooms (Grand Suite 2A and Grand Suite 2B) are open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm\nThe lactation room is located in Grand Suite 1 and open Sunday-Tuesday 7:30 am-7:00 pm and Wednesday 8:00 am-6:00 pm.\nParticipants who do not wish to be photographed have red lanyards; please note everyone’s lanyard colors before taking a photo and respect their choices.\nThe Code of Conduct and COVID policies can be found at posit.co/code-of-conduct. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information."
+  },
+  {
+    "objectID": "materials/00-welcome.html#communication-strategy",
+    "href": "materials/00-welcome.html#communication-strategy",
+    "title": "Designing Data Visualizationsto Successfully Tell a Story",
+    "section": "Communication Strategy",
+    "text": "Communication Strategy\n\n\n\nGreen sticky note — I am done with the exercise\nPink sticky note — I need help or support\nYou can ask questions / comment at any time during the course.\nPlease avoid questions during the breaks to give us a chance to recover.\nWe will be using Discord as our main digital communication method.\nTeam up with your neighbors for exercises — and lunch!\nWe will collect feedback twice during the day (more later)."
   },
   {
     "objectID": "materials/02-display.html#same-data-different-encodings",
@@ -1218,580 +1820,6 @@
     "text": "Cédric Scherer // posit::conf(2023)"
   },
   {
-    "objectID": "materials/03-design.html#principle-of-figure-and-ground",
-    "href": "materials/03-design.html#principle-of-figure-and-ground",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Figure and Ground",
-    "text": "Principle of Figure and Ground"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-proximity",
-    "href": "materials/03-design.html#principle-of-proximity",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Proximity",
-    "text": "Principle of Proximity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-similarity",
-    "href": "materials/03-design.html#principle-of-similarity",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Similarity",
-    "text": "Principle of Similarity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-common-region",
-    "href": "materials/03-design.html#principle-of-common-region",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Common Region",
-    "text": "Principle of Common Region"
-  },
-  {
-    "objectID": "materials/03-design.html#principles-of-continuity-and-closure",
-    "href": "materials/03-design.html#principles-of-continuity-and-closure",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principles of Continuity and Closure",
-    "text": "Principles of Continuity and Closure"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-figure-and-ground-1",
-    "href": "materials/03-design.html#principle-of-figure-and-ground-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Figure and Ground",
-    "text": "Principle of Figure and Ground"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-figure-and-ground-2",
-    "href": "materials/03-design.html#principle-of-figure-and-ground-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Figure and Ground",
-    "text": "Principle of Figure and Ground"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-closure",
-    "href": "materials/03-design.html#principle-of-closure",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Closure",
-    "text": "Principle of Closure"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-closure-1",
-    "href": "materials/03-design.html#principle-of-closure-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Closure",
-    "text": "Principle of Closure"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-closure-2",
-    "href": "materials/03-design.html#principle-of-closure-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Closure",
-    "text": "Principle of Closure"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-similarity-1",
-    "href": "materials/03-design.html#principle-of-similarity-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Similarity",
-    "text": "Principle of Similarity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-similarity-2",
-    "href": "materials/03-design.html#principle-of-similarity-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Similarity",
-    "text": "Principle of Similarity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-proximity-1",
-    "href": "materials/03-design.html#principle-of-proximity-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Proximity",
-    "text": "Principle of Proximity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-proximity-2",
-    "href": "materials/03-design.html#principle-of-proximity-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Proximity",
-    "text": "Principle of Proximity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-connectivity",
-    "href": "materials/03-design.html#principle-of-connectivity",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Connectivity",
-    "text": "Principle of Connectivity"
-  },
-  {
-    "objectID": "materials/03-design.html#principle-of-connectivity-1",
-    "href": "materials/03-design.html#principle-of-connectivity-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Principle of Connectivity",
-    "text": "Principle of Connectivity"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter",
-    "href": "materials/03-design.html#declutter",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-1",
-    "href": "materials/03-design.html#declutter-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-2",
-    "href": "materials/03-design.html#declutter-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-3",
-    "href": "materials/03-design.html#declutter-3",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-4",
-    "href": "materials/03-design.html#declutter-4",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-5",
-    "href": "materials/03-design.html#declutter-5",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-6",
-    "href": "materials/03-design.html#declutter-6",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-7",
-    "href": "materials/03-design.html#declutter-7",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-8",
-    "href": "materials/03-design.html#declutter-8",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-9",
-    "href": "materials/03-design.html#declutter-9",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#declutter-10",
-    "href": "materials/03-design.html#declutter-10",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Declutter!",
-    "text": "Declutter!"
-  },
-  {
-    "objectID": "materials/03-design.html#exercise-1",
-    "href": "materials/03-design.html#exercise-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n\nEliminate the clutter from the line chart on the next slide.\n\nAfterwards, answer the following:\n\n\nWhat is the main message?\nIs all the data relevant?\nWhat would you change?\nHow can you emphasize the main message?"
-  },
-  {
-    "objectID": "materials/03-design.html#wheres-waldo",
-    "href": "materials/03-design.html#wheres-waldo",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: “Where’s Waldo?” by Martin Handford © Kilburn & Strode LLP"
-  },
-  {
-    "objectID": "materials/03-design.html#wheres-waldo-solutions",
-    "href": "materials/03-design.html#wheres-waldo-solutions",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: “Where’s Waldo?” by Martin Handford © Kilburn & Strode LLP"
-  },
-  {
-    "objectID": "materials/03-design.html#preattentive-attributes-overview",
-    "href": "materials/03-design.html#preattentive-attributes-overview",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Adapted from Stephen Few and others"
-  },
-  {
-    "objectID": "materials/03-design.html#main-principles-of-graphic-design",
-    "href": "materials/03-design.html#main-principles-of-graphic-design",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Main Principles of Graphic Design",
-    "text": "Main Principles of Graphic Design\n\n     → Unity     → Variety     → Hierarchy \n\n The balance between unity and variety can lead to hierarchy."
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-layout",
-    "href": "materials/03-design.html#graphic-design-principles-layout",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Created by Lindsay Betzendahl\n\n\n\n\n\n\n\nCreated by Lindsay Betzendahl"
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-charts-1",
-    "href": "materials/03-design.html#graphic-design-principles-charts-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Ernest & Young"
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-charts-2",
-    "href": "materials/03-design.html#graphic-design-principles-charts-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Reworked version of the charts by Ernest & Young"
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-charts-3",
-    "href": "materials/03-design.html#graphic-design-principles-charts-3",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Reworked version of the charts by Ernest & Young"
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-table-1",
-    "href": "materials/03-design.html#graphic-design-principles-table-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Credit Suisse"
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-table-2",
-    "href": "materials/03-design.html#graphic-design-principles-table-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Reworked version of the table by Credit Suisse"
-  },
-  {
-    "objectID": "materials/03-design.html#graphic-design-principles-table-3",
-    "href": "materials/03-design.html#graphic-design-principles-table-3",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Reworked version of the table by Credit Suisse"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts",
-    "href": "materials/03-design.html#alignment-in-charts",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-1",
-    "href": "materials/03-design.html#alignment-in-charts-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-2",
-    "href": "materials/03-design.html#alignment-in-charts-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-3",
-    "href": "materials/03-design.html#alignment-in-charts-3",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-4",
-    "href": "materials/03-design.html#alignment-in-charts-4",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-5",
-    "href": "materials/03-design.html#alignment-in-charts-5",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-6",
-    "href": "materials/03-design.html#alignment-in-charts-6",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-7",
-    "href": "materials/03-design.html#alignment-in-charts-7",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#alignment-in-charts-8",
-    "href": "materials/03-design.html#alignment-in-charts-8",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Alignment in Charts",
-    "text": "Alignment in Charts"
-  },
-  {
-    "objectID": "materials/03-design.html#modular-design",
-    "href": "materials/03-design.html#modular-design",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Modular Design",
-    "text": "Modular Design\n\n\nSource: londonphotography.org.uk"
-  },
-  {
-    "objectID": "materials/03-design.html#rainbow-4",
-    "href": "materials/03-design.html#rainbow-4",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Modified example from Fabio Crameri"
-  },
-  {
-    "objectID": "materials/03-design.html#rainbow-7",
-    "href": "materials/03-design.html#rainbow-7",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "“Turbo, An Improved Rainbow Colormap for Visualization” by Anton Mikhailov (Google Research)"
-  },
-  {
-    "objectID": "materials/03-design.html#be-consistent",
-    "href": "materials/03-design.html#be-consistent",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Be Consistent",
-    "text": "Be Consistent\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#use-intuitive-colors",
-    "href": "materials/03-design.html#use-intuitive-colors",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Use Intuitive Colors (?)",
-    "text": "Use Intuitive Colors (?)\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#use-intuitive-colors-1",
-    "href": "materials/03-design.html#use-intuitive-colors-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Use Intuitive Colors (?)",
-    "text": "Use Intuitive Colors (?)\n\n\nSource: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#faithland",
-    "href": "materials/03-design.html#faithland",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Vivid Maps"
-  },
-  {
-    "objectID": "materials/03-design.html#faithland-true",
-    "href": "materials/03-design.html#faithland-true",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Vivid Maps"
-  },
-  {
-    "objectID": "materials/03-design.html#design-with-the-colorblind-in-mind",
-    "href": "materials/03-design.html#design-with-the-colorblind-in-mind",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Design with the Colorblind in Mind",
-    "text": "Design with the Colorblind in Mind\n\nSource: “Fundamentals of Data Visualization” by Claus O. Wilke"
-  },
-  {
-    "objectID": "materials/03-design.html#design-with-the-colorblind-in-mind-1",
-    "href": "materials/03-design.html#design-with-the-colorblind-in-mind-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Design with the Colorblind in Mind",
-    "text": "Design with the Colorblind in Mind\n\nSource: “Fundamentals of Data Visualization” by Claus O. Wilke"
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-example",
-    "href": "materials/03-design.html#cvd-test-example",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Contribution to the SWDchallenge by Alex Varlamoff — tested with a color-blindness simulator"
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-tool",
-    "href": "materials/03-design.html#cvd-test-tool",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Contribution to the SWDchallenge by Alex Varlamoff — tested with a color-blindness simulator"
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-vizpalette",
-    "href": "materials/03-design.html#cvd-test-vizpalette",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-vizpalette-deuteranopia",
-    "href": "materials/03-design.html#cvd-test-vizpalette-deuteranopia",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-vizpalette-greyscale",
-    "href": "materials/03-design.html#cvd-test-vizpalette-greyscale",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-vizpalette-dark-bg",
-    "href": "materials/03-design.html#cvd-test-vizpalette-dark-bg",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The VizPalette tool tests color palettes for legibility for different chart types, line weights, backgrounds, and font colors."
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-test-apca-1",
-    "href": "materials/03-design.html#contrast-test-apca-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper",
-    "href": "materials/03-design.html#contrast-apca-viz-datawrapper",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-test-apca-2",
-    "href": "materials/03-design.html#contrast-test-apca-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-test-apca-3",
-    "href": "materials/03-design.html#contrast-test-apca-3",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
-    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-2",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-apca-viz-datawrapper-3",
-    "href": "materials/03-design.html#contrast-apca-viz-datawrapper-3",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-test-apca-4",
-    "href": "materials/03-design.html#contrast-test-apca-4",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
-  },
-  {
-    "objectID": "materials/03-design.html#contrast-test-apca-5",
-    "href": "materials/03-design.html#contrast-test-apca-5",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "The Myndex APCA Contrast Calculator displays modern contrast ratios for various combinations of text size and font weight"
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-test-vizpalette-viridis",
-    "href": "materials/03-design.html#cvd-test-vizpalette-viridis",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Viridis colors, tested with VizPalette"
-  },
-  {
-    "objectID": "materials/03-design.html#cvd-width",
-    "href": "materials/03-design.html#cvd-width",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: “Fundamentals of Data Visualization” by Claus O. Wilke"
-  },
-  {
-    "objectID": "materials/03-design.html#typography-keep-it-simple-fontsizes",
-    "href": "materials/03-design.html#typography-keep-it-simple-fontsizes",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#font-readability",
-    "href": "materials/03-design.html#font-readability",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Lisa Charlotte Muth, DataWrapper Blog"
-  },
-  {
-    "objectID": "materials/03-design.html#the-1il-test",
-    "href": "materials/03-design.html#the-1il-test",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "The 1Il Test",
-    "text": "The 1Il Test"
-  },
-  {
-    "objectID": "materials/03-design.html#the-1il-test-1",
-    "href": "materials/03-design.html#the-1il-test-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "The 1Il Test",
-    "text": "The 1Il Test"
-  },
-  {
-    "objectID": "materials/03-design.html#exercise-2-1",
-    "href": "materials/03-design.html#exercise-2-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nRevisit the line chart from exercise 1 of the first session.\n\nWhat are preattentive attributes used in this graphic?\nHow do you like the layout and alignment of the graphic? Is there anything you would change?\n\n\n\n\n\nRevisit the pie chart from exercise 1 of the first session.\n\nWhich design decisions are potentially problematic?\nHow could you use preattentive attributes to tell a story using the same data?"
-  },
-  {
-    "objectID": "materials/03-design.html#line-chart-arctic-ice",
-    "href": "materials/03-design.html#line-chart-arctic-ice",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: “Yearly Fluctuations in Area of Arctic Covered by Ice” by Derek Watkins (New York Times)"
-  },
-  {
-    "objectID": "materials/03-design.html#pie-charts-emissions",
-    "href": "materials/03-design.html#pie-charts-emissions",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Source: Dr. Robert Rohde (Tweet)"
-  },
-  {
-    "objectID": "materials/03-design.html#section-1",
-    "href": "materials/03-design.html#section-1",
-    "title": "Designing Data Visualizations to Successfully Tell a Story",
-    "section": "",
-    "text": "Cédric Scherer // posit::conf(2023)"
-  },
-  {
     "objectID": "materials/04-guide.html#power-of-annotation-iib-blank",
     "href": "materials/04-guide.html#power-of-annotation-iib-blank",
     "title": "Designing Data Visualizations to Successfully Tell a Story",
@@ -2037,25 +2065,11 @@
     "text": "Cédric Scherer // posit::conf(2023)"
   },
   {
-    "objectID": "modules/s01-foundations.html",
-    "href": "modules/s01-foundations.html",
-    "title": "Foundations of Data Visualization",
-    "section": "",
-    "text": "View slides in full screen\n\nOutline\n\nWelcome\nDefinitions of Data Visualization\nData Visualization Examples\nData Visualization History\nVisualize Your Data!\nWhat Makes a Good Data Visualization?\nData Pitfalls\nContext\nThe Audience\nExercise"
-  },
-  {
     "objectID": "modules/s02-break.html",
     "href": "modules/s02-break.html",
     "title": "Coffee Break",
     "section": "",
     "text": "Please avoid questions during the breaks to give us a chance to recover and reflect. If you have urgent questions, please contact any of the TAs."
-  },
-  {
-    "objectID": "modules/s03-display.html",
-    "href": "modules/s03-display.html",
-    "title": "Choose an Appropriate Display",
-    "section": "",
-    "text": "View slides in full screen\n\nOutline\n\nEncodings\nChart Type Choice\nChart Types to…\n\nVisualize Distributions\nCompare Distributions\nCompare Amounts\nVisualize Relationships\nCompare Relationships\nVisualize Uncertainty\n\nSolving Common Chart Issues\nExercises"
   },
   {
     "objectID": "modules/s04-lunch.html",
@@ -2065,25 +2079,11 @@
     "text": "Warning\n\n\n\nPlease avoid questions during the lunch break to give us a chance to have a recover and reflect."
   },
   {
-    "objectID": "modules/s05-design.html",
-    "href": "modules/s05-design.html",
-    "title": "Think Like a Designer",
-    "section": "",
-    "text": "View slides in full screen\n\nOutline\n\nGestalt Principles\nEliminating Disctractions\nExercise\nEmphasizing Insights\nPreattentive Attributes\nCreating Compositions\nAlignment & Layout\nChoice of Colors\nTest Your Colors: CVD\nTest Your Colors: Contrast\nChoice of Typefaces\nExercise"
-  },
-  {
     "objectID": "modules/s06-break.html",
     "href": "modules/s06-break.html",
     "title": "Coffee Break",
     "section": "",
     "text": "Please avoid questions during the breaks to give us a chance to recover and reflect. If you have urgent questions, please contact any of the TAs."
-  },
-  {
-    "objectID": "modules/s07-guide.html",
-    "href": "modules/s07-guide.html",
-    "title": "Guide the View(er)",
-    "section": "",
-    "text": "View slides in full screen\n\nOutline\n\nThe Power of Annotations\n(Don’t) Confuse with Colors\nAssist the Viewer\nIllustrate with Images\nWrap-Up\nExercises"
   },
   {
     "objectID": "prework.html",
